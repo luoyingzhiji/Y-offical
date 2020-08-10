@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7" lang="zh_CN"> <![endif]-->
+<!--[if IE 7]><html class="lt-ie9 lt-ie8" lang="zh_CN"> <![endif]-->
+<!--[if IE 8]><html class="lt-ie9" lang="zh_CN"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie9" lang="zh_CN"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="zh_CN" {{ HTML_ATTRS }}> <!--<![endif]-->
+<head {{ HEAD_ATTRS }}>
+  <meta charset="utf-8">
+  <!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge">
+  <!-- IOS6全屏 Chrome高版本全屏
+  ================================================== -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <!-- 让360双核浏览器用webkit内核渲染页面
+  ================================================== -->
+  <meta name="renderer" content="webkit">
+  <!-- !!!注意 minimal-ui 是IOS7.1的新属性，最小化浏览器UI -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+
+
+  <link href="/alibabaFont/iconfont.css" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+  <script src="/common/html5.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="/common/verify.js"></script>
+  <script type="text/javascript" src="/common/jquery-1.11.1.min.js?v=1554945817218"></script>
+  <script type="text/javascript">
+    const imagePath = "https://offical--img.oss-cn-beijing.aliyuncs.com";
+    const myDomain = "";
+    const userCookie="sid";
+
+  </script>
+  {{ HEAD }}
+</head>
+<body {{ BODY_ATTRS }}>
+{{ APP }}
+<script src="/amazeui/js/amazeui.min.js"></script>
+<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279002497'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279002497%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

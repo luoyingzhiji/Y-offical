@@ -1,0 +1,326 @@
+<template>
+  <div style="background:rgba(245,245,245,1);">
+    <div class="top-main-cont" style="background:rgba(245,245,245,1);">
+
+      <div class="Ariticle float-between">
+        <div class="A_wrap-cont-left" style="width: 820px">
+
+          <div class="A_wrap-cl-top" style="height: 363px;width: 820px;position: relative">
+            <img :src="imagePath + '/res/img/Luodi/new1.png'" alt="新闻资讯" style="height: 363px;width: 820px">
+            <div style="position: absolute; left: 45px;top: 128px" class="" >
+              <div class="T_text1" >新闻资讯</div>
+              <div class="T_text2" >提供功能更新、公司动态、行业动态等最新资讯</div>
+            </div>
+          </div>
+
+          <div class="A_wrap-cl-bottom" style="margin-top: 30px;background:#fff;width: 820px;margin-bottom: 30px">
+            <div class="dym-tab clearfix " style="padding: 0" >
+              <a  href="javascript:void(0)" :class="{'cur':typeId == 0}" @click="queryArticleListByType(0)" class="bot-bor-s" >全部资讯</a>
+
+              <a v-for="(articleType, index) in articleTypeList" :key="index" href="javascript:void(0)" :class="{'cur':typeId == articleType.id}"
+                 @click="queryArticleListByType(articleType.id) " class="bot-bor-s">{{articleType.name}}</a>
+              <div style="width:822px;height:1px; background-color: rgba(235, 235, 235, 1)" ></div>
+            </div>
+
+            <div class="A_wrap-clb-bor" style="  ">
+              <div class="A_wrap-clbb-bor">
+                <!-- /文章列表 开始 -->
+                <div class="A_wrap-clbbb-bor">
+                  <!-- 标签 -->
+                  <ul class="A_cont-bor" style="padding: 0 19px 0 17px">
+                    <li class="A_cont-con" v-for="(article,index) in  articleList" :key="article.id" v-if="article.link">
+                      <router-link :to="{path: article.link.replace('/a','/article')}"  class="" >
+                        <div class="A_link-bor clearFix">
+                          <div style="height: 151px;float: left;width: 245px">
+                            <aside class="A_link-img" v-if="article.picture" style="height: 151px;width: 245px" >
+                              <img :src="imagePath +  article.picture"  :alt="article.title" style="vertical-align: middle" width="245" height="151" >
+                            </aside>
+                          </div>
+                          <div class="news-detail">
+                            <p class="o">{{article.title}}</p>
+                            <p class="s" style="-webkit-box-orient: vertical;" v-html="article.description"></p>
+                            <div class="f">{{article.createTime | dateFormat('yyyy年MM月dd日')}}</div>
+                          </div>
+                        </div>
+                      </router-link>
+                    </li>
+                  </ul>
+
+
+
+                </div>
+              </div>
+
+              <!-- 公共分页 开始 -->
+              <Page :pageContent="pageContent" ref="page" @goParentPage="queryArticlePage"/>
+              <!-- 公共分页 结束 -->
+
+              <!-- /文章列表 结束 -->
+
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="A_wrap-cont-right">
+          <Arti :isshow="isshow"></Arti>
+          <a href="/enterprise" class="line-desc" style="position:relative;display: block">
+            <span style="position: absolute;left: 21px;top: 20px;" class="newimg">企业培训</span>
+            <img :src="imagePath + '/res/img/Luodi/new4.png'" alt="企业培训系统"/>
+          </a>
+
+          <a href="/video" style="position:relative;display: block" class="line-desc" >
+            <span style="position: absolute;left: 21px;top: 20px;"  class="newimg">视频云</span>
+            <img :src="imagePath+ '/res/img/Luodi/new2.png'" alt="视频云"/>
+          </a>
+
+          <a href="/school" class="line-desc" style="position:relative;display: block">
+            <span style="position: absolute;left: 21px;top: 20px;"  class="newimg">网校</span>
+            <img :src="imagePath + '/res/img/Luodi/new3.png'" alt="网校系统"/>
+          </a>
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapState } from 'vuex'
+import Page from '~/components/page/Page'
+import NoDataIcon from '~/components/common/NoDataIcon'
+import Arti from '~/components/acrticleIn'
+export default {
+
+  name: "Article",
+  components: {
+    Page,NoDataIcon,Arti
+  },
+
+  computed:{
+    ...mapState(['info']),
+    ...mapState("articleStore",['articleTypeList','articleList','pageContent','typeId']),
+    ...mapState('commonStore',['headerIndex','imagePath']),
+  },
+  async fetch({params,store}){
+    let typeId=0;
+    if(params.typeId!=undefined && params.typeId>0){
+      typeId = params.typeId;
+    }
+    return store.dispatch("articleStore/queryArticleIndex",{"typeId":typeId,"pageNumber":1});
+  },
+  data() {
+    return {
+      title: '资讯',
+      isshow:false,
+    }
+  },
+  head () {
+    return {
+      title: '新闻资讯_最新资讯|新闻动态|行业资讯|功能更新|公司动态-HIKER教育',
+      meta: [
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: '新闻资讯,最新资讯,新闻动态,行业资讯,功能更新,公司动态',
+        },
+        {
+          hid: 'author',
+          name: 'author',
+          content: "HIKER教育",
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: '新闻资讯为hiker教育提供了最新的新闻内容，其中包括了行业资讯、功能更新以及公司动态'
+        }
+      ]
+    }
+  },
+  methods: {
+    async queryArticleListByType(typeId){
+      await this.$store.dispatch("articleStore/queryArticleIndex",{"typeId":typeId,"pageNumber":1});
+      this.$refs.page.showPageNumber();//调用分页的页码方法
+    },
+    queryArticlePage(number){
+      this.$store.dispatch("articleStore/queryArticleIndex",{"typeId":this.typeId,"pageNumber":number});
+      $(window).scrollTop(0);
+    }
+
+  },
+  created() {
+
+  },
+  mounted() {
+    this.$refs.page.showPageNumber();//调用分页的页码方法
+    console.log(this.articleList,'文章列表')
+
+  },
+
+}
+</script>
+
+<style scoped>
+@import "@/assets/css/common.css";
+@import "@/assets/css/NewBanner.css";
+.line-desc {
+  margin-bottom: 20px;
+  position: relative;
+  width: 350px;
+  height: 175px;
+}
+.A_cont-con {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  padding: 24px 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ebebeb;
+}
+.A_link-bor{
+  padding: 0 8px;
+  height: 151px;
+}
+
+.Ariticle{
+  margin-top: 21px;
+}
+.T_text1{
+  width:200px;
+  height:67px;
+  font-size:48px;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color:rgba(255,255,255,1);
+  line-height:67px;
+  letter-spacing:2px;
+}
+.T_text2{
+  width:525px;
+  height:33px;
+  font-size:24px;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:33px;
+  letter-spacing:1px;
+  margin-top: 8px;
+}
+.line-desc img{
+  width: 350px;
+  height: 175px;
+}
+.cur{
+  border-bottom: 2px solid rgba(24,144,255,1);;
+}
+.A_wrap-cont-right>div:nth-child(2){
+  /*background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luodi/new1.png");*/
+  background-size: cover;
+  cursor: pointer;
+}
+.A_wrap-cont-right>div:nth-child(3){
+  cursor: pointer;
+  background-size: cover;
+}
+.A_wrap-cont-right>div:nth-child(4){
+  cursor: pointer;
+  background-size: cover;
+}
+.newimg{
+  font-size:24px;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:33px;
+}
+.A_wrap-cont-right{
+  height: 1300px;
+}
+.newimg>div{
+
+}
+
+.A_link-img{
+  float: left;
+}
+
+.news-detail{
+  float: right;
+  width: 504px;
+  height: 139px;
+  margin: 10px 0 2px 0;
+}
+.news-detail>.s{
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  width:504px;
+  font-size:14px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:20px;
+  margin-top: 15px;
+}
+.news-detail>.o{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 28px;
+  font-size: 21px;
+  font-family: PingFangSC-Medium,PingFang SC;
+  font-weight: 500;
+  color: rgba(51,51,51,1);
+  line-height: 28px;
+}
+.news-detail>.f{
+
+  height:20px;
+  font-size:14px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(187,187,187,1);
+  line-height:20px;
+  margin-top: 29px;
+}
+
+.bot-bor-s{
+  display: inline-block;
+  width: 80px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  margin:0 20px;
+  font-size:16px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+
+}
+.bot-bor-s:first-child{
+  margin-left: 0;
+
+}
+.A_link-img img{
+  width: 245px;
+  max-width: 245px;
+  max-height: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.hengxian{
+  width:100%;
+
+  border: 1px solid rgba(153,153,153,0.4);
+
+}
+</style>
+

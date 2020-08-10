@@ -1,0 +1,738 @@
+<template>
+  <!-- 导航栏 -->
+  <header class="z_header" >
+    <!--  大于等于 1200px  PC端 -->
+
+    <div class="z_logo-bor">
+      <div class="z_logo">
+        <img :src="imagePath+'/res/img/logo.png'" alt="">
+      </div>
+    </div>
+
+    <!--<div class="z_nav-list" style="float:left;">-->
+      <!--<ul id="z_guideInfo">-->
+        <!--<li class="item">-->
+          <!--<a href="/"> 首页</a>-->
+        <!--</li>-->
+        <!--<li class="item" @mouseenter="showFloatList()" @mouseleave="hideFloatList()"-->
+            <!--style="min-width: 100px;">-->
+          <!--<span > 产品解决方案 <i class="am-icon-angle-down"></i> </span>-->
+        <!--</li>-->
+        <!--<li class="item" >-->
+          <!--<a href="/article"> 新闻资讯</a>-->
+        <!--</li>-->
+        <!--<li class="item" >-->
+          <!--<a href="/about"> 关于我们</a>-->
+        <!--</li>-->
+        <!--&lt;!&ndash;          <li class="item"><a href="https://m.eduhiker.com/" target="_blank">演示站</a></li>&ndash;&gt;-->
+      <!--</ul>-->
+    <!--</div>-->
+    <div class="z_contractUs">
+      <!--<div class="z_salePhone">-->
+        <!--<span class="z_phoneNumberOne">售前热线： 400O-8866-736</span>-->
+        <!--<span class="z_phoneNumber">售后热线： 010-8866-736</span>-->
+      <!--</div>-->
+      <div class="z_loginAndRegister">
+        <button class="z_login" onclick="window.open('https://m.eduhiker.com/admin')" style="cursor: pointer">快捷登录</button>
+      </div>
+      <div  class="z_freeAndRegister">
+        <button class="z_freeUse" style="cursor: pointer;" @click="goLogin()">免费试用</button>
+      </div>
+
+
+    </div>
+    <div class="floatFrame" @mouseenter ="showFloatList()" :class="(mouseOnFloatList?'onList ':'notList')"  @mouseleave="hideFloatList()">
+
+      <div class="floatFrame-content">
+        <div class="z_floatFrame-bor">
+
+          <nuxt-link class="z_luodiTitle" tag="div" to="/School">
+            <div class="z_luodi-bor">
+              <div class="z_luodi-left">
+                <img src="../../static/res/img/Luodi/wx.png" alt="">
+              </div>
+              <div class="z_luodi-right">
+                <div class="top" >在线网校服务</div>
+                <div class="bottom" >在线网校服务、咱先服务凭他平台</div>
+              </div>
+            </div>
+          </nuxt-link>
+
+          <nuxt-link class="z_luodiTitle" tag="div" to="/Enterprise">
+            <div class="z_luodi-bor">
+              <div class="z_luodi-left">
+                <img src="../../static/res/img/Luodi/wx.png" alt="">
+              </div>
+              <div class="z_luodi-right">
+                <div class="top" >在线企业培训服务</div>
+                <div class="bottom" >在线网校服务、咱先服务凭他平台</div>
+              </div>
+            </div>
+          </nuxt-link>
+
+          <nuxt-link class="z_luodiTitle" tag="div" to="/School">
+            <div class="z_luodi-bor">
+              <div class="z_luodi-left">
+                <img src="../../static/res/img/Luodi/wx.png" alt="">
+              </div>
+              <div class="z_luodi-right">
+                <div class="top" >在线视频云服务</div>
+                <div class="bottom" >在线网校服务、咱先服务凭他平台</div>
+              </div>
+            </div>
+          </nuxt-link>
+
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
+<script>
+  import { mapState } from 'vuex'
+
+  export default {
+    name: 'Header',
+    computed:{
+      ...mapState('commonStore',['headerIndex','imagePath']),
+    },
+    components: {
+    },
+    data () {
+      return {
+        mouseOnFloatList:false
+
+      }
+    },
+    directives: {},
+
+    created: function() {
+
+    },
+    methods:{
+      showFloatList(){
+        console.log('123123')
+        let $header = $('.index-header');
+        $header.removeClass("index");
+        $header.addClass("indexChange");
+        this.mouseOnFloatList = true;
+
+      },
+      goLogin(){
+        this.$router.push({path: '/Trial/'});
+      },
+      hideFloatList(){
+        let $header = $('.index-header');
+        $header.removeClass("indexChange");
+        this.mouseOnFloatList = false;
+
+
+      },
+      addActive() {
+        let pathname = window.location.pathname+"";
+        if ($("#guideInfo>li>a[href$='" + pathname + "']").length > 0) {
+          $("#guideInfo>li>a[href$='" + pathname + "']").parent().addClass("active");
+        }
+
+      }
+
+    },
+    // mounted:function(){
+    //   this.addActive();
+    //   let $header = $('.index-header');
+    //   if(this.$store.state.commonStore.headerIndex){
+    //     window.onload = window.onresize = window.onscroll = function() {
+    //
+    //       if ($(document).scrollTop() > 0) {
+    //         $header.removeClass("index");
+    //         $header.addClass("index-header-two");
+    //       } else if ($(document).scrollTop() <= 0 && $(window).width() > 640) {
+    //        if($(".floatFrame").hasClass('onList')){
+    //
+    //        }else {
+    //          $header.addClass("index");
+    //          $header.removeClass("index-header-two");
+    //          $(".nav-list").removeClass("nav-list-two");
+    //          $('header .mobile-header .am-dropdown-content a').css({'color': '#686868'});
+    //        }
+    //
+    //
+    //       } else if ($(document).scrollTop() <= 0 && $(window).width() <= 640) {
+    //         $('header .mobile-header a').css({'color': '#fff'});
+    //       }
+    //
+    //     }
+    //
+    //   }else {
+    //
+    //
+    //   }
+    //
+    //
+    //
+    // },
+    watch:{
+      '$route'(to,from){   //当多个路由指向一个组件时,原来的组件会被复用，生命周期方法会只执行一次，所以要监视id的变化，否则就会发生url改变但数据没有改变的惨剧
+
+        this.addActive();
+
+
+      },
+
+
+    }
+  }
+</script>
+<style scoped>
+  .z_floatFrame-bor{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+  .z_luodi-bor{
+    margin: auto;
+    display: flex;
+  }
+  .z_luodiTitle{
+    width:300px;
+    height:94px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 0px 18px 3px rgba(221,239,255,1);
+    border-radius:4px;
+    margin: 15px;
+    display: flex;
+  }
+  .z_luodi-left{
+
+    margin: auto 10px;
+  }
+  .z_luodi-right .bottom{
+    margin-top: 9px;
+    font-size:12px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:17px;
+  }
+  .z_luodi-right .top{
+    font-size:16px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    line-height:22px;
+  }
+  .z_luodiTitle img{
+    height: 35px;
+    width: 35px;
+  }
+  .z_logo-bor{float: left;height: 100%;display: flex;margin-left: 18%;}
+  .z_logo-bor:after{content:"";display:block;clear:both;}
+  .z_logo{margin: auto;}
+  .z_logo img{
+    height: 43px;
+  }
+  .z_nav-list{height: 100%;float: left;width: 25%;display: flex;margin: auto 0;}
+  #z_guideInfo{display: flex;width: 100%;margin: auto;height: 100%;}
+  #z_guideInfo .item{flex: 1;text-align: center;}
+  #z_guideInfo .item a{min-width:60px;height:20px;font-size:14px;font-family:PingFangSC-Regular,PingFang SC;font-weight:400;color:rgba(51,51,51,1);line-height:68px;}
+  #z_guideInfo .item span{min-width:100px;line-height: 68px;font-size:14px;font-family:PingFangSC-Regular,PingFang SC;font-weight:400;color:rgba(51,51,51,1);}
+  .z_header{width:100%;height:68px;background:rgba(255,255,255,1);display: flex;
+    justify-content: space-between; box-shadow:0px 2px 8px 0px rgba(212,212,212,0.5);}
+  .z_contractUs{
+    height: 100%;
+    margin-right: 18%;
+    display: flex
+  }
+  .z_salePhone{
+    min-width: 180px;
+    margin: auto;
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+  }
+  .z_login{
+    width:53px;
+    height:12px;
+    font-size:12px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(24,144,255,1);
+    line-height:12px;
+    margin: auto;
+  }
+  .z_loginAndRegister{
+    display: flex;
+    width:105px;
+    height:36px;
+    border-radius:18px;
+    border:1px solid rgba(24,144,255,1);
+    margin: auto 9px;
+    min-width: 105px;
+  }
+  .z_freeUse{
+    width:53px;
+    height:12px;
+    font-size:12px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:12px;
+    margin: auto;
+  }
+  .z_freeAndRegister{
+    display: flex;
+    min-width:105px;
+    height:36px;
+    background:rgba(24,144,255,1);
+    border-radius:18px;
+    margin: auto 9px;
+  }
+  /*.z_phoneNumber{margin: auto}*/
+  /*.z_phoneNumberOne{margin: auto}*/
+  .xiahuaxian{
+    position: absolute;
+    width: 100%;
+    margin: 60px auto 0;
+    border: 0.5px solid hsla(0,0%,80%,.4);
+    opacity: 1;
+    left: 0px;
+  }
+  .contractUs{
+    line-height: 64px;
+    float: right;
+
+  }
+  .salePhone img{
+    width: 24px;
+    margin-right: 4px;
+  }
+  .salePhone{
+    float: left;
+    font-size:2.2rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    opacity:1;
+
+    margin-right: 62px;
+  }
+  .loginAndRegister{
+    float: right;
+  }
+  .login{
+    font-size:1.6rem;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    opacity:1;
+  }
+  .login:hover{
+    color:rgba(24,144,255,1);
+
+  }
+  .freeUse{
+    width:110px;
+    height:38px;
+    background:linear-gradient(90deg,rgba(24,143,255,1) 0%,rgba(38,120,252,1) 100%);
+    opacity:1;
+    border-radius:5px;
+    font-size:1.6rem;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height: 38px;
+    margin-left: 24px;
+    text-align: center;
+
+  }
+  .freeUse a{
+
+    color:rgba(255,255,255,1);
+
+
+  }
+  .freeUse:hover{
+    background: #1c7fdc;
+
+  }
+
+  /*1200一下的适配*/
+  @media only screen and (max-width:1199px) and (min-width: 0px){
+    .salePhone{
+      margin-right: 10px;
+    }
+    .contractUs{
+
+      width: 300px;
+      height: 50px;
+      line-height: 50px;
+    }
+    .salePhone {
+      font-size: 1.4rem;
+
+    }
+    .salePhone img {
+      width: 14px;
+      margin-right: 4px;
+    }
+
+    .freeUse{
+      width: 80px;
+      height: 34px;
+      line-height: 34px;
+      margin-left: 15px;
+    }
+
+
+  }
+  @media only screen and (max-width:1080px) and (min-width: 1024px){
+
+
+  }
+  @media only screen and (max-width:640px) and (min-width: 0px){
+    .contractUs{
+      display: none;
+    }
+  }
+
+  /*悬浮的展示框*/
+  .notList{
+    display: none;
+
+  }
+  .onList{
+
+  }
+  .indexChange {
+    background-color: rgba(0,0,0,1);
+    border-bottom: none;
+    position: fixed;
+  }
+  .floatFrame{
+    width:100%;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 3px 6px rgba(0,0,0,0.16);
+    height: 170px;
+
+  }
+  .floatFrame-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+  }
+  .float-logo{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .float-logo img{
+    width: 100%;
+
+  }
+  .floatList{
+    display: flex;
+  }
+  .list-content{
+    display: inline-block;
+    margin-left: 8px;
+  }
+  .float-title{
+
+    font-size:1.8rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    line-height: 40px;
+
+    color:rgba(255,255,255,1);
+    opacity:1;
+    cursor: pointer;
+    margin-bottom: 44px;
+  }
+  .float-title:hover{
+    color:#1890FF ;
+  }
+  .float-subTitle:hover{
+    color:#1890FF ;
+
+  }
+  .float-subTitle{
+    cursor: pointer;
+    font-size:1.6rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(242,242,242,1);
+    opacity:1;
+    margin-bottom:8px ;
+  }
+  .float-subContent{
+    cursor: pointer;
+    font-size:1.4rem;
+    font-family:PingFang SC;
+    font-weight:400;
+    margin-bottom:32px ;
+    color: rgba(204, 204, 204, 1);
+    opacity:1;
+  }
+
+
+
+  /* 公共导航栏 */
+  /*首页头部*/
+
+
+  /* <!-- PC 导航栏 --> */
+
+
+  .header-new{
+
+  }
+
+  header {
+    width: 100%;
+    height: 64px;
+    background-color: #fff;
+    /*border-bottom: 1px solid #ccc;*/
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+
+  header .logo {
+    float: left;
+    margin-right: 30px;
+    line-height: 64px;
+    margin-right: 30px;
+  }
+
+  header .logo img {
+    height: 40px;
+    line-height: 64px;
+    vertical-align: middle;
+  }
+
+  .pc-header .nav-list {
+    float: right;
+    line-height: 64px;
+  }
+
+  .pc-header .nav-list li {
+    float: left;
+    padding: 0 24px;
+    font-size:1.6rem;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+  }
+
+  .pc-header .nav-list li:hover {
+    /*border-bottom: 2px solid white;*/
+  }
+  .pc-header .nav-list li:hover a::after {
+    display: block;
+    content: "";
+    height: 2px;
+    background: white;
+    width: 100%;
+    transition: all linear 0.2s;
+    margin-top: -11px;
+  }
+  .pc-header .nav-list li.active a::after {
+    display: block;
+    content: "";
+    height: 2px;
+    background: white;
+    width: 100%;
+    transition: all linear 0.2s;
+    margin-top: -11px;
+  }
+  .tel {
+    float: right;
+    width: 300px;
+    height: 50px;
+    border: 1px solid rgba(255,255,255,1);
+    opacity: 1;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+  }
+  .tel span {
+    font-size: 1.8rem;
+    color: white;
+    /*line-height: 70px;*/
+    /*vertical-align: middle;*/
+  }
+
+  .mobile-header .tel {line-height: 50px;}
+  .mobile-header .tel span {line-height: 50px;}
+
+  /* active */
+
+  header li.item.active a {
+    color: #2a75ed;
+  }
+
+  .pc-header .nav-list li.free-btn a {
+    color: #fff;
+    background-color: #2a75ed;
+    padding: 9px 20px;
+    border-radius: 4px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    /* 隐藏 移动端 导航栏 */
+    .mobile-header {
+      display: none;
+    }
+  }
+
+  /* <!-- AmazeUI 移动端 导航栏 --> */
+
+  .mobile-header {
+    border-bottom: 1px solid #ccc;
+  }
+
+  @media only screen and (max-width:1199px) and (min-width: 0px) {
+    /* 隐藏 PC端 导航栏 */
+    .pc-header {
+      display: none;
+    }
+    header {
+      height: 50px;
+    }
+    header .logo {
+      line-height: 50px;
+      margin-left: 0px;
+    }
+    header .logo img {
+      height: 30px;
+      line-height: 50px;
+    }
+    /* AmazeUI 移动端 导航栏 版芯 */
+    .am-container {
+      max-width: 1200px;
+      background-color: #fff;
+    }
+    .mobile-header button.am-btn-primary {
+      color: #fff;
+      margin-right: 15px;
+      background-color: #2a75ed;
+      border-color: #2a75ed;
+      border-radius: 4px;
+    }
+    /* 导航栏文字颜色 */
+    .mobile-header a {
+      font-size: 1.4rem;
+      color: #686868;
+    }
+    .mobile-header a:hover {
+      color: #2a75ed;
+    }
+    .mobile-header .am-topbar-nav>li.am-active>a, .mobile-header .am-topbar-nav>li.am-active>a:focus, .mobile-header .am-topbar-nav>li.am-active>a:hover {
+      color: #2a75ed;
+    }
+    /* 隐藏 下拉菜单 */
+    .mobile-header li.am-dropdown {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) and (min-width: 0px) {
+    /* 显示 下拉菜单 */
+    .mobile-header li.am-dropdown {
+      display: block;
+    }
+
+  }
+
+  @media only screen and (max-width: 640px) and (min-width: 0px) {
+    /* 隐藏 下拉菜单 */
+    .mobile-header li.am-dropdown {
+      display: none;
+    }
+    /* 显示 li.item */
+    .mobile-header li.item {
+      display: block;
+    }
+    .mobile-header {
+      border-bottom: none;
+    }
+    header {
+      background-color: transparent;
+      border-bottom: none;
+    }
+    /* 按钮颜色色 */
+    .am-btn-secondary {
+      color: #fff;
+      background-color: #2a75ed;
+      border-color: #2a75ed;
+      border-radius: 4px;
+      width: 45px;
+      height: 35px;
+    }
+    .am-btn-secondary:focus, .am-btn-secondary:hover {
+      background-color: #2a75ed;
+    }
+    .am-container {
+      max-width: 1200px;
+      background-color: #fff;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    }
+  }
+  .i-box {
+    overflow: hidden;
+    padding: 5px 20px;
+    background: #fff;
+  }
+
+  .am-topbar-brand {
+    padding: 0;
+  }
+
+  /* < !-- 首页-导航栏 --> */
+  header {background-color: black;}
+  header .mobile-header {border: none;}
+  header .pc-header .nav-list li a {color: #fff;font-weight: 600;}
+  header .pc-header .nav-list-two li a {color: rgb(104, 104, 104);}
+  /*header .pc-header .nav-list li.active a {color: #2a75ed;}*/
+  header .mobile-header a {color: #fff;}
+  .color68 {color: #686868;}
+  header .mobile-header .am-container {background-color: transparent; border: none;}
+  header .am-nav>li>a:focus, .am-nav>li>a:hover {background-color: transparent;}
+  .index-header-two{background-color: rgba(0,0,0,1);border-bottom: none; transition: 2s; position: fixed;}
+  header.index {
+    background-color: transparent;
+  }
+  header .mobile-header .am-dropdown-content a{
+    color: #686868;}
+
+
+  @media only screen and (max-width: 640px) and (min-width: 0px){
+    header .mobile-header .am-container {
+      background-color: #060814;
+    }
+  }
+  @media only screen and (max-width: 768px) and (min-width: 640px){
+    header .mobile-header .am-container {
+      padding: 0 1.5rem;
+    }
+    .salePhone {
+      margin-right: 0px;
+    }
+    .contractUs {
+      width: 270px;
+    }
+  }
+
+
+
+</style>
+

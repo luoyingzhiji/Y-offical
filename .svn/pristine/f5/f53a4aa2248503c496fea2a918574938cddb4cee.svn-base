@@ -1,0 +1,2100 @@
+<template>
+  <div>
+
+    <div class="z_banner-wrap" style="margin-top: 0;padding-top: 0;padding-bottom: 0">
+      <!-- 12.13注册单 start-->
+      <div class="z_content3" style="margin-top: 0">
+        <div class="">
+          <div class="banWrap" style="height: 501px;position: relative;">
+            <no-ssr>
+              <swiper :options="lunboOption" ref="mySwiper" >
+                <swiper-slide v-for="(item,index) in Lunbo " :key="index" style="width: 100%;height: 501px;position: relative;overflow: hidden;">
+                  <a  :href="item.href"   :target="item.target" style="width: 100%;;    position: absolute;
+                 height: 100%;background-size: cover;background-position: top;  ">
+
+                    <div>
+                      <div>
+                        <div v-if="index==0" class="wuFt3">
+                          <div class="o" >提供一站式服务的企业培训系统</div>
+                          <div class="s"> 方便了企业对员工进行专项培训以及考核</div>
+                          <div class="t">免费试用</div>
+                        </div>
+                        <div class="ffxx" >
+                        <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/njtu1.png"  v-if="index==0" alt="提供一站式服务的企业培训系统" style="width: 1920px;height:500px"/>
+                        </div>
+
+                      </div>
+                      <div>
+                        <div v-if="index==1" class="wuFt1" >
+                          <div class="o" >安全可靠的在线视频云服务</div>
+                          <div class="s"> 快速上传视频给用户踏实放心的感觉</div>
+                          <div class="t">免费试用</div>
+                        </div>
+                        <div class="ffxx" >
+                        <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luodi/zxx1.png" alt="安全可靠的在线视频云服务" v-if="index==1" style="width: 1920px;height:500px"/>
+                        </div>
+
+                      </div>
+                      <div>
+                        <div v-if="index==2" class="wuFt2" >
+                          <div class="o" >给用户搭建专属的网校系统</div>
+                          <div class="s"> 包含互动直播、多重营销、点播、班级化管理等服务</div>
+                          <div class="t">免费试用</div>
+                        </div>
+                        <div class="ffxx" >
+                        <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luodi/zxx2.png" alt="给用户搭建专属的网校系统" v-if="index==2" style="width: 1920px;height:500px"/>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+
+                  </a>
+                </swiper-slide>
+
+                <div class="banner-swiper-pagination" slot="pagination"></div>
+              </swiper>
+            </no-ssr>
+            <div class="turnDirectionBtn">
+              <a href="javascript:void(0);" class="leftBtn" v-on:click="turnSwiperLeft"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/ljz.png" alt=""></a>
+                <a href="javascript:void(0);" class="rightBtn" v-on:click="turnSwiperRight"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/ljy.png" alt=""></a>
+            </div>
+
+
+          </div>
+<!--          <no-ssr>-->
+<!--            <swiper class="" :options="lunboOption" ref="mySwiper">-->
+<!--              <swiper-slide v-for="(zs ,index) in Lunbo" :key="index">-->
+<!--                <img :src="zs.src" alt="" style="width: 100%; height:500px;background-color: #2B4DA0">-->
+<!--              </swiper-slide>-->
+<!--              <div class="swiper-lunbo" slot="pagination"></div>-->
+<!--            </swiper>-->
+<!--          </no-ssr>-->
+        </div>
+      </div>
+      <!-- 12.13注册单 end-->
+    </div>
+    <div class="top-main-cont">
+
+      <!-- banner -->
+<!---->
+
+      <!--    第二页-->
+      <div class="z_banner-wrap" style="padding: 0;">
+        <!-- 12.13注册单 start-->
+        <div class="z_Copywriting" style="margin-bottom: 84px">
+          <div>网校系统-教师随时随地进行在线授课</div>
+        </div>
+        <div class="z_content1">
+          <div class="float-between">
+            <div class="z_content-left" style="width: 380px;    margin-left: 37px;">
+              <div class="z_left-content">
+                <div class="z_spanSone">互动直播</div>
+                <div class="z_spanStwo">老师和学员在互动中进行授课解惑</div>
+                <div class="z_spanSone">多重营销</div>
+                <div class="z_spanStwo">策划多种优惠活动并推广</div>
+                <div class="z_spanSone">会员系统</div>
+                <div class="z_spanStwo">多维度有效管理会员信息</div>
+                <div class="z_spanSone">点播课程</div>
+                <div class="z_spanStwo">通过课程大纲免费试听、重点提醒</div>
+              </div>
+              <div class="z_left-bottom">
+
+                <button class="z_btnSone">快捷登录</button>
+                <button class="z_btnStwo">免费试用</button>
+
+              </div>
+            </div>
+
+            <div class="_middle-none120"></div>
+            <div class="z_content-right" style="width: 700px">
+              <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/bz5.png" alt="网校系统">
+            </div>
+
+          </div>
+        </div>
+        <!-- 12.13注册单 end-->
+      </div>
+
+      <div class="z_banner-wrap" style="padding: 0;">
+        <!-- 12.13注册单 start-->
+        <div class="z_Copywriting">
+          <div>企业培训-多终端一体化、多种场景随意切换</div>
+        </div>
+        <div class="z_content2">
+          <div class="float-between">
+
+            <div class="z_content-right">
+              <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/zy6.png" alt="企业培训系统">
+            </div>
+            <div class="_middle-none120"></div>
+
+            <div class="z_content-left">
+              <div class="z_left-content">
+                <div class="z_spanSone">人才管理</div>
+                <div class="z_spanStwo">有效对人才进行多维度管理</div>
+                <div class="z_spanSone">专题培训</div>
+                <div class="z_spanStwo">对有需要的员工进行专题培训</div>
+                <div class="z_spanSone">员工激励</div>
+                <div class="z_spanStwo">可以提高员工的积极性给企业做出更大的贡献</div>
+                <div class="z_spanSone">数据分析</div>
+                <div class="z_spanStwo">帮助企业有效了解员工的不足和优点</div>
+              </div>
+              <div class="z_left-bottom">
+
+                <button class="z_btnSone">快捷登录</button>
+                <button class="z_btnStwo">免费试用</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 12.13注册单 end-->
+      </div>
+
+      <div class="z_banner-wrap" style="padding: 0;">
+        <!-- 12.13注册单 start-->
+        <div class="z_Copywriting">
+          <div>视频云-专业级加密的视频导入工具</div>
+        </div>
+        <div class="z_content3">
+          <div class="float-between">
+            <div class="z_content-left" style="margin-left:37px " >
+              <div class="z_left-content">
+                <div class="z_spanSone">点播加密</div>
+                <div class="z_spanStwo">用户对导入视频课件踏实放心</div>
+                <div class="z_spanSone">开放接口</div>
+                <div class="z_spanStwo">通过完善的借口帮助用户完成需求私有化定制</div>
+                <div class="z_spanSone">便捷上传</div>
+                <div class="z_spanStwo">支持批量上传、大文件上传以及断点续传</div>
+                <div class="z_spanSone">个性化播放器</div>
+                <div class="z_spanStwo">满足客户个性化配置需求</div>
+              </div>
+              <div class="z_left-bottom">
+
+                <button class="z_btnSone">快捷登录</button>
+                <button class="z_btnStwo">免费试用</button>
+
+              </div>
+            </div>
+            <div class="_middle-none120"></div>
+            <div class="z_content-right" style="float: right" >
+              <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/bz6.png" alt="企业培训系统">
+            </div>
+          </div>
+        </div>
+        <!-- 12.13注册单 end-->
+      </div>
+
+      <div class="chooseHiker" style="margin-top:100px ;height: 653px ;padding-bottom: 0">
+        <div style="    background: rgba(24, 144, 255, 0.04); position: absolute;left: 0;width: 100%">
+        <div style="width: 1200px;margin:auto">
+        <p class="choose-title">选择HIKER，你会得到这些</p>
+        <div class="chooseFrame">
+          <ul class="of clearfix am-avg-sm-1 am-avg-md-2 am-avg-lg-3 ">
+            <li>
+              <div class="chooseBox">
+                <img class="z_chooseImg after"
+                    src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/chos1.png" alt="私有定制">
+                <div class="chooseIntro">
+                  <p class="choose-introTitle">私有定制</p>
+                  <p class="choose-content">成熟、安全、高效的教育系统，根据需求制定解决方案</p>
+                </div>
+              </div>
+
+            </li>
+            <li>
+              <div class="chooseBox">
+                <img class="z_chooseImg"
+                     src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/chos2.png" alt="实战经验丰富">
+                <div class="chooseIntro">
+                  <p class="choose-introTitle">实战经验丰富</p>
+                  <p class="choose-content">教育行业多年实战经验，为您的企业保驾护航</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="chooseBox">
+                <img class="z_chooseImg"
+                     src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/chos3.png" alt="支持源码">
+                <div class="chooseIntro">
+                  <p class="choose-introTitle">支持源码</p>
+                  <p class="choose-content">提供全方面的技术支持，共建教育生态圈</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="chooseBox">
+                <img class="z_chooseImg"
+                     src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/chos4.png" alt="性能稳定">
+                <div class="chooseIntro">
+                  <p class="choose-introTitle">性能稳定</p>
+                  <p class="choose-content">专业开发教育系统，性能好，稳定性强</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="chooseBox">
+                <img class="z_chooseImg"
+                     src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/chos5.png" alt="安全可靠">
+                <div class="chooseIntro">
+                  <p class="choose-introTitle">安全可靠</p>
+                  <p class="choose-content">专业且人性化的安全托管运营服务为您排忧解难</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="chooseBox">
+                <img class="z_chooseImg"
+                     src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/chos6.png" alt="定向邀请制">
+                <div class="chooseIntro">
+                  <p class="choose-introTitle">定向邀请制</p>
+                  <p class="choose-content">完全采取定向邀请制，垂直服务于教育、企业机构平台</p>
+                </div>
+              </div>
+
+            </li>
+            <li>
+              <div class="chooseBox">
+                <img class="z_chooseImg"
+                     src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/chos7.png" alt="陪伴式服务">
+                <div class="chooseIntro">
+                  <p class="choose-introTitle">陪伴式服务</p>
+                  <p class="choose-content">打造全天候实时陪伴式服务,树立软件服务新标杆</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="chooseBox">
+                <img class="z_chooseImg"
+                     src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/chos8.png" alt="知名机构认可">
+                <div class="chooseIntro">
+                  <p class="choose-introTitle">知名机构认可</p>
+                  <p class="choose-content">服务与技术的认可，知名机构的信赖的首选</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="chooseBox">
+                <img class="z_chooseImg"
+                     src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/chos9.png" alt="多样化模板">
+                <div class="chooseIntro">
+                  <p class="choose-introTitle">多样化模板</p>
+                  <p class="choose-content">提供精美模板，更好的覆盖多种用户场景</p>
+                </div>
+              </div>
+
+            </li>
+          </ul>
+        </div>
+        </div></div>
+      </div>
+      <!--        多场景使用-->
+      <div class="z_banner-wrap" style="margin-top: 0;padding-bottom: 100px">
+        <!-- 12.13注册单 start-->
+        <div class="z_Copywriting">
+          <div>涉及多个行业使用</div>
+        </div>
+        <div class="z_content4">
+          <div class="z_content-bor">
+
+            <div class="z_cont-one float-left">
+              <div class="z_backImgs" >
+                <div style="position: absolute;" class="z_backImgss">留学语言</div>
+                <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b1.png" alt="留学语言" style="height: 168px;width: 256px;margin-left: 0px"/>
+              </div>
+              <div class="z_backImgs">
+                <div style="position: absolute;width: 330px" class="z_backImgss">金融会计</div>
+                <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b2.png" alt="金融会计" style="height: 168px;width: 256px;"/>
+              </div>
+              <div class="z_backImgs">
+                <div style="position: absolute;width: 330px" class="z_backImgss">职业教育</div>
+                <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b3.png" alt="职业教育" style="height: 168px;width: 256px;"/>
+              </div>
+              <div class="z_backImgs">
+                <div style="position: absolute;width: 330px" class="z_backImgss">企业培训</div>
+                <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b4.png" alt="企业培训" style="height: 168px;width: 256px;margin-right: 0px"/>
+              </div>
+              <!--<div class="z_backImg z_b1">留学语言</div>-->
+              <!--<div class="z_backImg z_b2">金融会计</div>-->
+              <!--<div class="z_backImg z_b3">职业教育</div>-->
+              <!--<div class="z_backImg z_b4" style="margin-right: 0">企业培训</div>-->
+            </div>
+            <div class="z_cont-two float-left">
+              <div class="z_backImgs" >
+                <div style="position: absolute;" class="z_backImgss">医学教育</div>
+                <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b5.png" alt="医学教育" style="height: 168px;width: 256px;margin-left: 0px"/>
+              </div>
+              <div class="z_backImgs">
+                <div style="position: absolute;width: 330px" class="z_backImgss">政府高校</div>
+                <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b6.png" alt="政府高校" style="height: 168px;width: 256px;"/>
+              </div>
+              <div class="z_backImgs">
+                <div style="position: absolute;width: 330px" class="z_backImgss">K12教育</div>
+                <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b7.png" alt="K12教育" style="height: 168px;width: 256px;"/>
+              </div>
+              <div class="z_backImgs">
+                <div style="position: absolute;width: 330px" class="z_backImgss">更多行业</div>
+                <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b8.png" alt="更多行业" style="height: 168px;width: 256px;margin-right: 0px"/>
+              </div>
+              <!--<div class="z_backImg z_b5">医学教育</div>-->
+              <!--<div class="z_backImg z_b6">政府高校</div>-->
+              <!--<div class="z_backImg z_b7">K12教育</div>-->
+              <!--<div class="z_backImg z_b8" style="margin-right: 0">更多行业</div>-->
+            </div>
+          </div>
+        </div>
+        <!-- 12.13注册单 end-->
+      </div>
+
+      <!--        问答资讯-->
+          <div class="ask-swiper am-show-lg-only">
+            <div class="askAndAnswer-content">
+              <p class="z_askAndAnswer-title">常见问答</p>
+              <no-ssr>
+              <swiper class="" :options="swiperOption" ref="myAskSwiper">
+                <swiper-slide v-for="(askAndQuestion ,index) in askAndQuestionList" :key="index">
+                  <div class="ask-box float-left ">
+                    <div class="box-item float-left">
+                      <div class="ask-logo"> 问</div>
+                      <div class="ask-box-content"> {{askAndQuestion.ask}}</div>
+                    </div>
+                    <div class="box-item float-left ">
+                      <div class="answer-logo"> 答</div>
+                      <div class="answer-box-content">
+                        {{askAndQuestion.answer}}
+                      </div>
+                    </div>
+
+
+                  </div>
+                </swiper-slide>
+                <div class="zhengshu-pagination" slot="pagination"></div>
+              </swiper>
+              </no-ssr>
+            </div>
+          </div>
+      <!--        他们选择了hiker-->
+      <div style="height: 736px;margin-top: 100px" >
+      <div class="z_banner-wrap bannerBck" style="; position: absolute;left: 0;width: 100%">
+        <div style="width: 1200px;margin: auto">
+        <!-- 12.13注册单 start-->
+        <div class="z_Copywriting">
+          <div class="friends">他们选择了HIKER</div>
+        </div>
+        <Friends></Friends>
+        </div>
+      </div>
+      </div>
+
+      <div class="z_banner-wrap" style="height:736px" >
+        <!-- 12.13注册单 start-->
+        <div class="z_Copywriting" style="margin-top: 20px" >
+          <div>安全专业服务和权威资质认证</div>
+        </div>
+        <div class="z_content3" style="height:100%; margin-top:70px">
+          <div class="wrap-bor" style="height: 100%">
+            <no-ssr>
+              <swiper class="" :options="quanweiOption" >
+                <swiper-slide v-for="(zs ,index) in QuanWei" :key="index">
+                  <img :src="zs.src" alt="" style="width: 240px; height:320px;">
+                </swiper-slide>
+                <div class="swiper-quanwei" slot="pagination"></div>
+              </swiper>
+            </no-ssr>
+          </div>
+        </div>
+        <!-- 12.13注册单 end-->
+      </div>
+
+
+      <!-- 为什么选择 HiKER -->
+      <div style="height:">
+      <div class="select-HiKER-wrap " style="position: absolute;left: 0;" >
+        <div class="container" style=" margin-top: 0px">
+          <div class="select-list ">
+            <ul class="am-avg-sm-3 am-avg-md-3 am-avg-lg-5 runData">
+              <li>
+                <p class="blue ">7x24<span></span></p>
+                <p class="gray ">全天候服务</p>
+              </li>
+              <li>
+                <p class="blue ">99.9<span>%</span></p>
+                <p class="gray ">项目满意度</p>
+              </li>
+              <li>
+                <p class="blue ">32942<span>+</span></p>
+                <p class="gray ">解决方案</p>
+              </li>
+              <li>
+                <p class="blue ">3472<span>天</span></p>
+                <p class="gray ">安全稳定运行</p>
+              </li>
+              <li>
+                <p class="blue ">243<span>+</span></p>
+                <p class="gray ">场景覆盖</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+        <div class="select-HiKER-wrap"></div>
+      </div>
+
+      <div class="bg-all" style="display: none;">
+        <div class="bg-shadows">
+        </div>
+        <div class="layui-layer layui-layer-page" id="layui-layer4" type="page" times="4" showtime="0"
+             contype="string">
+          <div class="layui-layer-title" style="cursor: move;">提示</div>
+          <div class="layui-layer-content" id="showText"></div>
+          <div class="layui-layer-btn layui-layer-btn-c">
+            <a class="layui-layer-btn0" href="javascript:void(0)" id="nextBtn"
+               onclick="$('.bg-all').hide()">确定</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="am-modal am-modal-alert am-modal-out" tabindex="-1" id="my-alert" style="display: none;">
+        <div class="am-modal-dialog">
+          <div class="am-modal-hd">提交成功</div>
+          <div class="am-modal-bd">稍后给您致电</div>
+          <div class="am-modal-footer">
+              <span class="am-modal-btn am-modal-btn-bold"
+                    onclick="$('.am-modal-active').addClass('am-modal-out').hide().removeClass('am-modal-active');">确定</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>
+<script>
+  // let  img1 = require('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luodi/zxx1.png')
+  // let  img2 = require('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luodi/zxx2.png')
+  // let  img3 = require('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/njtu1.png')
+  let zs1 = require('@/static/res/img/Luoying/zs1.png')
+  let zs2 = require('@/static/res/img/Luoying/zs2.png')
+  let zs3 = require('@/static/res/img/Luoying/zs3.png')
+  let zs4 = require('@/static/res/img/Luoying/zs4.png')
+  let zs5 = require('@/static/res/img/Luoying/zs5.png')
+  let zs6 = require('@/static/res/img/Luoying/zs6.png')
+  let zs7 = require('@/static/res/img/Luoying/zs7.png')
+  let zs8 = require('@/static/res/img/Luoying/zs8.png')
+
+
+
+
+
+  import Friends from '~/components/friends/z_Friends'
+  import { mapState } from 'vuex'
+  export default {
+    name: 'app',
+    props: {},
+    components: {
+      Friends
+    },
+    fetch({ store }) {
+    },
+    computed: {
+      ...mapState(['info'])
+    },
+    data() {
+      return {
+
+        lunboOption: {
+          autoplay:{
+            delay:5000,
+            disableOnInteraction:false
+          },
+          slidesPerView:'auto',
+          loopedSlides:3,
+          autoHeight:true,
+          speed:300,
+          loop: true,
+          loopFillGroupWithBlank: true,
+          pagination: {
+            el: '.banner-swiper-pagination',
+            clickable: true
+          },
+
+        },
+        bannerSwiperOption: {
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+          },
+          slidesPerView: 'auto',
+          loopedSlides: 3,
+          autoHeight: true,
+          speed: 300,
+          loop: true,
+          loopFillGroupWithBlank: true,
+          pagination: {
+            el: '.banner-swiper-pagination',
+            clickable: true
+          }
+
+        },
+
+        swiperOption: {
+          pagination: {
+            el: '.zhengshu-pagination',
+            clickable: true
+          },
+          autoplay: {
+            delay: 2000
+          },
+          speed: 1000,
+          slidesPerView: 3,
+          spaceBetween: 30,
+          slidesPerGroup: 3,
+          loop: true,
+          loopFillGroupWithBlank: true
+        },
+
+        quanweiOption: {
+          pagination: {
+            el: '.swiper-quanwei'
+          },
+          autoplay: {
+            delay: 2000
+          },
+
+          slidesPerView: 4,
+          spaceBetween: 45,
+          slidesPerGroup: 4,
+          loop: true,
+          loopFillGroupWithBlank: true
+
+
+        },
+        swiperOptionMobile: {
+          autoplay: {
+            delay: 2000
+          },
+          speed: 1000,
+          slidesPerView: 1,
+          spaceBetween: 30,
+          slidesPerGroup: 1,
+          loop: true,
+          loopFillGroupWithBlank: true,
+          pagination: {
+            el: '.mobile-swiper-pagination',
+            clickable: true
+          }
+
+        },
+        Lunbo:[
+          {
+            src:'https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/njtu1.png'
+          },{
+            src:'https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/njtu1.png'
+          },{
+            src:'https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/njtu1.png'
+          }
+        ],
+        QuanWei: [
+          {
+            src: zs1
+          },
+          {
+            src: zs2
+          },
+          {
+            src: zs3
+          },
+          {
+            src: zs4
+          },
+          {src:zs5},
+          {src:zs6},
+          {src:zs7},
+          {src:zs8},
+
+        ],
+        askAndQuestionList: {
+          1: {
+            ask: 'HIKER教育是一个怎么样的平台？',
+            answer: 'HIKER教育网校系统、考试系统支持私有化部署，企业自行提供服务器，数据自行掌握，安全稳定。'
+          },
+          2: {
+            ask: 'HIKER教育部署一套网校系统需要准备什么资料？',
+            answer: 'HIKER教育网校系统部署上线迅速，只需要准备好对应的服务器、域名、支付宝、微信等支付认证，当然啦，您的企业LOGO肯定也不能缺少。'
+          },
+          3: {
+            ask: 'HIKER教育的产品是怎么样的使用方式？',
+            answer: 'HIKER教育的产品支持一次付费，终身授权，永久使用，让您不必为每年的租用费担心，专心做好运营，而且首年免费维护。'
+          },
+          4: {
+            ask: 'HIKER教育和其他平台比有什么优势？',
+            answer: 'HIKER教育产品多终端无缝对接，统一后台管理，减少操作成本，专业的团队、智能的操作界面、一体化的服务。为您提供稳定的平台，贴心的保障，优质的服务。'
+          },
+          5: {
+            ask: 'HIKER教育的产品可以在哪里使用？',
+            answer: 'HIKER教育产品覆盖PC 、ios、安卓、小程序等多个终端，让教育场景多样化，并且支持H5自适配，无论您在哪些设备上打开网站，都能给您极佳的显示效果。'
+          },
+          6: {
+            ask: 'HIKER教育平台采用什么语言架构进行开发？',
+            answer: 'HIKER教育平台使用主流的JAVA语言开发，采用分布式架构部署，随着您的业务量增大，我们将系统功能进行模块化垂直拆分处理，增强平台稳定性、吞吐量、延展性。'
+          }
+
+        },
+
+        invTime: 4000,
+        slidesBanner: [
+          // { target:$store.state.commonStore.imagePath + '/res/img/hikerCompanyIndex/introShow.png'},
+          // { target:$store.state.commonStore.imagePath + '/res/img/hikerCompanyIndex/introShow.png'}
+        ],
+        recommendList: [],
+        recommendCourse: [],
+        indexCenterBanner: [],
+        newCourse: [],
+        recommendTeacher: [],
+        newsArticle: [],
+
+        queryShow: 1
+      }
+    },
+    head () {
+      return {
+        title: this.info.title ,
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content:this.info.keywords,
+          },
+          {
+            hid: 'author',
+            name: 'author',
+            content: "HIKER教育",
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.info.description
+          }
+        ]
+      }
+    },
+
+    filters: {},
+
+    methods: {
+      turnSwiperLeft(){
+        this.$refs.mySwiper.swiper.slidePrev();
+      },
+      turnSwiperRight(){
+        this.$refs.mySwiper.swiper.slideNext();
+      },
+
+      changeModel(index) {
+        this.queryShow = index
+      }
+      // toSubmit() {
+      //   let Winheight = $(document).scrollTop();
+      //   Winheight = Winheight + 250;
+      //   console.log(Winheight);
+      //   let WinheightStr = Winheight.toString() + 'px';
+      //   console.log(WinheightStr);
+      //   $('#layui-layer4').css({
+      //     top: Winheight
+      //   })
+      //   if ($("#businessName").val() == '' || $("#businessName").val() == null) {
+      //     this.dialog('请输入机构名称');
+      //     return;
+      //   }
+      //   if ($("#userName").val() == '' || $("#userName").val() == null) {
+      //     this.dialog('请输入姓名');
+      //     return;
+      //   }
+      //   if ($("#userMobile").val() == '' || $("#userMobile").val() == null) {
+      //     this.dialog('请输入手机号');
+      //     return;
+      //   } else {
+      //     let mobileVal = $("#userMobile").val();
+      //     let reg = /^1[23456789][0-9]{9}$/; //验证手机正则
+      //     if (reg.test(mobileVal) == false) {//格式不正确
+      //       this.dialog('请输入正确的手机号');
+      //       return;
+      //     }
+      //     ;
+      //   }
+      //   let params = 'mobile=' + $("#userMobile").val() + '&userName=' + $("#userName").val() + '&businessName=' + $("#businessName").val();
+      //   this.$httpPost('/mainPath/send/mobile/to/note', params).then(() => {
+      //
+      //   });
+      //   $('.am-modal-out').addClass('am-modal-active').show().removeClass('am-modal-out');
+      //   $("#businessName").val("");
+      //   $("#userName").val("");
+      //   $("#userMobile").val("");
+      // },
+      // //底部的注册
+      // toSubmitTwo() {
+      //   let Winheight = $(document).scrollTop();
+      //   Winheight = Winheight + 250;
+      //   console.log(Winheight);
+      //   let WinheightStr = Winheight.toString() + 'px';
+      //   console.log(WinheightStr);
+      //   $('#layui-layer4').css({
+      //     top: Winheight
+      //   })
+      //
+      //   if ($("#businessNameTwo").val() == '' || $("#businessNameTwo").val() == null) {
+      //     this.dialog('请输入姓名');
+      //     return;
+      //   }
+      //   if ($("#businessTell").val() == '' || $("#businessTell").val() == null) {
+      //     this.dialog('请输入手机号');
+      //     return;
+      //   } else {
+      //     let mobileVal = $("#businessTell").val();
+      //     let reg = /^1[23456789][0-9]{9}$/; //验证手机正则
+      //     if (reg.test(mobileVal) == false) {//格式不正确
+      //       this.dialog('请输入正确的手机号');
+      //       return;
+      //     }
+      //     ;
+      //   }
+      //   let params2 = 'mobile=' + $("#businessTell").val() + '&userName=' + $("#businessNameTwo").val() + '&businessName=' + "";
+      //   this.$httpPost('/mainPath/send/mobile/to/note', params2).then(() => {
+      //
+      //   });
+      //   $('.am-modal-out').addClass('am-modal-active').show().removeClass('am-modal-out');
+      //   $("#businessNameTwo").val("");
+      //   $("#businessTell").val("");
+      // },
+      // dialog(text, toWeb) {
+      //   $("#showText").html(text);
+      //   if (toWeb) {
+      //     DeleteCookie('sid_admin');
+      //     $("#nextBtn").attr("onclick", "window.open('https://m.eduhiker.com/admin')");
+      //   }
+      //   $(".bg-all").show();
+      // },
+
+    },
+    asyncData(context) {
+
+    },
+    created: function() {
+
+
+    }
+
+    // mounted: function () {
+    //   let that = this;
+    //   // 如果路径是含有#success-bar的话，就要去锚点的位置
+    //   if (that.$route.fullPath.includes('#success-bar')) {
+    //     // 延时0.1秒，在页面创建完成后获取锚点调转到锚点
+    //     setTimeout(function () {
+    //       let element = document.getElementById("success-bar");
+    //       element.scrollIntoView();
+    //     }, 100)
+    //   }
+    //   $(document).ready(function (){
+    //     let a = 1;
+    //     setInterval(function () {
+    //
+    //       this.queryShow = a;
+    //       that.changeModel(a);
+    //       a = a+ 1;
+    //       if(a>4){
+    //         a = 1;
+    //       }
+    //     },5000)
+    //   })
+    //
+    //   $(document).ready(function () {
+    //     //
+    //     let $btns = $('.common-btns a');
+    //     $btns.on('mouseenter', function () {
+    //       $(this).addClass('cur').siblings().removeClass('cur');
+    //     })
+    //     //
+    //     let $livebtns = $('.common-btns-white a');
+    //     $livebtns.on('mouseenter', function () {
+    //       $(this).addClass('white').siblings().removeClass('white');
+    //     })
+    //   });
+    //   $(document).ready(function () {
+    //     let $btns = $('.common-btns a');
+    //     $btns.on('mouseenter', function () {
+    //       $(this).addClass('cur').siblings().removeClass('cur');
+    //     })
+    //     let $livebtns = $('.common-btns-white a');
+    //     $livebtns.on('mouseenter', function () {
+    //       $(this).addClass('white').siblings().removeClass('white');
+    //     })
+    //   });
+    //   $(document).ready(function () {
+    //     let $xiaoETulLi = $('#system ul li');
+    //     let $xiaoETol = $('#systemNew ol li');
+    //
+    //
+    //     /*<!-- 小鹅通 选项卡 -->*/
+    //     $xiaoETulLi.on('mouseenter', function () {
+    //       $(this).addClass('active').siblings().removeClass('active');
+    //
+    //       let allLi = $(this).siblings();
+    //       for (let i = 0; i < allLi.length; i++) {
+    //         let allLiImgs = $(allLi[i]).find("img");
+    //         for (let j = 0; j < allLiImgs.length; j++) {
+    //           $(allLiImgs[0]).removeClass('undis');
+    //           $(allLiImgs[1]).addClass('undis');
+    //         }
+    //       }
+    //       let imgs = $(this).find("img");
+    //       $(imgs[0]).addClass('undis');
+    //       $(imgs[1]).removeClass('undis');
+    //       $xiaoETol.eq($(this).index()).show().siblings().hide();
+    //     })
+    //   })
+    //   $(document).ready(function () {
+    //     let $PBlue = $('.select-list li p.blue');
+    //     let num3 = 0;
+    //     let num4 = 0;
+    //     let num5 = 0;
+    //     let timer3;
+    //     let timer4;
+    //     let timer5;
+    //     let aa = $(".select-HiKER-wrap ").offset().top +200;
+    //
+    //     $(window).on('load scroll', function () {
+    //
+    //
+    //       /* 第一个 32942 */
+    //       if (num3 > 0) {
+    //         return;
+    //       }
+    //
+    //       if ($(window).scrollTop() >= aa) {
+    //         timer3 = setInterval(number3, 10);
+    //       }
+    //
+    //       function number3() {
+    //
+    //         if (num3 >= 32942) {
+    //           clearInterval(timer3);
+    //         }
+    //         num3 = num3 + 136;
+    //         if (num3 > 32942) {
+    //           num3 = 32942;
+    //         }
+    //
+    //         $PBlue.eq(2).html(num3 + '<span>+</span>');
+    //       }
+    //
+    //       /* 第二个 3472 */
+    //       if (num4 > 0) {
+    //         return;
+    //       }
+    //
+    //       if ($(window).scrollTop() >= aa) {
+    //         timer4 = setInterval(number4, 10);
+    //       }
+    //
+    //       function number4() {
+    //
+    //         if (num4 >= 3472) {
+    //           clearInterval(timer4);
+    //         }
+    //         num4 = num4 + 14;
+    //         if (num4 > 3472) {
+    //           num4 = 3472;
+    //         }
+    //
+    //         $PBlue.eq(3).html(num4 + '<span>天</span>');
+    //       }
+    //
+    //       /* 第三个 243 */
+    //       if (num5 > 0) {
+    //         return;
+    //       }
+    //
+    //       if ($(window).scrollTop() >= aa) {
+    //         timer5 = setInterval(number5, 10);
+    //       }
+    //
+    //       function number5() {
+    //
+    //         if (num5 >= 243) {
+    //           clearInterval(timer5);
+    //         }
+    //         num5 = num5 + 1;
+    //         if (num5 > 243) {
+    //           num5 = 243;
+    //         }
+    //
+    //         $PBlue.eq(4).html(num5 + '<span>+</span>');
+    //       }
+    //     });
+    //   });
+    //   $(function () {
+    //     $(".am-with-topbar-fixed-bottom").removeClass("am-with-topbar-fixed-bottom");
+    //
+    //     let isClick = false;
+    //     $('.bottom-try-now').hide();
+    //     if ($(window).width() > 1200) {
+    //
+    //
+    //       $(window).on('scroll', function () {
+    //         if (!isClick && $('#systemNew')) {
+    //           let nScrollHeight = $(this).scrollTop();
+    //           let sHeight = $('#systemNew').offset().top;
+    //           if (nScrollHeight > sHeight - 100) {
+    //             $('.web-footer').css({
+    //               'paddingBottom' : "86px"
+    //             });
+    //             $('.bottom-try-now').show(500);
+    //           } else {
+    //             $('.bottom-try-now').hide(500);
+    //           }
+    //         }
+    //       });
+    //     }
+    //
+    //
+    //     // 注册卡的输入框的动画，失去焦点和有焦点的时候
+    //     let $indexFirstRegister = $("#indexFirstRegister").find("input");
+    //     $indexFirstRegister.on('focus', function () {
+    //       $(this).next(".businessNameBorder").css({
+    //         width: '40%',
+    //         margin: "-2px auto 0",
+    //         borderTop: "2px solid rgba(38,120,252,1)",
+    //         '-webkit-transition': "all 0.25s ease-in",
+    //         '-webkit-transform': "scaleX(2.5)",
+    //       })
+    //     })
+    //     $indexFirstRegister.on('blur', function () {
+    //       $(this).next(".businessNameBorder").css({
+    //         width: '0',
+    //         margin: "-2px auto 0",
+    //         borderTop: "2px solid rgba(38,120,252,1)",
+    //         '-webkit-transition': "all 0.25s ease-in",
+    //         '-webkit-transform': "unset",
+    //       })
+    //     })
+    //
+    //     // 底部固定的那个注册表
+    //     let $bottom_input = $('.bottom-try-now-content').find("input");
+    //     $bottom_input.on('focus', function () {
+    //       for (let i = 0; i < $bottom_input.length; i++) {
+    //         $($bottom_input[i]).parent().css('border-bottom', "2px solid white")
+    //       }
+    //
+    //       $(this).parent().css('border-bottom', "2px solid rgba(43, 140, 250, 1)")
+    //     })
+    //     $bottom_input.on('blur', function () {
+    //       for (let i = 0; i < $bottom_input.length; i++) {
+    //         $($bottom_input[i]).parent().css('border-bottom', "2px solid white")
+    //       }
+    //     })
+    //
+    //     // 底部固定的那个关闭按钮
+    //
+    //     $("#bottom-try-nowESCImg").click(function () {
+    //       isClick = true;
+    //
+    //       $(".bottom-try-now").stop().hide(500);
+    //       $(".web-footer").css({
+    //         paddingBottom : "0"
+    //       });
+    //
+    //       $(".am-with-topbar-fixed-bottom").css({
+    //         'padding-bottom': '0px'
+    //       });
+    //
+    //     })
+    //
+    //   });
+    // }
+  }
+
+</script>
+<style scoped>
+  @import "../assets/css/hometwo.css";
+  @import "../assets/css/common.css";
+  @import "../assets/css/NewBanner.css";
+  /*底部固定的立即试用*/
+  /*.zssj1{*/
+    /*background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luodi/zxx1.png");*/
+  /*}*/
+  /*.zssj2{*/
+    /*background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luodi/zxx2.png");*/
+  /*}*/
+  /*.zssj3{*/
+    /*background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/njtu1.png");*/
+  /*}*/
+  .wuFt{
+    width: 1200px;
+
+    left: calc(50% - 600px);
+    margin-top: 120px;
+  }
+  .ffxx{
+    width: 1200px;
+    margin: auto;
+  }
+  .ffxx>img{
+
+    width: 1920px;
+    margin-left: -360px;
+  }
+  .wuFt1>.o{
+    width:720px;
+    height:70px;
+    font-size:60px;
+    font-family:PingFangSC-Semibold,PingFang SC;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:70px;
+  }
+  .wuFt2>.o{
+    width:336px;
+    height:140px;
+    font-size:56px;
+    font-family:PingFangSC-Semibold,PingFang SC;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:70px;
+  }
+  .wuFt3>.o{
+    width:392px;
+    height:140px;
+    font-size:56px;
+    font-family:PingFangSC-Semibold,PingFang SC;
+    font-weight:600;
+    color:rgba(64,64,64,1);
+    line-height:70px;
+  }
+   .wuFt1{
+     position: absolute;
+     margin-top:125px;
+     margin-left: 370px;
+   }
+   .wuFt2{
+     position: absolute;
+     margin-top:125px;
+     margin-left: 370px;
+   }
+   .wuFt3{
+     position: absolute;
+     margin-top:125px;
+     margin-left: 370px;
+   }
+  .wuFt1>.s{
+    width:460px;
+    height:28px;
+    font-size:20px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:28px;
+    margin-top: 58px;
+  }
+  .wuFt2>.s{
+    width:460px;
+    height:28px;
+    font-size:20px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:28px;
+    margin-top: 16px;
+  }
+  .wuFt3>.s{
+    width:360px;
+    height:28px;
+    font-size:20px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(81,81,81,1);
+    line-height:28px;
+    margin-top: 16px;
+  }
+  .wuFt1>.t{
+    width:188px;
+    height:56px;
+    background:rgba(255,255,255,1);
+    border-radius:28px;
+    border:1px solid rgba(235,232,255,1);
+    font-size:16px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(240,97,46,1);
+    line-height:16px;
+    margin-top: 39px;
+    text-align: center;
+    line-height: 56px;
+
+  }
+  .t{
+    cursor: pointer;
+  }
+  .z_backImgss{
+    background-size: cover;
+    text-align: center;
+    line-height: 157px;
+    height: 168px;
+    width: 256px;
+    font-size:18px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+  }
+  .z_backImgs img{
+    height: 168px;
+    width: 256px;
+    margin-right: 28px;
+    margin-left: 28px;
+  }
+  .z_backImgs{
+    position: relative;
+  }
+  .wuFt2>.t{
+    width:188px;
+    height:56px;
+    background:rgba(255,255,255,1);
+    border-radius:28px;
+    border:1px solid rgba(235,232,255,1);
+    font-size:16px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(97,77,255,1);
+    line-height:16px;
+    margin-top: 39px;
+    text-align: center;
+    line-height: 56px;
+  }
+  .wuFt3>.t{
+    width:188px;
+    height:56px;
+    background:rgba(24,144,255,1);
+    border-radius:28px;
+    margin-top: 39px;
+    font-size:16px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:16px;
+    text-align: center;
+    line-height: 56px;
+
+  }
+  .wuFt1>.f{
+    width:150px;
+    height:20px;
+    font-size:14px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:20px;
+    margin-top: 24px;
+  }
+  .wuFt2>.f{
+    width:150px;
+    height:20px;
+    font-size:14px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:20px;
+    margin-top: 24px;
+  }
+  .wuFt3>.f{
+    width:150px;
+    height:20px;
+    font-size:14px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(59,59,59,1);
+    line-height:20px;
+    margin-top: 24px;
+  }
+  .turnDirectionBtn>a>img{
+    width: 18px;
+    height: 35px;
+
+  }
+  .turnDirectionBtn>a{
+    padding-top: 17px;
+    padding-left: 26px;
+  }
+  .swiper-quanwei{
+    bottom: 0;
+  }
+  >>>.swiper-quanwei{
+    bottom: 126px;
+  }
+  .swiper-container{
+    height: 100%;
+  }
+  >>>.wrap-bor>.swiper-container-horizontal > .swiper-quanwei>.swiper-pagination-bullet{
+    width:14px;
+    height:14px;
+    background:rgba(24,144,255,0.25);
+    border-radius: 7px;
+  }
+  >>>.wrap-bor>.swiper-container-horizontal > .swiper-quanwei>.swiper-pagination-bullet-active{
+    width:14px;
+    height:14px;
+    background:rgba(24,144,255,1);
+    border-radius: 7px;
+  }
+  .swiper-quanwei {
+    text-align: center;
+  }
+
+  .wrap-bor {
+    width: 1200px;
+
+    justify-content: center;
+
+  }
+
+  .z_zs-box {
+    width: 220px;
+    height: 320px;
+  }
+
+  .z_zs-box img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .bannerBck {
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/bz11.png");
+  }
+
+  .z_Copywriting .friends {
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .z_swiper-silde {
+    width: 340px;
+    height: 295px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 6px 40px 0px rgba(236, 236, 236, 0.5);
+    border-radius: 4px;
+    border: 1px solid rgba(240, 240, 245, 1);
+  }
+
+
+  .ask-box-content{
+    width: 254px!important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .z_b1 {
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b1.png");
+  }
+  .z_b2 {
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b2.png");
+  }
+
+  .z_b3 {
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b3.png");
+  }
+
+  .z_b4 {
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b4.png");
+  }
+
+  .z_b5 {
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b5.png");
+  }
+
+  .z_b6 {
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b6.png");
+  }
+
+  .z_b7 {
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b7.png");
+  }
+
+  .z_b8 {
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Luoying/z_b8.png");
+    height: 168px;
+    width: 256px;
+  }
+
+  .z_cont-one {
+
+  }
+
+  .z_cont-two {
+    margin-top: 40px;
+  }
+
+  .z_backImg {
+    margin-bottom: 40px;
+    margin-right: 56px;
+    float: left;
+    background-size: contain;
+    background-size: cover;
+  }
+
+  .z_cont-two::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .z_backImg::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .z_backImg {
+    text-align: center;
+    line-height: 168px;
+    height: 168px;
+    width: 256px;
+    font-size: 18px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .z_chooseImg {
+    float: left;
+    height: 48px;
+    margin-right: 20px;
+    position: relative;
+    top: calc(50% - 24px);
+  }
+  .z_banner-wrap {
+    margin-top: 100px;
+    padding: 80px 0 126px;
+  }
+
+  .z_spanStwo {
+    height: 20px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(110, 112, 125, 1);
+    line-height: 20px;
+
+  }
+
+  .z_spanSone {
+    height: 30px;
+    margin-top: 27px;
+    font-size: 22px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 30px;
+  }
+
+  .z_btnSone {
+    width: 165px;
+    height: 44px;
+    background: linear-gradient(90deg, rgba(24, 144, 255, 1) 0%, rgba(53, 195, 255, 1) 100%);
+    border-radius: 22px;
+    font-size: 14px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 14px;
+  }
+
+  .z_btnStwo {
+    width: 165px;
+    height: 44px;
+    border-radius: 22px;
+    border: 1px solid rgba(24, 144, 255, 1);
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(24, 144, 255, 1);
+    line-height: 14px;
+    margin-left: 18px;
+  }
+
+  .z_banner-wrap img {
+    width: 685px;
+    height: 444px;
+  }
+
+  .z_content1 {
+    margin-top: 84px;
+
+    justify-content: center;
+  }
+
+  .z_content2 {
+    margin-top: 110px;
+
+    justify-content: center;
+  }
+
+  .z_content3 {
+    margin-top: 44px;
+
+    justify-content: center;
+  }
+
+  .z_content4 {
+    margin-top: 66px;
+
+    justify-content: center;
+  }
+
+  .z_Copywriting {
+    text-align: center;
+  }
+
+  .z_Copywriting div {
+    width: 100%;
+    font-size: 28px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(51, 51, 51, 1);
+    line-height: 28px;
+  }
+
+  .z_left-bottom {
+    margin-top: 30px;
+  }
+
+  .z_content-left {
+    padding: 11px;
+  }
+
+  .z_swiper {
+    margin-top: 68px;
+  }
+
+  .bottom-try-now {
+    width: 100%;
+    background: black;
+    height: 86px;
+    opacity: 0.8;
+
+  }
+  >>>.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+    position: absolute;
+    text-align: center;
+    z-index: 9999999;
+  }
+
+  .bottom-try-now-content {
+    position: relative;
+    height: 100%;
+  }
+
+  .bottom-try-now .bottom-try-nowIMG {
+    width: 167px;
+    /*height: 230px;*/
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 600px);
+
+  }
+
+  .bottom-try-now .bottom-try-nowESCImg {
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    top: -20px;
+    right: 22px;
+    cursor: pointer;
+
+  }
+
+  .bottom-name {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 1.8rem;
+    font-family: HiraginoSansGB-W3;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 1);
+    border-bottom: 2px solid white;
+    width: 276px;
+  }
+
+  .bottom-try-now .bottom-name input {
+    border: none;
+    background: transparent;
+
+  }
+
+  .bottom-try-now .bottom-try-nowESCImg:hover {
+    width: 48px;
+    height: 48px;
+    top: -23px;
+  }
+
+  .bottom-try-now a {
+    width: 144px;
+    height: 58px;
+    background: linear-gradient(90deg, rgba(0, 162, 253, 1) 0%, rgba(43, 140, 250, 1) 100%);
+    border-radius: 5px;
+    padding: 16px 41px;
+    color: white;
+    margin-left: 70px;
+  }
+
+  .bottom-try-now a:hover {
+    background: rgba(255, 255, 255, 1);
+
+    /*border: 1px solid rgba(0,162,253,1);*/
+    border-radius: 5px;
+    padding: 16px 41px;
+    color: rgba(0, 162, 253, 1);
+    margin-left: 70px;
+    opacity: 1;
+  }
+
+
+  .introduce1 {
+
+
+    width: 100%;
+    background: white;
+    max-width: 1200px;
+    margin: 100px auto 80px;
+  }
+
+  .introduce1 .title1 {
+    font-size: 3.6rem;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(34, 34, 34, 1);
+    opacity: 1;
+    text-align: center;
+  }
+
+  .introduce1 .title2 {
+    font-size: 1.6rem;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(34, 34, 34, 1);
+    opacity: 1;
+    text-align: center;
+  }
+
+  .introduceFrame {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .addBorder {
+    margin: -2px 256px;
+    border-bottom: 2px solid rgba(24, 144, 255, 0.3);
+  }
+
+  .introduceFrame ul {
+
+    justify-content: space-between;
+    margin: 0 256px;
+    /*border-bottom: 2px solid rgba(24, 144, 255, 0.3);*/
+  }
+
+  /*.introduceFrame li.active{*/
+  /*    border-bottom: 2px solid rgba(24,144,255,1);*/
+  /*    color: #1890FF;*/
+  /*}*/
+  .introduceFrame li.active:after {
+    display: block;
+    content: '';
+    margin: 0px auto 0px;
+    border-bottom: 2px solid rgba(24, 144, 255, 1);
+    color: #1890FF;
+  }
+
+  .boxx {
+
+    align-items: center;
+    margin-bottom: 17px;
+  }
+
+  .boxx img {
+    width: 32px;
+    height: 32px;
+
+  }
+
+  .introduceFrame li.active .txt {
+    color: rgba(24, 144, 255, 1);
+  }
+
+  .boxx .txt {
+    margin-left: 4px;
+    font-size: 1.8rem;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    opacity: 1;
+    margin-bottom: 0;
+  }
+
+  .introduceShow {
+    /*max-width: 762px;*/
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 256px;
+
+    justify-content: space-between;
+    opacity: 1;
+
+
+  }
+
+  .introduceShow-enter-active, .fade-leave-active {
+    transition: all 2s
+  }
+
+  .introduceShow-enter, .fade-leave-to {
+    opacity: 0
+  }
+
+  .left {
+    width: 441px;
+    /*height: 380px;*/
+    overflow: hidden;
+    float: left;
+
+
+  }
+
+  .showImg {
+    width: 100%;
+
+  }
+
+  .right {
+    float: right;
+
+
+    /*padding: 0px 0 0 102px;*/
+    /*justify-content: space-between;*/
+  }
+
+  .right .showTitle {
+
+    font-size: 2.4rem;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
+    opacity: 1;
+    margin: 23px 0 60px 0;
+  }
+
+  .right .item {
+
+    font-size: 1.8rem;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgb(64, 64, 64);
+    opacity: 1;
+    margin-bottom: 43px;
+    margin-left: 9px;
+  }
+
+  .chooseHiker {
+    width: 100%;
+
+    opacity: 1;
+    padding-bottom: 58px;
+  }
+
+  .choose-title {
+    opacity: 1;
+    text-align: center;
+    padding-top: 75px;
+    font-size: 28px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(51, 51, 51, 1);
+    line-height: 40px;
+  }
+
+  .chooseFrame {
+    max-width: 1150px;
+    width: 100%;
+    margin: 120px auto 0px;
+  }
+
+  .chooseFrame li {
+
+    padding: 0 44px;
+  }
+
+
+  .chooseBox {
+
+    height: 70px;
+    float: left;
+    margin-bottom: 50px;
+  }
+
+
+  .chooseImg {
+    /*width: 64px;*/
+    height: 64px;
+    margin-right: 13px;
+
+  }
+
+  .choose-introTitle {
+
+    font-size: 18px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 25px;
+    opacity: 1;
+    margin-bottom: 6px;
+  }
+
+  .choose-content {
+    width: 211px;
+    height: 40px;
+    font-size: 14px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(153, 153, 153, 1);
+    line-height: 20px;
+    opacity: 1;
+  }
+
+  .chooseIntro {
+    float: left;
+    /*padding-right: 88px;*/
+    /*width: calc(100% - 189px);*/
+  }
+
+  .chooseIntro::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  /*多场景使用*/
+  .multi-scene {
+    background: rgba(255, 255, 255, 1);
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .multi-scene-container {
+    max-width: 1150px;
+    overflow: hidden;
+    margin: 100px auto 80px;
+    z-index: 2;
+
+  }
+
+  .multi-scene .common-title {
+    font-size: 3.6rem;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(34, 34, 34, 1);
+    opacity: 1;
+    margin-bottom: 100px;
+    text-align: center;
+  }
+
+  .multi-scene .multi-scene-list li a.box {
+    display: block;
+    position: relative;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .5s;
+    overflow: hidden;
+    margin: auto 10px;
+    margin-top: 30px;
+  }
+
+  .multi-scene .multi-scene-list li a.box .intro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 19%;
+  }
+
+  .multi-scene .multi-scene-list li a.box .intro h4 {
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 13%;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    opacity: 1;
+  }
+
+  .multi-scene .multi-scene-list li a.box .mask {
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .multi-scene .multi-scene-list li a.box:hover .mask {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .multi-scene .multi-scene-list li a.box:hover img.am-thumbnail {
+    transform: scale(1.2);
+    transition: all .5s
+  }
+
+  .ask-swiper {
+    width: 100%;
+    height: 400px;
+    /*background:rgba(24,144,255,1);*/
+
+    opacity: 1;
+  }
+
+  .askAndAnswer-content {
+    height: 100%;
+    width: 100%;
+    max-width: 1150px;
+    /*border: 1px solid red;*/
+    margin: 0 auto;
+  }
+
+  .z_askAndAnswer-title {
+
+    font-size: 28px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(38, 44, 58, 1);
+    line-height: 40px;
+    opacity: 1;
+    text-align: center;
+  }
+ .askAndAnswer-content>.swiper-container {
+   height: 100%;
+ }.z_askAndAnswer-title{
+    margin-bottom: 54px;
+   }
+  .askAndAnswer-title {
+
+    font-size: 3.6rem;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    opacity: 1;
+    padding: 171px 0 95px;
+    text-align: center;
+  }
+
+  .ask-box {
+    background: #FFFFFF;
+    padding: 55px 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 286px;
+    margin: 0px 10px;
+
+
+    width: 340px;
+    height: 295px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 6px 40px 0px rgba(236, 236, 236, 0.5);
+    border: 1px solid rgba(240, 240, 245, 1);
+  }
+
+  .box-item {
+
+    margin-bottom: 30px;
+
+    overflow: hidden;
+
+  }
+
+  .ask-logo {
+    background: rgba(255, 93, 93, 1);
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    opacity: 1;
+    color: white;
+
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-size: 1.4rem;
+  }
+
+  .answer-logo {
+
+
+    margin-top: 3px;
+    width: 28px;
+    height: 28px;
+    background: rgba(74, 213, 56, 1);
+    border-radius: 50%;
+    opacity: 1;
+    color: white;
+    text-align: center;
+    line-height: 28px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-size: 1.4rem;
+  }
+
+  .ask-box-content {
+
+
+    font-size:16px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    line-height:22px;
+
+
+
+
+
+    opacity: 1;
+    width: calc(100% - 42px);
+    float: right;
+    height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+
+  }
+
+  .runData {
+    margin: 0px -5rem;
+  }
+
+  .answer-box-content {
+
+
+
+    font-weight: 400;
+
+
+    opacity: 1;
+    width: calc(100% - 42px);
+    float: right;
+
+
+    height:96px;
+    font-size:14px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:24px;
+  }
+
+
+  >>> .swiper-container-horizontal .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: rgba(24, 144, 255, 1);
+  }
+  >>>.zhengshu-pagination{
+
+  }
+  /*>>>.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {*/
+  /*  bottom: -2px;*/
+  /*  left: 0;*/
+  /*  width: 100%;*/
+  /*}*/
+  >>> .swiper-pagination-bullet {
+    margin: 0 4px;
+    width: 14px;
+    height: 14px;
+    background: rgba(24, 144, 255, 0.2);
+    border-radius: 50%;
+    opacity: 1;
+  }
+  @media only screen and (max-width:640px) and (min-width: 0px){
+    .wuFt3  {
+      margin: 130px 70px;
+    }
+    .wuFt2  {
+      margin: 130px 70px;
+    }
+    .wuFt1  {
+      margin: 130px 70px;
+    }
+    .wuFt1>.o{
+      width:470px;
+      height:70px;
+      font-size:60px;
+      font-family:PingFangSC-Semibold,PingFang SC;
+      font-weight:600;
+      color:rgba(255,255,255,1);
+      line-height:70px;
+    }
+    .wuFt1>.s{
+     margin-top:79px;
+    }
+  }
+
+  @media only screen and (max-width:1200px) and (min-width: 640px){
+    .wuFt3  {
+      margin: 130px 100px;
+    }
+    .wuFt2  {
+      margin: 130px 100px;
+    }
+    .wuFt1 {
+      margin: 130px 100px;
+    }
+  }
+
+  @media only screen and (max-width:1340px) and (min-width: 1200px){
+    .wuFt3  {
+      margin: 130px 130px;
+    }
+    .wuFt2 {
+      margin: 130px 130px;
+    }
+    .wuFt1  {
+      margin: 130px 130px;
+    }
+  }
+
+  @media only screen and (max-width:1400px) and (min-width: 1340px){
+    .wuFt3  {
+      margin: 130px 130px;
+    }
+    .wuFt2  {
+      margin: 130px 130px;
+    }
+    .wuFt1  {
+      margin: 130px 130px;
+    }
+  }
+  @media only screen and (max-width:1680px) and (min-width: 1400px){
+    .wuFt3  {
+      margin: 130px 270px;
+    }
+    .wuFt2  {
+      margin: 130px 270px;
+    }
+    .wuFt1  {
+      margin: 130px 270px;
+    }
+  }
+</style>

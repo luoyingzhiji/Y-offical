@@ -1,0 +1,46 @@
+<template>
+  <div class="top-wrap">
+
+    <headContent/>
+    <nuxt ref="childPage"/>
+    <footContent style="background: #F5F5F5"/>
+
+  </div>
+</template>
+
+<script>
+  import headContent from '@/components/resgister/Header'
+  import footContent from '@/components/resgister/Footer3'
+  export default {
+    name: 'app',
+    components:{
+      headContent,
+      footContent
+    },
+    data () {
+      return {
+
+      }
+    },
+
+    filters: {
+
+    },created(){
+
+      let currentUrl=this.$route.path;
+      if(currentUrl=="/"){
+        this.$store.commit('commonStore/updateHeaderIndex',true);
+      }
+
+
+    },mounted(){
+
+    },methods:{
+
+
+    }
+  }
+
+
+</script>
+

@@ -1,0 +1,29 @@
+
+var bool=true;
+function doAddFeedback(){
+    var content=$(".feedbackContent").val().trim();
+    if(content==''){
+        $(".feedbackErrorMsg").html('请填写内容。');
+        return
+    }
+
+    if (bool){
+        bool=false;
+        $.ajax({
+            url: userPath+"/feedback/ajax/add",
+            type: 'post',
+            data:{"content":content},
+            dataType:"jsonp"
+        });
+    }
+
+}
+function doAddFeedbackCallBack(result){
+    bool=true;
+    if(result.success){
+        dialog(3,"提交成功，感谢您的建议","");
+    }else{
+        dialog(3,result.message,"");
+
+    }
+}

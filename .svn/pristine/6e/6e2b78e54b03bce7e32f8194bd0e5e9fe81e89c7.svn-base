@@ -1,0 +1,152 @@
+<template>
+  <div class="top-main-cont">
+    <div class="container">
+      <div class="help-center-box clearfix of">
+        <section class="h-c-left">
+          <div class="h-c-menu-box">
+            <div class="goHome">
+              <a href="/">
+                <i class="am-icon-arrow-left"></i><span>返回首页</span>
+              </a>
+            </div>
+            <dl v-for="(helpMenu,index) in helpMenuList" :key="index">
+              <dt>
+                {{helpMenu.name}}
+              </dt>
+
+              <dd v-for="(childHelp,index) in helpMenu.childHelpMenu" :key="index">
+                <a v-if="childHelp.outerChainAddress!=null&&childHelp.outerChainAddress!=''"
+                   :href="childHelp.outerChainAddress"
+                   :class="currentId==childHelp.id?'current  helpIds' :' helpIds'"
+                   :id="childHelp.id">
+                  {{childHelp.name}}
+                </a>
+                <a v-else v-on:click="queryInfo(childHelp.id)"
+                   :class="currentId==childHelp.id?'current  helpIds' :' helpIds'"
+                   :id="childHelp.id">
+                  {{childHelp.name}}
+                </a>
+              </dd>
+            </dl>
+          </div>
+        </section>
+        <section class="h-c-right">
+          <div id="infoDiv">
+            <header class="h-c-title">
+              {{name}}
+            </header>
+            <div class="h-c-cont" v-html="content">
+            </div>
+
+
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import { mapState } from 'vuex'
+  export default {
+    name: "HelpCenter",
+    data() {
+      return {
+        title: '帮助中心',
+      }
+    },
+    async fetch ({ params, store }) {
+
+      return store.dispatch('helpStore/queryHelpMenu');
+    },
+    head () {
+      return {
+        title: this.title+"-"+this.info.title,
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content:  this.info.keywords,
+          },
+          {
+            hid: 'author',
+            name: 'author',
+            content: "HIKER教育",
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content:  this.info.description
+          }
+        ]
+      }
+    },
+    computed:{
+      ...mapState(['info']),
+      ...mapState('helpStore',['helpMenuList','name','content','currentId'])
+    },
+    methods: {
+      initMenu(){
+
+        let id=$(".helpIds").first().attr('id');
+
+        if(this.$route.query.id!=undefined){
+          id=this.$route.query.id;
+        }
+        this.queryInfo(id);
+      },
+      queryInfo(id) {
+        this.id = id;
+        let param = 'id=' + id
+        this.$httpPost('/mainPath/web/help/ajax', param).then((result) => {
+          if (!result.success) {
+            return;
+          }
+          let entity = result.entity;
+          let name = entity.helpMenu.name;
+          let content = entity.content;
+          this.$store.commit("helpStore/_queryHelpMenuInfo",{"currentId":id,"name":name,"content":content});
+        })
+        $(window).scrollTop(0);
+      },
+
+    },
+    created: function () {
+
+    },
+    mounted() {
+      this.initMenu();
+    }
+  }
+</script>
+
+<style scoped>
+
+  /*--------help-center style----------*/
+  .top-main-cont {
+    background: #fff;
+  }
+  .help-center-box {    width: 100%;
+    max-width: 1150px;
+    margin: 0px auto 0px;}
+  .help-center-box .h-c-left {float: left;width: 280px;background: #fff; min-height: 680px; }
+  .help-center-box .h-c-right {float: left;     width: calc(100%); max-width: 850px;background: #fff;}
+  #infoDiv{
+    position: relative;
+  }
+
+  .h-c-menu-box {padding: 20px}
+  .h-c-menu-box dl {padding-bottom: 15px;}
+  .h-c-menu-box dl dt {font-size: 16px; color: #000;line-height: 24px;padding: 17px 0px;font-weight:700;}
+  .h-c-menu-box dl dd a {line-height: 40px;display: block;font-size: 14px;padding: 0 0 0 34px;color: #000;}
+  .h-c-menu-box dl dd a.current {background: #f1f1f1;}
+  .h-c-menu-box dl dd a:hover {text-decoration: none;background: #f1f1f1;}
+  .h-c-title {    z-index: 1;    background: #fff;height: 80px; line-height: 80px;font-size: 24px; color: #000;padding: 0 20px;border-bottom: 1px solid #f1f1f1;    position: relative;}
+  .h-c-cont {padding: 20px; min-height: 600px;}
+  >>>.h-c-cont p {font-size: 16px; color: #333;line-height: 30px;margin-bottom: 15px;text-align: justify;}
+  >>>.h-c-cont img {max-width: 100%; height: auto;}
+
+
+
+
+</style>

@@ -1,0 +1,1051 @@
+<template>
+  <div>
+    <div class="totalFrame ">
+      <div class="trialFrame">
+        <div class="trialFrame-contain">
+          <img src="../static/res/img/Luodi/register1.png" alt="教育的先驱者" style="height: 679px; " >
+          <div class="showFrame">
+            <!--<img class="showFrameImg" :src="$store.state.commonStore.imagePath+'/res/img/hikerCompanyIndex/trailShow.png'" alt="">-->
+            <div class="showFrame-mask"></div>
+            <div class="showFrame-words">
+              <p class="showFrame-welcome">教育的先驱者</p>
+              <p class="showFrame-welcome" style=" margin-bottom: 9.4%;">为您提供高效、专注的教育平台</p>
+              <!--<p class="showFrame-intro">教育的先驱者 </p>-->
+              <!--<p class="showFrame-intro">为您提供高效、专注的教育平台</p>-->
+            </div>
+
+
+          </div>
+          <div class="registerFrame">
+            <div class="register-content">
+              <div class="contact-form">
+                <p class="contact-title">免费注册</p>
+                <ul class="logVam  ">
+                  <li class="inputItem input_Item" v-if="this.info==false">
+                    <input id="mobile" type="text"  placeholder="您的手机号"
+                           v-model="mobile" @blur.prevent="mobileCheck" >
+                    <div id="lineOne" class="businessNameBorder"></div>
+                    <div id="textOne" class="businessNameBorders">请输入您的手机号</div>
+
+                  </li>
+
+
+                  <li class="inputItem input_Item" v-if="this.info==false">
+                    <div class="imgFrame">
+                      <input class="" id="password" type="password" placeholder="设置您的密码"
+                      @blur.prevent = 'passCheck'
+                      >
+
+                      <div  id="lineThree" class="businessNameBorder"></div>
+                      <div class="code-img">
+                        <img v-if="eyesLogin" @click="eyes()" src="../assets/img/login-eyes.png" width="24" height="11"/>
+                        <img v-else @click="eyes()"  src="../assets/img/eyepass.png"  height="11" width="24"/>
+                      </div>
+                      <div id="textThree" class="businessNameBorders">请设置登录密码</div>
+                    </div>
+                  </li>
+                  <li class="inputItem input_Item " v-if="this.info==false">
+                    <div class="imgFrame">
+
+                      <input id="code" placeholder="短信验证码" required="" type="text" maxlength="6" >
+                      <div class="businessNameBorder"></div>
+                      <div class="code-img">
+                        <button id="sendButton" class="lTxtBtn"
+                                v-on:click="sendMobileCode()">获取验证码</button>
+                        <a id="secondButton" class=" lTxtBtn  moblie-but"
+                           style="background: #dedede;display: none;">重新获取</a>
+                      </div>
+                    </div>
+                    <!--<div  id="lineSeven" class="businessNameBorder"></div>-->
+                    <div id="textSeven" class="businessNameBorders">请输入短信验证码</div>
+
+                  </li>
+
+
+                  <li class="inputItem input_Item" v-if="this.info==true">
+                    <input class="" id="username" placeholder="您的称呼" required="" type="text">
+                    <div id="lineTwo" class="businessNameBorder"></div>
+                    <div id="textTwo" class="businessNameBorders">请输入您的称呼</div>
+                  </li>
+
+                  <li class="inputItem input_Item" v-if="this.info==true">
+                    <input class="" id="company" placeholder="公司名称" required="" type="text">
+                    <div  id="lineFour" class="businessNameBorder"></div>
+                    <div id="textFour" class="businessNameBorders">请选择公司名称</div>
+                  </li>
+                  <li class="inputItem input_Item" v-if="this.info==true">
+                    <div class="chooseOption">
+                      <select id="queryType"  class="input-select" style="height: 49px;padding: 0;width: 280px"  >
+                        <option value="-1">选择公司行业</option>
+                        <option value="金融教育">金融教育</option>
+                        <option value="企业培训教育">企业培训教育</option>
+                        <option value="会计培训教育">会计培训教育</option>
+                        <option value="留学语言教育">留学语言教育</option>
+                        <option value="K12成长教育">K12成长教育</option>
+                        <option value="传媒服务教育">传媒服务教育</option>
+                        <option value="工程培训教育">工程培训教育</option>
+                        <option value="艺术教育">艺术教育</option>
+                        <option value="司法教育">司法教育</option>
+                        <option value="医学教育">医学教育</option>
+                        <option value="高校教育">高校教育</option>
+                        <option value="政府教育">政府教育</option>
+                        <option value="其它">其它</option>
+                      </select>
+                    </div>
+                    <!--<div  id="lineFive" class="businessNameBorder"></div>-->
+                    <div id="textFive" class="businessNameBorders">请选择公司行业</div>
+                  </li>
+                  <li class="inputItem input_Item" v-if="this.info==true">
+                    <div class="chooseOption">
+                      <select id="queryProduct" class="input-select" style="padding: 0;width: 280px" >
+                        <option value="-1">选择产品类型</option>
+                        <option value="租赁">租赁</option>
+                        <option value="授权">授权</option>
+                        <option value="源码">源码</option>
+                      </select>
+                    </div>
+                    <!--<div  id="lineSix" class="businessNameBorder"></div>-->
+                    <div id="textSix" class="businessNameBorders">请选择产品类型</div>
+                  </li>
+                  <!--<li class="inputItem input_Item ">-->
+                    <!--<div class="imgFrame">-->
+
+                      <!--<input id="randomCode" placeholder="图形验证码" required="" type="text">-->
+                      <!--<div class="businessNameBorder"></div>-->
+                      <!--<div class="code-img">-->
+                        <!--<img :src="this.$wMainPath + '/ran/random' + this.replaceUrl" alt="验证码，点击图片更换"-->
+                             <!--v-on:click="replaceSrc()"-->
+                             <!--height="28"/>-->
+                      <!--</div>-->
+                    <!--</div>-->
+
+                  <!--<li class="inputItem input_Item ">-->
+                    <!--&lt;!&ndash;<JcRange  status="ruleForm.status":successFun="onMpanelSuccess":errorFun="onMpanelError"></JcRange>&ndash;&gt;-->
+                    <!--<div class="drag" ref="dragDiv">-->
+                      <!--<div class="drag_bg"></div>-->
+                      <!--<div class="drag_text">{{confirmWords}}</div>-->
+                      <!--<div ref="moveDiv" @mousedown="mousedownFn($event)" :class="{'handler_ok_bg':confirmSuccess}" class="handler handler_bg" style="position: absolute;top: 0px;left: 0px;"></div>-->
+                    <!--</div>-->
+                  <!--</li>-->
+
+                  <li class="inputLi">
+                    <div  class="agreement">
+                      <div class="agreeBox am-hide-md-down">
+                        <div @click="registerPitch()" class="my-cancel" v-show="pitch">
+                        </div>
+                        <div @click="registerPitch()" v-show="!pitch" class="my-pitch">
+                          <img  src="../assets/img/my-pitch.png" width="10" height="10"/>
+                        </div>
+                        <span>我已阅读并接受</span>
+                        <a href="/help?id=234" target="_blank" style="color: #1890FF">《HIKER服务协议》</a>
+                      </div>
+                      <div class="smFont am-hide-md-down" >
+                        已有帐号？
+                        <a href="https://m.eduhiker.com/admin" target="_blank"
+                           style="color: #1890FF;">马上登录</a>
+                      </div>
+                    </div>
+                    <div class="register-buttons">
+                      <div class="smFont">
+                        <button type="button" class=" registerBtn" v-if="this.info==false" @click="goNext()" title="下一步">下一步</button>
+                        <button type="button" class=" registerBtn" v-if="this.info==true" @click="register()" title="立即注册">立即注册</button>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layout">
+
+        <div class="trial-container">
+          <div class="section">
+
+
+            <section class="hikerDesc">
+              <div id="login_frame">
+                <div class="with-line">HIKER与您一路相伴</div>
+              </div>
+            </section>
+
+            <!--about-container end-->
+          </div>
+        </div>
+      </div>
+      <!--<div v-if="mobileCode" class="bg-all" >-->
+        <!--<div class="vip-mask-content">-->
+          <!--<div class="vip-mask-content-title"></div>-->
+          <!--<div class="vip-mask-content-btn">-->
+            <!--<div style="border-right: 1px solid #f2f2f2" @click="vipMaskShow()">取消</div>-->
+            <!--<div @click="skipMember()">开通VIP</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <div class="bg-all" style="display: none;">
+        <div class="bg-shadows">
+        </div>
+        <div class="layui-layer layui-layer-page" id="layui-layer4" type="page" times="4" showtime="0"
+             contype="string">
+          <div class="layui-layer-title" style="cursor: move;">提示</div>
+          <div class="layui-layer-content" id="showText"></div>
+          <div class="layui-layer-btn layui-layer-btn-c">
+            <a class="layui-layer-btn0" href="javascript:void(0)" id="nextBtn" @click="clickConfirm()">确定</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<script>
+
+  // 引入vuex
+  let mobileFlag=false;
+  let passwordFlag=false;
+  let randomCodeFlag=false;
+  let codeFlag=false;
+  let mobileindex=60;
+  let mobileinter;
+  let registerFlag=true;
+  import { mapState } from 'vuex'
+  // import JcRange from "~/components/resgister/JcRange";
+  export default {
+    name: 'Trial',
+    layout: 'resgister2',
+    async fetch ({ params, store }) {
+    },
+    components: {
+      // JcRange
+    },
+    data() {
+      return {
+        title: '申请试用',
+        company:'请选择',
+        field:'公司行业',
+        product:'咨询产品',
+        eyesLogin:false,
+        mobileCode:false,
+        replaceUrl:'',
+        info:false,
+        mobile:"",
+        pitch:true,
+        password:"",
+        flag:false,
+        beginClientX:0,   /*距离屏幕左端距离*/
+        mouseMoveStata:false,  /*触发拖动状态 判断*/
+        maxwidth:'',    /*拖动最大宽度，依据滑块宽度算出来的*/
+        confirmWords:'请按住滑块，拖动到最右边', /*滑块文字*/
+        confirmSuccess:false   /*验证成功判断*/
+      }
+    },
+    head () {
+      return {
+        title: this.title+"-"+this.info.title,
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content:  this.info.keywords,
+          },
+          {
+            hid: 'author',
+            name: 'author',
+            content: "HIKER教育",
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content:  this.info.description
+          }
+        ]
+      }
+    },
+    filters: {},
+    computed: {
+      ...mapState(['info'])
+    },
+
+    methods: {
+      // status: [{ validator: checkStatus, trigger: "change" }],
+      //
+      // this.checkStatus = (rule, value, callback) => {
+      //   console.log(value);
+      //   if (!value) {
+      //     return callback(new Error("请拖动滑块完成验证"));
+      //   } else {
+      //     callback();
+      //   }
+      // },
+      eyes(){
+        if(this.eyesLogin){
+          $("#password").attr({type:'password'});
+          this.eyesLogin=false;
+        }else{
+          $("#password").attr({type:'text'});
+          this.eyesLogin=true;
+        }
+      },
+      registerPitch(){
+        if(this.pitch){
+          this.pitch=false;
+        }else{
+          this.pitch=true;
+        }
+      },
+      goNext() {
+
+
+
+
+        if(this.passCheck()){
+          if(this.codeCheck()){
+            if(this.mobileCheck()){
+              this.info=true;
+            }
+          }
+        }
+      },
+      mousedownFn:function (e) {
+        if(!this.confirmSuccess){
+          e.preventDefault && e.preventDefault(); //阻止文字选中等 浏览器默认事件
+          this.mouseMoveStata = true;
+          this.beginClientX = e.clientX;
+        }
+      },  //mousedoen 事件
+      successFunction(){
+        this.confirmSuccess = true
+        this.confirmWords = '验证通过';
+        if(window.addEventListener){
+          document.getElementsByTagName('html')[0].removeEventListener('mousemove',this.mouseMoveFn);
+          document.getElementsByTagName('html')[0].removeEventListener('mouseup',this.moseUpFn);
+        }else {
+          document.getElementsByTagName('html')[0].removeEventListener('mouseup',()=>{});
+        }
+        document.getElementsByClassName('drag_text')[0].style.color = '#fff'
+        document.getElementsByClassName('handler')[0].style.left = this.maxwidth + 'px';
+        document.getElementsByClassName('drag_bg')[0].style.width = this.maxwidth + 'px';
+      },    //验证成功函数
+      mouseMoveFn(e){
+        if(this.mouseMoveStata){
+          let width = e.clientX - this.beginClientX;
+          if(width>0 && width<=this.maxwidth){
+            document.getElementsByClassName('handler')[0].style.left = width + 'px';
+            document.getElementsByClassName('drag_bg')[0].style.width = width + 'px';
+          }else if(width>this.maxwidth){
+            this.successFunction();
+          }
+        }
+      },     //mousemove事件
+      moseUpFn(e){
+        this.mouseMoveStata = false;
+        var width = e.clientX - this.beginClientX;
+        if(width<this.maxwidth){
+          document.getElementsByClassName('handler')[0].style.left = 0 + 'px';
+          document.getElementsByClassName('drag_bg')[0].style.width = 0 + 'px';
+        }
+      },
+      clickConfirm(){
+        if(!this.flag){
+          $('.bg-all').hide();
+        }else{
+          window.open('https://m.eduhiker.com/admin');
+        }
+      },
+      //更换随机验证码的图片地址
+      replaceSrc(){
+        this.replaceUrl= '?random='+ Math.random();
+      },
+      //弹出提示框
+      dialog(text) {
+        $("#showText").html(text);
+        $(".bg-all").show();
+      },
+      // errorHide(){
+      //   this.tishi=''
+      // },
+      //单独验证密码
+      passCheck() {
+        let passVal = $('#password').val()
+        let pattern = /^(?!_)(?!_$)[a-zA-Z0-9_]+$/
+        if (pattern.test(passVal) == false) {
+          $('#textThree').addClass('focuStyle')
+          return false
+        }
+        if (passVal.length < 6) {
+          if (passVal.length == 0) {
+            // this.dialog('密码不允许为空');
+
+            $('#textThree').addClass('focuStyle')
+            return
+          } else {
+            this.dialog('密码不能少于6位')
+            return
+          }
+        }
+        if (passVal.length > 20) {
+          this.dialog('密码不能大于20位')
+        }
+        if (passVal.indexOf(' ') > -1) {
+          this.dialog('密码不允许有空格')
+        }
+        passwordFlag = true
+        return true
+      },
+      // 单独验证短信验证码
+      codeCheck() {
+
+        let codeVal = $("#code").val();
+        if (codeVal == null || codeVal == '') {
+          this.dialog('请输入短信验证码');
+
+          $('#textSeven').addClass('focuStyle');
+          return false;
+        }else if (codeVal.length != 6) {
+
+          this.dialog('请输入正确的短信验证码');
+          return false;
+        }
+
+        codeFlag = true;
+        return true;
+      },
+      //单独验证mobile
+      mobileCheck() {
+        let flag = false;
+        let mobileVal = this.mobile;
+        let reg = /^1[23456789][0-9]{9}$/;//验证手机正则
+
+        if (reg.test(mobileVal) == false) {//格式不正确
+          $('#textOne').addClass('focuStyle');
+          this.info=false;
+          this.dialog('请输入正确的手机号');
+          // this.$store.dispatch('dialogStore/showDialog',{dType:"toast",dContent:'请输入正确的手机号',dUrl:''});
+          // errorShow('register','请输入正确的手机号');
+          return false;
+          return flag
+        }else {
+
+          this.flag=false;
+          $('#textOne').removeClass('focuStyle');
+          return true;
+        };
+
+      },
+      // errorShow(type,content){
+      //   $("."+type+"Error").show();
+      //   $("."+type+"ErrorCont").html(content);
+      // },
+      // 单独验证图形验证码
+      randomCodeCheck() {
+        let randomCodeVal = $("#randomCode").val();
+        if (randomCodeVal == null || randomCodeVal == '') {
+          this.dialog('请输入图形验证码');
+        }
+        if (randomCodeVal.length != 4) {
+          this.dialog('请输入正确的图形验证码');
+        }
+        randomCodeFlag = true;
+      },
+      // 手机短信验证码倒计时
+      remainMobileTime(){
+        mobileindex--;
+        $("#secondButton").html(mobileindex+"s重新获取");
+        if(mobileindex<=0){
+          $("#secondButton").hide();
+          $("#sendButton").show();
+          clearInterval(mobileinter);
+          mobileindex=60;
+        }
+      },
+      // 手机注册发送短信
+      sendMobileCode() {
+        // if (!randomCodeFlag) {
+        //   this.randomCodeCheck();
+        //   return;
+
+        this.dialog('请输入正确的密码');
+        this.mobileCode=true
+        let mobile = this.mobile;
+        if (!mobileFlag) {
+          this.mobileCheck();
+          return;
+        }
+        mobileindex = 60;
+        mobileinter = setInterval(()=>{this.remainMobileTime()}, 1000);
+        $("#secondButton").html(mobileindex + "s重新获取");
+        $("#sendButton").hide();
+        $("#secondButton").show();
+        let params="mobile="+mobile+"&type=register&randomCode="+$("#randomCode").val();
+        this.$httpPost('/wMainPath/web/mobile/code', params).then((result) => {
+          console.log(result);
+          if(!result.success){
+            clearInterval(mobileinter);
+            $("#sendButton").show();
+            $("#secondButton").hide();
+            this.dialog(result.message);
+            errorShow('register',result.message);
+          }
+        });
+      },
+      // 手机号注册
+      register() {
+        // this.info=false;
+        $('#lineOne').removeClass('focusLineColor');
+        $('#lineTwo').removeClass('focusLineColor');
+        $('#lineThree').removeClass('focusLineColor');
+        $('#lineFour').removeClass('focusLineColor');
+        $('#lineFive').removeClass('focusLineColor');
+        $('#lineSix').removeClass('focusLineColor');
+        $('#lineSeven').removeClass('focusLineColor');
+        $('#textOne').removeClass('focuStyle');
+        $('#textTwo').removeClass('focuStyle');
+        $('#textThree').removeClass('focuStyle');
+        $('#textFour').removeClass('focuStyle');
+        $('#textFive').removeClass('focuStyle');
+        $('#textSix').removeClass('focuStyle');
+        $('#textSeven').removeClass('focuStyle');
+        debugger
+
+
+        if ($("#username").val() == null || $("#username").val() == '') {
+          $('#textTwo').addClass('focuStyle');
+          return;
+        }
+        if ($("#company").val() == null || $("#company").val() == '') {
+          $('#textFour').addClass('focuStyle');
+          return;
+        }
+        if ( $("#queryType").val() == '-1') {
+          $('#textFive').addClass('focuStyle');
+          return;
+        }
+        if ( $("#queryProduct").val() == '-1') {
+          $('#textSix').addClass('focuStyle');
+          return;
+        }
+        if (!mobileFlag) {//验证手机
+          this.mobileCheck();
+          return;
+        }
+        if(this.pitch == true){
+          this.dialog('请勾选同意并接受');
+          return;
+        }
+        if (!passwordFlag) {//验证密码
+          this.passCheck();
+          return;
+        }
+        if (!codeFlag) {
+          this.codeCheck();
+          return;
+        }
+        this.mobile = $("#mobile").val();
+        this.password = $("#password").val();
+        this.name = $("#username").val();
+        this.company = $("#company").val();
+        this.mobileCode = $("#code").val();
+
+        let params = 'name=' + this.name + '&mobile=' + this.mobile + '&company=' + this.company + '&password=' + this.password + '&mobileCode='+ this.mobileCode;
+
+        this.$httpPost('/wMainPath/web/trial/sysUser',params).then((result) =>{
+          if(!result.success){
+            this.dialog(result.message);
+            return;
+          }
+          if (result.success) {
+            this.flag=true;
+            this.dialog('您已经注册成功，点击确定前往登录页');
+
+            let entity=result.entity;
+            let params2 = 'username=' + entity.username + '&mobile=' + entity.mobile + '&company=' + entity.company + '&sysUserId=' + entity.sysUserId
+              + '&companyType=' + $("#queryType").val() + '&consultingProducts=' + $("#queryProduct").val();
+
+            this.$httpPost('/mainPath/web/customerUser/ajax/add', params2).then((result) => {
+
+            });
+            DeleteCookie('sid_admin');
+
+
+
+          }
+
+
+        });
+
+        $(".registerBtn").add('.registerBtnDis').removeClass('.registerBtn');
+      },
+
+    },
+    created: function () {
+
+    },
+
+    mounted: function () {
+      // this.maxwidth = this.$refs.dragDiv.clientWidth - this.$refs.moveDiv.clientWidth;
+      document.getElementsByTagName('html')[0].addEventListener('mousemove',this.mouseMoveFn);
+      document.getElementsByTagName('html')[0].addEventListener('mouseup',this.moseUpFn);
+    console.log($("#companyType").val());
+      let that = this;
+      // $('input').click(function() {
+      //   if(document.activeElement.id==="mobile" ){
+      //     $('#lineOne').addClass('focusLineColor');
+      //     $('#lineTwo').removeClass('focusLineColor');
+      //     $('#lineThree').removeClass('focusLineColor');
+      //     $('#lineFour').removeClass('focusLineColor');
+      //     $('#lineFive').removeClass('focusLineColor');
+      //     $('#lineSix').removeClass('focusLineColor');
+      //     $('#lineSeven').removeClass('focusLineColor');
+      //   } else if(document.activeElement.id==="code"){
+      //     $('#lineOne').addClass('focusLineColor');
+      //     $('#lineTwo').removeClass('focusLineColor');
+      //     $('#lineThree').removeClass('focusLineColor');
+      //     $('#lineFour').removeClass('focusLineColor');
+      //     $('#lineFive').removeClass('focusLineColor');
+      //     $('#lineSix').removeClass('focusLineColor');
+      //     $('#lineSeven').removeClass('focusLineColor');
+      //   }else if(document.activeElement.id==="password"){
+      //     $('#lineOne').addClass('focusLineColor');
+      //     $('#lineTwo').removeClass('focusLineColor');
+      //     $('#lineThree').removeClass('focusLineColor');
+      //     $('#lineFour').removeClass('focusLineColor');
+      //     $('#lineFive').removeClass('focusLineColor');
+      //     $('#lineSix').removeClass('focusLineColor');
+      //     $('#lineSeven').removeClass('focusLineColor');
+      //   }else{
+      //     $('#lineOne').addClass('focusLineColor');
+      //     $('#lineTwo').removeClass('focusLineColor');
+      //     $('#lineThree').removeClass('focusLineColor');
+      //     $('#lineFour').removeClass('focusLineColor');
+      //     $('#lineFive').removeClass('focusLineColor');
+      //     $('#lineSix').removeClass('focusLineColor');
+      //     $('#lineSeven').removeClass('focusLineColor');
+      //   }
+      // });
+      $('#randomCode').bind('input propertychange', function () {
+        if ($('#randomCode').val() != '' && $('#randomCode').val().length == 4) {
+          console.log($('#randomCode').val());
+          that.randomCodeCheck();
+        }
+      });
+      $('#code').bind('input propertychange', function () {
+        if ($('#code').val() != '' && $('#code').val().length == 6) {
+          that.codeCheck();
+        }
+      });
+      $(function () {
+        // 注册卡的输入框的动画，失去焦点和有焦点的时候
+        let $indexFirstRegister = $(".register-content").find("input");
+        $indexFirstRegister.on('focus', function () {
+          $(this).next(".businessNameBorder").css({
+            width: '40%',
+            margin: "-2px auto 0",
+            borderTop: "2px solid #e20000",
+            '-webkit-transition': "all 0.25s ease-in",
+            '-webkit-transform': "scaleX(2.5)",
+          })
+        })
+        $indexFirstRegister.on('blur', function () {
+          $(this).next(".businessNameBorder").css({
+            width: '0',
+            margin: "-2px auto 0",
+            borderTop: "2px solid #e20000",
+            '-webkit-transition': "all 0.25s ease-in",
+            '-webkit-transform': "unset",
+          })
+        })
+      });
+
+      $('#queryType').selected({
+        maxHeight: '300px',
+        maxWidth: '500px',
+        btnSize:'sm',
+        btnWidth: '100%',
+      });
+      $('#queryProduct').selected({
+        maxHeight: '300px',
+        maxWidth: '500px',
+        btnSize:'sm',
+        btnWidth: '100%',
+      });
+    },
+
+  }
+
+</script>
+
+<style scoped>
+    .focuStyle{
+      display: block !important;
+    }
+
+     .agreement{
+       display: flex;
+       justify-content: space-between;
+       width: 376px;
+       margin-bottom: 30px;
+     }
+    .focusLineColor{
+      border-top: 2px solid #e20000;
+      margin: 0px auto 0;
+    }
+    .my-pitch{
+      width: 12px;
+      height: 12px;
+      border: 1px solid #1B95FF;
+      margin: 0 6px 0 6px;
+    }
+    .my-cancel{
+      width: 12px;
+      height: 12px;
+      border: 1px solid #e8e8e8;
+      margin: 0 6px 0 6px;
+    }
+    .inputLi{
+      width: 376px;
+      border: none;
+      margin: 60px 0px 0 72px;
+    }
+    .drag {
+      position: relative;
+      background-color: #e8e8e8;
+      width: 100%;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+    }
+    /*.input-select{*/
+     /*padding:0;*/
+      /*width: 350px;*/
+      /*height: 40px;*/
+    /*}*/
+    .handler{
+      width: 40px;
+      height: 32px;
+      border: 1px solid #ccc;
+      cursor: move;
+    }
+    .handler_bg{
+      background: #fff url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/about/slider.png") no-repeat center;
+      background-size: 16px 16px;
+    }
+    .handler_ok_bg{
+      background: #fff url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/about/check-circle.png") no-repeat center;
+      background-size: 18px 18px;
+    }
+    .drag_bg{
+      background-color: #34C3FF;
+      height: 34px;
+      width: 0px;
+    }
+    .drag_text{
+      position: absolute;
+      top: 0px;
+      width: 100%;text-align: center;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      color: #fff;
+      -o-user-select:none;
+      -ms-user-select:none;
+    }
+    .code-img {
+      float: right;
+      height: 100%;
+      margin: 0 4px 0px 0px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      text-align: center;
+      align-items: center;
+    }
+    .lTxtBtn{
+      background: #34c3ff;
+      width: 108px;
+      height: 25px;
+      color: #fff;
+      border-radius: 4px;
+    }
+    .imgFrame{
+
+    }
+    .logVam li.lTxt input {
+      border: none;
+    }
+
+    .chooseOption{
+
+      border-bottom: 1px solid rgba(153,153,153,1);
+    }
+
+    .chooseOption a{
+
+      font-size:1.4rem;
+      font-family:PingFang SC;
+      font-weight:400;
+      color:rgba(34,34,34,1);
+      opacity:1;
+    }
+    .layui-layer {
+      background-color: #fff;
+      border-radius: 2px;
+      height: 220px;
+      left: 50%;
+      margin-left: -190px;
+      padding: 0;
+      position: absolute;
+      top: 19%;
+      width: 400px;
+      z-index: 5;
+    }
+    .totalFrame{
+      background-image: url("/res/img/hikerCompanyIndex/trailBG.jpg");
+      height: 790px;
+      overflow: hidden;
+    }
+    .trialFrame{
+      padding: 64px 0 0px 0;
+      background:#F5F5F5;
+      height: 790px;
+      overflow: hidden;
+
+
+    }
+    .trialFrame-contain{
+      /*background: url("../assets/img/register.png") no-repeat;*/
+      background:rgba(255,255,255,1);
+      box-shadow:0px 0px 6px 5px rgba(238,238,238,0.5);
+      border-radius:8px;
+
+      width: 100%;
+      max-width: 1200px;
+      height: 680px;
+
+      display: flex;
+      /*background:rgba(255,255,255,1);*/
+      /*box-shadow:0px 6px 25px rgba(8,60,108,0.16);*/
+      opacity:1;
+      border-radius:10px;
+
+
+    }
+    .showFrame{
+
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .showFrameImg{
+      width: 100%;
+      /*z-index: -1;*/
+      border-radius:10px 0 0 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+    }
+    .showFrame-mask{
+      height: 100%;
+      width: 100%;
+      border-radius:10px 0 0 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      /*background: #000000;*/
+      opacity: 0.5;
+
+    }
+    .showFrame-words{
+      height: 100%;
+      width: 100%;
+      border-radius:10px 0 0 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .showFrame-words{
+      padding-top: 16.22%;
+    }
+    .showFrame-welcome{
+
+      font-size:36px;
+      font-family:PingFang SC;
+      font-weight:500;
+      color:rgba(255,255,255,1);
+      opacity:1;
+      text-align: center;
+      margin-bottom: 3%;
+    }
+    .showFrame-intro{
+      text-align: center;
+
+      font-size:1.8rem;
+      font-family:PingFang SC;
+      font-weight:400;
+
+      color:rgba(255,255,255,1);
+      opacity:1;
+      margin-bottom: 3%;
+    }
+    .registerFrame{
+
+      /*width: 67.5%;*/
+      flex-grow: 1;
+      height: 680px;
+      /*background: white;*/
+    }
+    .contact-title{
+      text-align: center;
+      margin: 50px 0 0 0;
+      font-size: 18px;
+      line-height: 25px;
+      font-weight: 500;
+      color: #333333;
+    }
+    .register-content{
+      height: 75%;
+      width: 500px;
+      /*padding: 5% 2%;*/
+      /*background: yellow;*/
+      /*display: flex;*/
+      /*flex-wrap: wrap;*/
+
+    }
+    .register-buttons{
+      height: 25%;
+      /*background: black;*/
+    }
+    .inputItems {
+      width: 363px;
+      border: none;
+      margin: 0px 59px 0;
+    }
+    .input_Item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .input_Item input {
+      padding: 20px 0px;
+      position: relative;
+      border: none;
+      width: 100%;
+      border-bottom: 1px solid rgba(153,153,153,1);
+      border-radius: 0;
+      font-size:16px;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      color:rgba(187,187,187,1);
+      line-height:22px;
+    }
+    .input_Item input::-webkit-input-placeholder{
+      color:#bbbbbb;
+    }
+    .businessNameBorder {
+      border-top: 2px solid transparent;
+      margin: -2px auto 0;
+    }
+    .businessNameBorders {
+      height: 0;
+      display: none;
+      text-align: right;
+      font-size:14px;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      color:rgba(226,0,0,1);
+      line-height:20px;
+    }
+    .logVam li.inputItem {
+      width: 376px;
+      border: none;
+      margin: 37px 0px 0 72px;
+    }
+    .register-buttons{
+      padding-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .registerBtn{
+      width:376px;
+      height:57px;
+      margin-top:0;
+      background:linear-gradient(90deg,#1890FF 0%,#35C3FF 100%);
+      /*box-shadow:0px 3px 6px rgba(49,128,255,0.38);*/
+      opacity:1;
+      border-radius:29px;
+
+
+      font-size:1.7rem;
+      font-family:PingFang SC;
+      font-weight:400;
+      line-height:47px;
+      color:rgba(255,255,255,1);
+      opacity:1;
+    }
+    .smFont{
+
+      font-size:1.4rem;
+      font-family:PingFang SC;
+      font-weight:400;
+
+      color:#222222;
+      opacity:1;
+    }
+    .agreeBox {
+      line-height: 14px;
+      font-size: 1.2rem;
+      padding: 0;
+      margin-top: 1%;
+    }
+
+
+
+
+
+    .trialFrame-contain {
+      width: 1120px;
+      margin:auto;
+      margin-top: 124px;
+
+    }
+    .focusLineColor{
+      border-top: 2px solid #e20000;
+      margin: -2px auto 0;
+    }
+    .showFrameImg{
+      width: 100%;
+      border-radius: 10px 0 0 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+    .register-content {
+      height: 73%;
+      padding: 2% 2%;
+    }
+
+
+
+  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #333;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #333;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #333;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #333;
+  }
+
+
+</style>

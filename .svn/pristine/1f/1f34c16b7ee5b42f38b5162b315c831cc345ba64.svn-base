@@ -1,0 +1,714 @@
+<template>
+    <div>
+
+
+        <!-- banner -->
+        <div class="banner-wrap">
+            <img class="fuml index-banner" :src="$store.state.commonStore.imagePath+'/res/img/test-system/exam-banner.png'" alt="">
+            <div class="exam_Banner_Cont">
+                <h2>HIKER在线考试系统</h2>
+                <p>高效、便捷、轻松的一站式考试平台</p>
+                <div class="banner-btn" onclick="window.location.href='/trial'">免费试用</div>
+            </div>
+
+        </div>
+        <!-- 我们的系统特色 -->
+        <div class="examFeature-wrap">
+            <div class="container">
+                <h2 class="common-title">我们的系统特色</h2>
+                <p class="common-intro">
+                    HIKER教育，教育行业的佼佼者。专业、高效、智能，为您打造业内知名的在线教育平台。
+                </p>
+                <div class="examFeature-list">
+                    <ul>
+                        <li class=" am-u-md-6 am-u-sm-12 ">
+                            <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFeature-3.png'" alt=" ">
+                            <p>
+                                <span>系统简介：</span> HIKER考试系统基于成熟稳定的JAVA+MySQL数据库开发，性能更好，支持电脑和移动答题
+                            </p>
+                        </li>
+                        <li class=" am-u-md-6 am-u-sm-12 ">
+                            <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFeature-2.png'" alt=" ">
+                            <p>
+                                <span>强大的数据分析：</span> 试卷支持EXCEL、WORD批量导入题库，完善的考试安全保护机制，断电后可持续考试
+                            </p>
+                        </li>
+                        <li class=" am-u-md-6 am-u-sm-12 ">
+                            <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFeature-1.png'" alt=" ">
+                            <p>
+                                <span>学员随机抽取练习：</span> 用户可定制练习，试题纠错、加入错题本、错题历史、试题笔记等
+                            </p>
+                        </li>
+                        <li class=" am-u-md-6 am-u-sm-12 ">
+                            <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFeature-4.png'" alt=" ">
+                            <p>
+                                <span>丰富的考试题型：</span> 单选、多选、主观题、判断题、填空题、阅读分析题、会记分录题等，全面完善的考试题型
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="common-btns">
+                    <a href="javascript:void(0); " class="zx-btn " onclick="window.open('https://tb.53kf.com/code/client/31f7ef7c2630d410b245a63ffa7794189/1')">立即咨询</a>
+                    <a href="javascript:void(0); " class="mf-btn cur" onclick="window.location.href='/trial'">免费试用</a>
+                </div>
+            </div>
+        </div>
+        <!-- 最实用的考试功能特点 -->
+        <div class="examFunction-wrap">
+            <div class="container">
+                <h2 class="common-title">实用的考试功能特点</h2>
+                <div class="examFunction-list">
+                    <ul>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-1-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-1-white.png'" alt="">
+                                <p>智能出题</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-2-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-2-white.png'" alt="">
+                                <p>预测试题</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-3-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-3-white.png'" alt="">
+                                <p>每日一练</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-4-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-4-white.png'" alt="">
+                                <p>章节练习</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-5-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-5-white.png'" alt="">
+                                <p>在线提问</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-6-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-6-white.png'" alt="">
+                                <p>成绩排名</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-7-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-7-white.png'" alt="">
+                                <p>模拟考试</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-8-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-8-white.png'" alt="">
+                                <p>成绩下载</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-9-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-9-white.png'" alt="">
+                                <p>随机组卷</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-10-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-10-white.png'" alt="">
+                                <p>试题纠错</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-11-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-11-white.png'" alt="">
+                                <p>知识点管理</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-12-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-12-white.png'" alt="">
+                                <p>成绩查询</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-13-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-13-white.png'" alt="">
+                                <p>手机考试</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-14-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-14-white.png'" alt="">
+                                <p>成绩分析</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-15-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-15-white.png'" alt="">
+                                <p>问答系统</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-16-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-16-white.png'" alt="">
+                                <p>人工批卷</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-17-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-17-white.png'" alt="">
+                                <p>错题收藏</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-18-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-18-white.png'" alt="">
+                                <p>预测试题</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-19-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-19-white.png'" alt="">
+                                <p>学院动态</p>
+                            </div>
+                        </li>
+                        <li class="am-u-lg-3 am-u-md-4 am-u-sm-6 ">
+                            <div class="box">
+                                <img class="blue" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-20-blue.png'" alt="">
+                                <img class="white" :src="$store.state.commonStore.imagePath+'/res/img/test-system/examFunction-20-white.png'" alt="">
+                                <p>自定义题型</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="common-btns">
+                    <a href="javascript:void(0); " class="zx-btn " onclick="window.open('https://tb.53kf.com/code/client/31f7ef7c2630d410b245a63ffa7794189/1')">立即咨询</a>
+                    <a href="javascript:void(0); " class="mf-btn cur" onclick="window.location.href='/trial'">免费试用</a>
+                </div>
+            </div>
+        </div>
+        <!-- 在线考试六大特色 -->
+        <div class="sixFeature-wrap">
+            <div class="container">
+                <h2 class="common-title">在线考试六大特色</h2>
+                <p class="common-intro">
+                    一流的平台，提供完善的在线考试系统支持多种题型题库一键导入
+                </p>
+                <div class="sixFeature-list">
+                    <div class="circle">
+                        <div class="sm-circle">
+                            <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/sixFeature-center-icon.png'" alt="">
+                            <h4>考试平台特色</h4>
+                        </div>
+                        <ul>
+                            <li class="item1">
+                                <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/sixFeature-1.png'" alt="">
+                            </li>
+                            <li class="item2">
+                                <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/sixFeature-2.png'" alt="">
+                            </li>
+                            <li class="item3">
+                                <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/sixFeature-3.png'" alt="">
+                            </li>
+                            <li class="item4">
+                                <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/sixFeature-4.png'" alt="">
+                            </li>
+                            <li class="item5">
+                                <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/sixFeature-5.png'" alt="">
+                            </li>
+                            <li class="item6">
+                                <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/sixFeature-6.png'" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="common-btns">
+                    <a href="javascript:void(0); " class="zx-btn " onclick="window.open('https://tb.53kf.com/code/client/31f7ef7c2630d410b245a63ffa7794189/1')">立即咨询</a>
+                    <a href="javascript:void(0); " class="mf-btn cur" onclick="window.location.href='/trial'">免费试用</a>
+                </div>
+            </div>
+        </div>
+        <!-- 丰富的在线考试功能 -->
+        <div class="abundant-wrap">
+            <div class="container">
+                <h2 class="common-title">丰富的在线考试功能</h2>
+                <p class="common-intro">
+                    服务于众多大型教育、企业公司、政府单位等。为其提供个性化定制，打造属于自己的专属教育平台
+                </p>
+                <div class="abundant-list">
+                    <ul>
+                        <li class="item am-u-sm-12 am-u-md-6">
+                            <div class="box">
+                                <div class="title">
+                                    题库管理
+                                </div>
+                                <ol>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 常规题
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 计算题
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 画图题
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 音频题
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 视频题
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 批量导入
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 题型自定义
+                                    </li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li class="item am-u-sm-12 am-u-md-6">
+                            <div class="box">
+                                <div class="title">
+                                    试卷管理
+                                </div>
+                                <ol>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 随机组卷
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 固定试卷
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 试卷导入
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 试卷导出
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 历史真题
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 模拟考试
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 题型自定义
+                                    </li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li class="item am-u-sm-12 am-u-md-6">
+                            <div class="box">
+                                <div class="title">
+                                    考试管理
+                                </div>
+                                <ol>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 考生范围
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 开始时间
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 结束时间
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 考试时间
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 防止作弊
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 评卷范围
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 查看成绩
+                                    </li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li class="item am-u-sm-12 am-u-md-6">
+                            <div class="box">
+                                <div class="title">
+                                    练习管理
+                                </div>
+                                <ol>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 随机组卷
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 固定试卷
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 试卷导入
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 试卷导出
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 历史真题
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 模拟考试
+                                    </li>
+                                    <li>
+                                        <i class="icon am-icon-circle"></i> 题型自定义
+                                    </li>
+                                </ol>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="common-btns">
+                    <a href="javascript:void(0); " class="zx-btn " onclick="window.open('https://tb.53kf.com/code/client/31f7ef7c2630d410b245a63ffa7794189/1')">立即咨询</a>
+                    <a href="javascript:void(0); " class="mf-btn cur" onclick="window.location.href='/trial'">免费试用</a>
+                </div>
+            </div>
+        </div>
+        <!-- HIKER在线考试的优势 -->
+        <div class="advantage-wrap am-hide">
+            <div class="container">
+                <h2 class="common-title">HIKER在线考试的优势</h2>
+                <div class="advantage-list">
+                    <div class="left am-u-md-6">
+                        <div class="title">
+                            <a href="javascript:void(0);">传统考试模式</a>
+                            <div class="semi-circle">
+                                <span>V</span>
+                            </div>
+                        </div>
+                        <ul>
+                            <li><a href="javascript:void(0);">高收费、不统一</a></li>
+                            <li><a href="javascript:void(0);">高收费、不统一</a></li>
+                            <li><a href="javascript:void(0);">高收费、不统一</a></li>
+                            <li><a href="javascript:void(0);">高收费、不统一</a></li>
+                            <li><a href="javascript:void(0);">高收费、不统一</a></li>
+                        </ul>
+                    </div>
+                    <div class="right am-u-md-6">
+                        <div class="title">
+                            <a href="javascript:void(0);">在线考试模式</a>
+                            <div class="semi-circle">
+                                <span>S</span>
+                            </div>
+                        </div>
+                        <ul>
+                            <li><a href="javascript:void(0);">3年标准收费38400（平均一年才12800）</a></li>
+                            <li><a href="javascript:void(0);">3年标准收费38400（平均一年才12800）</a></li>
+                            <li><a href="javascript:void(0);">3年标准收费38400（平均一年才12800）</a></li>
+                            <li><a href="javascript:void(0);">3年标准收费38400（平均一年才12800）</a></li>
+                            <li><a href="javascript:void(0);">3年标准收费38400（平均一年才12800）</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="common-btns">
+                    <a href="javascript:void(0); " class="zx-btn " onclick="window.open('https://tb.53kf.com/code/client/31f7ef7c2630d410b245a63ffa7794189/1')">立即咨询</a>
+                    <a href="javascript:void(0); " class="mf-btn cur" onclick="window.location.href='/trial'">免费试用</a>
+                </div>
+            </div>
+        </div>
+        <!-- 智能在线题型服务 方便每一位学员 -->
+        <div class="intelligence-wrap">
+            <div class="bg-intelligence">
+                <div class="container">
+                    <h2 class="common-title-white">智能在线题型服务方便每一位学员</h2>
+                    <div class="intelligence-list">
+                        <ul>
+                            <li class=" am-u-md-4 am-u-sm-12 ">
+                                <div class="box">
+                                    <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/intelligence-1-icon.png'" alt="">
+                                    <div class="left">
+                                        <h3>丰富的题型</h3>
+                                        <p>
+                                            支持填空题、单选题、多选题、判断题、问答题、计算题、计算题、打字题、画图题、组合题、音频题视频题、图片填空题等多种题型支持题型自定义
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class=" am-u-md-4 am-u-sm-12 ">
+                                <div class="box">
+                                    <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/intelligence-2-icon.png'" alt="">
+                                    <div class="left">
+                                        <h3>做题记录分析</h3>
+                                        <p>
+                                            模拟考试练习模式。针对每一次考试结果，对试题进行解析分析，从而针对每一位学员的练习结果不同可有效的纠错和改正考试中的不足 予以改善和进步
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class=" am-u-md-4 am-u-sm-12 ">
+                                <div class="box">
+                                    <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/intelligence-3-icon.png'" alt="">
+                                    <div class="left">
+                                        <h3>高频习题推送</h3>
+                                        <p>
+                                            第一时间推送快而新的考试习题 专业类习题、教材类习题、考试类习题、作业类习题、证书类习题等 线上题库，完全同步最新课程。推送最快、最高效的考点信息
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="common-btns-white">
+                        <a href="javascript:void(0); " class="zx-btn " onclick="window.open('https://tb.53kf.com/code/client/31f7ef7c2630d410b245a63ffa7794189/1')">立即咨询</a>
+                        <a href="javascript:void(0); " class="mf-btn white" onclick="window.location.href='/trial'">免费试用</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 环境涉猎于任何行业 -->
+        <div class="business-wrap ">
+            <div class="container ">
+                <h2 class="common-title" style="width: 100%">环境涉猎于任何行业</h2>
+                <div class="business-list mt40">
+                    <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails ">
+                        <li>
+                            <a class="box" href="javascript:void(0);">
+                                <img class="am-thumbnail" :src="$store.state.commonStore.imagePath+'/res/img/download.jpg'" alt="">
+                                <div class="mask"></div>
+                                <div class="intro">
+                                    <img class="icon" :src="$store.state.commonStore.imagePath+'/res/img/download.png'" alt="">
+                                    <h4>金融会计</h4>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="box" href="javascript:void(0);">
+                                <img class="am-thumbnail" :src="$store.state.commonStore.imagePath+'/res/img/download-1.jpg'" alt="">
+                                <div class="mask"></div>
+                                <div class="intro">
+                                    <img class="icon" :src="$store.state.commonStore.imagePath+'/res/img/download-1.png'" alt="">
+                                    <h4>政府高校</h4>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="box" href="javascript:void(0);">
+                                <img class="am-thumbnail" :src="$store.state.commonStore.imagePath+'/res/img/download-2.jpg'" alt="">
+                                <div class="mask"></div>
+                                <div class="intro">
+                                    <img class="icon" :src="$store.state.commonStore.imagePath+'/res/img/download-2.png'" alt="">
+                                    <h4>留学语言</h4>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="box" href="javascript:void(0);">
+                                <img class="am-thumbnail" :src="$store.state.commonStore.imagePath+'/res/img/download-3.jpg'" alt="">
+                                <div class="mask"></div>
+                                <div class="intro">
+                                    <img class="icon" :src="$store.state.commonStore.imagePath+'/res/img/download-3.png'" alt="">
+                                    <h4>医学教育</h4>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="box" href="javascript:void(0);">
+                                <img class="am-thumbnail" :src="$store.state.commonStore.imagePath+'/res/img/download-4.jpg'" alt="">
+                                <div class="mask"></div>
+                                <div class="intro">
+                                    <img class="icon" :src="$store.state.commonStore.imagePath+'/res/img/download-4.png'" alt="">
+                                    <h4>K12教育</h4>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="box" href="javascript:void(0);">
+                                <img class="am-thumbnail" :src="$store.state.commonStore.imagePath+'/res/img/download-5.jpg'" alt="">
+                                <div class="mask"></div>
+                                <div class="intro">
+                                    <img class="icon" :src="$store.state.commonStore.imagePath+'/res/img/download-5.png'" alt="">
+                                    <h4>司法教育</h4>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="box" href="javascript:void(0);">
+                                <img class="am-thumbnail" :src="$store.state.commonStore.imagePath+'/res/img/download-6.jpg'" alt="">
+                                <div class="mask"></div>
+                                <div class="intro">
+                                    <img class="icon" :src="$store.state.commonStore.imagePath+'/res/img/download-6.png'" alt="">
+                                    <h4>艺术教育</h4>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="box" href="javascript:void(0);">
+                                <img class="am-thumbnail" :src="$store.state.commonStore.imagePath+'/res/img/download-7.jpg'" alt="">
+                                <div class="mask"></div>
+                                <div class="intro">
+                                    <img class="icon" :src="$store.state.commonStore.imagePath+'/res/img/download-7.png'" alt="">
+                                    <h4>职业教育</h4>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="common-btns ">
+                    <a href="javascript:void(0); " class="zx-btn " onclick="window.open('https://tb.53kf.com/code/client/31f7ef7c2630d410b245a63ffa7794189/1')">立即咨询</a>
+                    <a href="javascript:void(0); " class="mf-btn cur" onclick="window.location.href='/trial'">免费试用</a>
+                </div>
+            </div>
+        </div>
+        <!-- 安全：前后台管理后顾无忧 -->
+        <div class="safety-wrap">
+            <div class="bg-safety">
+                <div class="container">
+                    <h2 class="common-title-white">安全：前后台管理后顾无忧</h2>
+                    <div class="safety-list mt40">
+                        <ul>
+                            <li class="am-u-lg-3 am-u-md-6 am-u-sm-6">
+                                <div class="box">
+                                    <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/safety-1.png'" alt="">
+                                    <h4>系统安全防护</h4>
+                                    <p>
+                                        对敏感数据进行加密，系统内的关键操作步骤内容有日志同步加载
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="am-u-lg-3 am-u-md-6 am-u-sm-6">
+                                <div class="box">
+                                    <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/safety-2.png'" alt="">
+                                    <h4>数据库监控</h4>
+                                    <p>
+                                        智能化的协议识别，可视化状况呈现，完美交互的风险追踪能力
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="am-u-lg-3 am-u-md-6 am-u-sm-6">
+                                <div class="box">
+                                    <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/safety-3.png'" alt="">
+                                    <h4>数据库防护</h4>
+                                    <p>
+                                        按角色发放权限，增强访问控制，使用身份授权，防止SQL注入
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="am-u-lg-3 am-u-md-6 am-u-sm-6">
+                                <div class="box">
+                                    <img :src="$store.state.commonStore.imagePath+'/res/img/test-system/safety-4.png'" alt="">
+                                    <h4>备份与恢复</h4>
+                                    <p>
+                                        完整地备份重要的数据和统计信息，提高系统的安全和抗灾能力
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="common-btns-white">
+                        <a href="javascript:void(0); " class="zx-btn " onclick="window.open('https://tb.53kf.com/code/client/31f7ef7c2630d410b245a63ffa7794189/1')">立即咨询</a>
+                        <a href="javascript:void(0); " class="mf-btn white" onclick="window.location.href='/trial'">免费试用</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 合作伙伴 -->
+        <div style="    height: 8rem;    background: white;"> </div>
+        <Friends></Friends>
+
+
+
+
+
+
+
+    </div>
+</template>
+
+
+
+<script>
+  import { mapState } from 'vuex'
+    import  Friends from "../components/friends/Friends"
+    export default {
+        name: 'Exam',
+        async fetch ({ params, store }) {
+        },
+        props:{
+
+        },
+        components: {
+
+            Friends
+        },
+        computed: {
+          ...mapState(['info'])
+        },
+        data () {
+            return {
+              title:"考试系统"
+            }
+        },
+      head () {
+        return {
+          title: '考试系统_在线考试|在线题库系统|试题库系统|线上考试|网上考试系统-HIKER教育',
+          meta: [
+            {
+              hid: 'keywords',
+              name: 'keywords',
+              content:  '考试系统,在线考试,在线题库系统,试题库系统,线上考试系统,网上考试系统',
+            },
+            {
+              hid: 'author',
+              name: 'author',
+              content: "HIKER教育",
+            },
+            {
+              hid: 'description',
+              name: 'description',
+              content:  '考试系统为是HIKER教育的服务项目项目之一，主要包括了平台特色、评分系统、在线考试等功能'
+            }
+          ]
+        }
+      },
+        filters: {
+        },
+        methods: {
+
+        },created: function() {
+
+        },mounted:function(){
+            $(document).ready(function() {
+                // <!-- 蓝白色按钮 -->
+                var $btns = $('.common-btns a');
+                $btns.on('mouseenter', function() {
+                    $(this).addClass('cur').siblings().removeClass('cur');
+                })
+                // <!-- 黑白色按钮 -->
+                var $livebtns = $('.common-btns-white a');
+                $livebtns.on('mouseenter', function() {
+                    $(this).addClass('white').siblings().removeClass('white');
+                })
+            });
+
+            $('header').css({"background-color": "rgba(0,0,0,1)","border-bottom": "none"});
+
+
+
+        }
+    }
+
+</script>
+
+<style scoped>
+</style>

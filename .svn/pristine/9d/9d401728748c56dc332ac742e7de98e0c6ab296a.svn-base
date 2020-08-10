@@ -1,0 +1,83 @@
+const mainPath=process.env.API_MAIN;
+const state= () => ({
+  dType:'',
+  dContent:'',
+  dUrl:''
+})
+const mutations = {
+  showDialogM(state,{dType,dContent,dUrl}) {
+    if(state.dType!='userLogin'&&state.dType!='userRegister'){
+      $(".dialogWrap").hide();
+      $(".bMask").hide();
+    }
+    state.dType =  dType;
+    state.dContent =  dContent;
+    state.dUrl =  dUrl;
+    if (dType != 'toast') {
+      $(".bMask").show();
+    }
+  },
+  showDialogPositionM(state,dType){
+    if(dType=='userLogin'){
+      $('.login-ewm-img').attr('src','/mainPath/ran/random?random='+Math.random());
+    }else if(dType=='userRegister'){
+      $('.register-ewm-img').attr('src','/mainPath/ran/random?random='+Math.random());
+    }else if(dType=='forgetPassword'){
+      $('.forget-ewm-img').attr('src','/mainPath/ran/random?random='+Math.random());
+    }else if(dType=='bindPhone'){
+      $('.bind-ewm-img').attr('src','/mainPath/ran/random?random='+Math.random());
+    }
+    if (!isWeiXin() && $(window).width() <= 640) {
+      $(".wxLogin").hide();
+    }
+    let dialogEle = $(".dialogWrap");
+    let dWidth = $(window).width();
+    let dTop = $(window).height(),
+      dH = dialogEle.height(),
+      dW = dialogEle.width(),
+      dHead = $(".dialogWrap .dialog-ele>h4");
+    console.log(dW)
+    dHead.css({"width": "100%"}); //ie7下兼容性;
+    if ($(window).width() <= 640) {
+      // "margin": "5%", "width": "90%",
+      dialogEle.css({"top": (dTop - dH) / 2 - 60, "margin-left": (dWidth-dW)/ 2});
+      $(".dialogWrap #d-s-head-cont").css("width", "100%");
+    } else {
+      dialogEle.css({"top": (dTop - dH) / 2 - 20,"margin-left": (dWidth-dW)/ 2});
+    }
+    $(".dialogWrap").show();
+  },
+  closeDialog(state){
+    $(".dialogWrap").hide();
+    state.dType='';
+    $(".bMask").hide();
+  },
+}
+const actions = {
+
+  showDialog(state,{dType,dContent,dUrl}){
+    state.commit('showDialogM',{dType:dType,dContent:dContent,dUrl:dUrl});
+    setTimeout(()=>{
+      state.commit('showDialogPositionM',dType);
+    },200)
+
+    if(dType=='toast'){
+      setTimeout(()=>{
+        state.commit('closeDialog');
+      },1500)
+    }
+  },
+
+}
+const getters = {
+
+}
+
+// 不要忘记把state, mutations等暴露出去。
+export default {
+  namespaced:true,
+  state,
+  mutations,
+  actions,
+  getters
+}

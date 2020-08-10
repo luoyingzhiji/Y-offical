@@ -1,0 +1,93 @@
+
+export default {
+  mode: 'universal',
+  server: {
+    host:'127.0.0.1', //127.0.0.1  testapi.eduhiker.com
+    port: 8088, // default: 3000
+  },
+  env: {
+    NODE_ENV: process.env.NODE_ENV,
+    API_MAIN: process.env.API_MAIN,
+    API_W_MAIN: process.env.API_W_MAIN,
+  },
+  /*
+  ** Headers of the page
+  */
+  head: {
+
+    script: [
+
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+
+    ]
+  },
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: { color: '#fff' },
+  /*
+  ** Global CSS
+  */
+  css: [
+
+    '@/assets/css/amazeui.min.css',
+    '@/assets/css/reset.css',
+    '@/assets/css/common.css',
+    '@/assets/css/web.css',
+    '@/assets/css/mobile.css',
+  ],
+
+  /*
+  ** Plugins to load before mounting the App
+  */
+
+  plugins: [
+    {src: '~/plugins/web_util',ssr: false},
+    {src: '~/plugins/common',ssr: false},
+    {src: '~/plugins/filter.js',ssr: false},
+    {src: '~/plugins/global', ssr: true},
+    {src: '~/plugins/vue-particles',ssr: false},
+    {src: '~/plugins/vue-swiper',ssr: false},
+    {src: '~/plugins/vue-baidu-map',ssr: false},
+
+  ],
+  /*
+  ** Nuxt.js modules
+  */
+  modules: [
+    // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/axios',
+  ],
+  axios: {
+
+    proxy: true
+
+  },
+
+  proxy:  {
+    //开启代理
+    "/mainPath": {
+      target: process.env.API_MAIN,
+      pathRewrite: { "^/mainPath": "" }
+    },
+    "/wMainPath": {
+      target: process.env.API_W_MAIN,
+      pathRewrite: { "^/wMainPath": "" }
+    }
+
+
+  },
+  /*
+  ** Build configuration
+  */
+  build: {
+    /*
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {
+    },
+    extractCSS:{allChunks:true}
+  }
+}

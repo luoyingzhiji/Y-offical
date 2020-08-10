@@ -1,0 +1,638 @@
+<template>
+  <div class="totalFrame ">
+    <div class="trialFrame-contain">
+      <img src="../static/res/img/Luodi/register1.png" alt="教育的先驱者" height="550" width="480" style="float: left" >
+      <div class="register-content">
+        <p class="contact-title">免费注册</p>
+        <ul class="logVam" style="width: 380px;">
+          <li class="inputItem input_Item" v-if="this.info==false" style="margin-top: 50px">
+            <div class="imgFrame">
+              <input id="mobile" type="text"  placeholder="您的手机号" autocomplete="off"
+                     v-model="mobile" onkeyup="value=value.replace(/[^\d]/g,'')" >
+              <div id="lineOne" class="businessNameBorder"></div>
+              <div id="textOne" class="businessNameBorders">请输入您的手机号</div>
+            </div>
+          </li>
+
+          <li class="inputItem input_Item " v-if="this.info==false">
+            <div class="imgFrame">
+              <input id="code" placeholder="短信验证码" autocomplete="off" type="text" maxlength="6" v-model="SMSCode" >
+              <div class="businessNameBorder"></div>
+              <div class="code-img">
+                <button id="sendButton" v-if="!isSendOutCode" class="lTxtBtn" @click="sendMobileCode()">获取验证码</button>
+                <button id="sendButton" style="color:#969799" v-else class="lTxtBtn" disabled
+                        @click="sendMobileCode()">{{seconds}}s 重新获取</button>
+              </div>
+            </div>
+            <div id="textSeven" class="businessNameBorders">请输入短信验证码</div>
+          </li>
+
+          <li class="inputItem input_Item" v-if="this.info==false">
+            <div class="imgFrame">
+              <input autocomplete="off" id="password" type="password" placeholder="设置您的密码" v-model="passwordIpt" >
+
+              <div  id="lineThree" class="businessNameBorder"></div>
+              <div class="code-img">
+                <img v-if="eyesLogin" @click="eyes()" src="../assets/img/login-eyes.png" width="24" height="11"/>
+                <img v-else @click="eyes()"  src="../assets/img/eyepass.png"  height="11" width="24"/>
+              </div>
+              <div id="textThree" class="businessNameBorders">请设置登录密码</div>
+            </div>
+          </li>
+
+          <li class="inputItem input_Item" v-if="this.info==true">
+            <input class="" id="username" placeholder="您的称呼" required="" type="text" v-model="userName">
+            <div id='lineTwo' class="businessNameBorder"></div>
+            <div id="textTwo" class="businessNameBorders">请输入您的称呼</div>
+          </li>
+
+          <li class="inputItem input_Item" v-if="this.info==true">
+            <input class="" id="company" placeholder="公司名称" required="" type="text" v-model="companyName">
+            <div  id="lineFour" class="businessNameBorder"></div>
+            <div id="textFour" class="businessNameBorders">请选择公司名称</div>
+          </li>
+          <li class="inputItem input_Item" v-if="this.info==true">
+            <div class="chooseOption">
+              <select id="queryType"  class="input-select" style="height: 49px;padding: 0;width: 280px"  >
+                <option value="-1">选择公司行业</option>
+                <option value="金融教育">金融教育</option>
+                <option value="企业培训教育">企业培训教育</option>
+                <option value="会计培训教育">会计培训教育</option>
+                <option value="留学语言教育">留学语言教育</option>
+                <option value="K12成长教育">K12成长教育</option>
+                <option value="传媒服务教育">传媒服务教育</option>
+                <option value="工程培训教育">工程培训教育</option>
+                <option value="艺术教育">艺术教育</option>
+                <option value="司法教育">司法教育</option>
+                <option value="医学教育">医学教育</option>
+                <option value="高校教育">高校教育</option>
+                <option value="政府教育">政府教育</option>
+                <option value="其它">其它</option>
+              </select>
+            </div>
+            <!--<div  id="lineFive" class="businessNameBorder"></div>-->
+            <div id="textFive" class="businessNameBorders">请选择公司行业</div>
+          </li>
+          <li class="inputItem input_Item" v-if="this.info==true">
+            <div class="chooseOption">
+              <select id="queryProduct" class="input-select" style="padding: 0;width: 280px" >
+                <option value="-1">选择产品类型</option>
+                <option value="租赁">租赁</option>
+                <option value="授权">授权</option>
+                <option value="源码">源码</option>
+              </select>
+            </div>
+            <!--<div  id="lineSix" class="businessNameBorder"></div>-->
+            <div id="textSix" class="businessNameBorders">请选择产品类型</div>
+          </li>
+
+          <li style="font-size: 14px;color: #666" class="clearFix">
+            <div style="float: left" class="clearFix">
+              <div @click="registerPitch()" style="float: left">
+                <div style="width: 12px;height: 12px;border: 1px solid #e8e8e8;margin-top: 5px;margin-right: 8px;"
+                     v-if="pitch">
+
+                </div>
+                <div style="width: 12px;height: 12px;border: 1px solid #1980ff;margin-top: 6px;margin-right: 8px;position: relative"
+                     v-if="!pitch">
+                    <img  src="../assets/img/my-pitch.png" width="10" height="10" style="position:absolute;"/>
+                </div>
+
+              </div>
+              <p style="float:right;">
+                我已阅读并接受
+                <a href="/help?id=234" target="_blank" style="color: #1890FF">《服务协议》</a>
+              </p>
+            </div>
+            <p style="float:right;">
+              已有帐号？
+              <a href="https://m.eduhiker.com/admin" target="_blank" style="color: #1890FF;">
+                马上登录
+              </a>
+            </p>
+          </li>
+
+          <li class="inputLi">
+            <div class="register-buttons">
+              <div class="smFont">
+                <button type="button" class=" registerBtn" v-if="this.info==false" @click="goNext()" title="下一步">下一步</button>
+                <button type="button" class=" registerBtn" v-if="this.info==true" @click="register()" title="立即注册">立即注册</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="bg-all" style="display: none;">
+      <div class="bg-shadows">
+      </div>
+      <div class="layui-layer layui-layer-page" id="layui-layer4" type="page" times="4" showtime="0"
+           contype="string">
+        <div class="layui-layer-title" style="cursor: move;">提示</div>
+        <div class="layui-layer-content" id="showText"></div>
+        <div class="layui-layer-btn layui-layer-btn-c">
+          <a class="layui-layer-btn0" href="javascript:void(0)" id="nextBtn" @click="clickConfirm()">确定</a>
+        </div>
+      </div>
+    </div>
+
+    <!--      滑块验证码-->
+    <SlideCode v-show="isSlideCode"></SlideCode>
+  </div>
+
+</template>
+
+<script>
+
+
+  import SlideCode from '~/components/resgister/SlideCode';
+  import resgister2 from '../layouts/resgister2'
+  export default {
+    name: 'Trial',
+    layout: 'resgister2',
+    components: {
+        SlideCode
+    },
+
+    data() {
+      return {
+        title: '申请试用',
+        company:'请选择',
+        field:'公司行业',
+        product:'咨询产品',
+        eyesLogin:false,
+
+        info:false, // 下一步 or 立即注册
+
+        mobile:"",
+        pitch:true,
+        flag:false,
+
+        isSlideCode: false, // 是否滑块验证
+        passwordIpt: '', //密码
+        SMSCode: '', // 短信验证码
+        receivedCode: '', // 接收到的短信验证码
+        userName: '', // 用户名称
+        companyName: '', // 公司名称
+        isSendOutCode: false, // 是否发送了验证码
+        seconds: 60, // 秒数
+      }
+    },
+    head () {
+      return {
+        htmlAttrs: {
+          id: 'root-directory'
+        },
+        title: this.title+"-"+this.info.title,
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content:  this.info.keywords,
+          },
+          {
+            hid: 'author',
+            name: 'author',
+            content: "HIKER教育",
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content:  this.info.description
+          }
+        ]
+      }
+    },
+
+
+    methods: {
+
+      // 密码是否能看到
+      eyes(){
+        if(this.eyesLogin){
+          $("#password").attr({type:'password'});
+          this.eyesLogin=false;
+        }else{
+          $("#password").attr({type:'text'});
+          this.eyesLogin=true;
+        }
+      },
+
+      // 是否勾选同意
+      registerPitch(){
+        this.pitch = !this.pitch
+      },
+
+      // 下一步
+      goNext() {
+        if(this.mobile == '') {
+          this.dialog('请输入手机号');
+          return
+        }
+
+        if(this.mobile.length != 11) {
+          this.dialog('请输入正确的手机号');
+          return
+        }
+
+        if(this.passwordIpt == '' ){
+          this.dialog('请输入密码');
+          return
+        }
+
+        if(this.passwordIpt < 6 ){
+          this.dialog('密码不能小于6位');
+          return
+        }
+        if(this.receivedCode == '' || this.receivedCode == undefined) {
+          this.dialog('请输入正确的短信验证码');
+          return
+        }
+
+        if(this.SMSCode !== this.receivedCode) {
+          this.dialog('请输入正确的短信验证码');
+          return
+        }
+        this.info = true
+        this.queryInputBox()
+      },
+
+      clickConfirm(){
+        if(!this.flag){
+          $('.bg-all').hide();
+        }else{
+          window.location.href = 'https://m.eduhiker.com/admin';
+          $('.bg-all').hide();
+        }
+      },
+
+      //弹出提示框
+      dialog(text) {
+        $("#showText").html(text);
+        $(".bg-all").show();
+      },
+
+      // 手机注册发送短信
+      sendMobileCode() {
+
+        if(this.mobile == '') {
+          this.dialog('请输入手机号');
+          return
+        }
+
+        if(this.mobile.length != 11) {
+          this.dialog('请输入正确的手机号');
+          return
+        }
+
+
+        this.isSlideCode = true
+        this.$children[0].refreshBtn()
+
+      },
+
+      // 接收短信
+      querySMS (xWidth) {
+        let params = 'mobile=' + this.mobile + '&type=register&xWidth=' + xWidth
+        console.log(params,'params')
+        this.$httpPost('/mainPath/web/mobile/code', params).then( result => {
+          if(result.success) {
+            this.isSendOutCode = true
+            let timer = setInterval(() => {
+              this.seconds--
+              if(this.seconds < 0) {
+                clearInterval(timer)
+                this.seconds = 60
+                this.isSendOutCode = false
+              }
+            },1000)
+
+            this.receivedCode = result.entity
+          } else {
+            this.dialog(result.message);
+          }
+
+        })
+      },
+
+      // 手机号注册
+      register() {
+        $('#lineOne').removeClass('focusLineColor');
+        $('#lineTwo').removeClass('focusLineColor');
+        $('#lineThree').removeClass('focusLineColor');
+        $('#lineFour').removeClass('focusLineColor');
+        $('#lineFive').removeClass('focusLineColor');
+        $('#lineSix').removeClass('focusLineColor');
+        $('#lineSeven').removeClass('focusLineColor');
+        $('#textOne').removeClass('focuStyle');
+        $('#textTwo').removeClass('focuStyle');
+        $('#textThree').removeClass('focuStyle');
+        $('#textFour').removeClass('focuStyle');
+        $('#textFive').removeClass('focuStyle');
+        $('#textSix').removeClass('focuStyle');
+        $('#textSeven').removeClass('focuStyle');
+
+        if ($("#username").val() == null || $("#username").val() == '') {
+          $('#textTwo').addClass('focuStyle');
+          return;
+        }
+        if ($("#company").val() == null || $("#company").val() == '') {
+          $('#textFour').addClass('focuStyle');
+          return;
+        }
+        if ( $("#queryType").val() == '-1') {
+          $('#textFive').addClass('focuStyle');
+          return;
+        }
+        if ( $("#queryProduct").val() == '-1') {
+          $('#textSix').addClass('focuStyle');
+          return;
+        }
+
+        if(this.pitch == true){
+          this.dialog('请勾选同意并接受');
+          return;
+        }
+        let params = 'mobile=' + this.mobile + '&username=' + this.userName + '&company=' + this.companyName +
+                      '&companyType=' + $('#queryType').val() + '&consultingProducts=' + $('#queryProduct').val() +
+                      '&sysUserId=0'
+        this.$httpPost('/mainPath/web/customerUser/ajax/add',params).then((result) =>{
+          if (result.success) {
+            this.flag=true;
+            this.dialog('您已经注册成功，点击确定前往登录页');
+
+          }
+
+        });
+
+        $(".registerBtn").add('.registerBtnDis').removeClass('.registerBtn');
+      },
+
+      // 获取input框
+      queryInputBox () {
+          // 注册卡的输入框的动画，失去焦点和有焦点的时候
+          let $indexFirstRegister = $(".register-content").find("input");
+          $indexFirstRegister.on('focus', function () {
+            $(this).next(".businessNameBorder").css({
+              width: '40%',
+              margin: "-2px auto 0",
+              borderTop: "2px solid #e20000",
+              '-webkit-transition': "all 0.25s ease-in",
+              '-webkit-transform': "scaleX(2.5)",
+            })
+          })
+          $indexFirstRegister.on('blur', function () {
+            $(this).next(".businessNameBorder").css({
+              width: '0',
+              margin: "-2px auto 0",
+              borderTop: "2px solid #e20000",
+              '-webkit-transition': "all 0.25s ease-in",
+              '-webkit-transform': "unset",
+            })
+          })
+      }
+
+    },
+    created: function () {
+
+    },
+
+    mounted: function () {
+      this.queryInputBox ()
+
+
+
+      $('#queryType').selected({
+        maxHeight: '300px',
+        maxWidth: '500px',
+        btnSize:'sm',
+        btnWidth: '100%',
+      });
+      $('#queryProduct').selected({
+        maxHeight: '300px',
+        maxWidth: '500px',
+        btnSize:'sm',
+        btnWidth: '100%',
+      });
+    },
+
+  }
+
+</script>
+
+<style scoped>
+  input::placeholder {
+
+    color: #bbb;
+
+  }
+
+  .focuStyle {
+    display: block !important;
+  }
+  .register-content {
+    float: right;
+    width: 520px;
+    height: 550px;
+    box-sizing: border-box;
+    padding: 40px 70px;
+    background-color: #fff;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .contact-title{
+    text-align: center;
+    padding-top: 35px;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 500;
+    color: #333333;
+  }
+
+     .agreement{
+       display: flex;
+       justify-content: space-between;
+       width: 376px;
+       margin-bottom: 30px;
+     }
+    .focusLineColor{
+      border-top: 2px solid #e20000;
+      margin: 0px auto 0;
+    }
+    .my-pitch{
+      width: 12px;
+      height: 12px;
+      border: 1px solid #1B95FF;
+      margin: 0 6px 0 6px;
+    }
+    .my-cancel{
+      width: 12px;
+      height: 12px;
+      border: 1px solid #e8e8e8;
+      margin: 0 6px 0 6px;
+    }
+    .inputLi{
+      width: 100%;
+      border: none;
+    }
+
+    .code-img {
+      float: right;
+      height: 100%;
+      margin: 0 4px 0px 0px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      text-align: center;
+      align-items: center;
+    }
+    .lTxtBtn{
+      border: none;
+      background: none;
+      color: #1980ff;
+      font-size: 16px;
+    }
+    .logVam li {
+      width: 100%;
+    }
+    .logVam li.lTxt input {
+      border: none;
+    }
+
+    .chooseOption{
+
+      border-bottom: 1px solid #ececec;
+    }
+
+    .chooseOption a{
+
+      font-size:1.4rem;
+      font-family:PingFang SC;
+      font-weight:400;
+      color:rgba(34,34,34,1);
+      opacity:1;
+    }
+    .layui-layer {
+      background-color: #fff;
+      border-radius: 2px;
+      height: 220px;
+      left: 50%;
+      margin-left: -190px;
+      padding: 0;
+      position: absolute;
+      top: 19%;
+      width: 400px;
+      z-index: 5;
+    }
+
+    .trialFrame{
+      background:#F5F5F5;
+      height: 790px;
+      overflow: hidden;
+
+
+    }
+    .trialFrame-contain{
+      background: #ccc;
+      box-shadow:0px 0px 6px 5px rgba(238,238,238,0.5);
+      opacity:1;
+      border-radius:10px;
+      width: 1000px;
+      height: 550px;
+      margin: 0 auto;
+    }
+
+
+    .register-buttons{
+      width: 100%;
+      height: 56px;
+    }
+
+    .input_Item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .input_Item input {
+      padding: 20px 0px;
+      position: relative;
+      border: none;
+      width: 100%;
+      border-bottom: 1px solid #ececec;
+      border-radius: 0;
+      font-size:16px;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      line-height:22px;
+    }
+    .input_Item input::-webkit-input-placeholder{
+      color:#bbbbbb;
+    }
+    .businessNameBorder {
+      border-top: 2px solid transparent;
+      margin: -2px auto 0;
+    }
+    .businessNameBorders {
+      height: 0;
+      display: none;
+      text-align: right;
+      font-size:14px;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      color:rgba(226,0,0,1);
+      line-height:20px;
+    }
+    .logVam li.inputItem {
+      border: none;
+      margin-bottom: 40px;
+    }
+    .register-buttons{
+      padding-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .registerBtn{
+      width: 100%;
+      height:56px;
+      background:linear-gradient(90deg,#1890FF 0%,#35C3FF 100%);
+      opacity:1;
+      border-radius:29px;
+
+
+      font-size:1.7rem;
+      font-family:PingFang SC;
+      font-weight:400;
+      line-height:47px;
+      color:rgba(255,255,255,1);
+      opacity:1;
+    }
+    .smFont{
+      width: 100%;
+      font-size:1.4rem;
+      font-family:PingFang SC;
+      color:#222222;
+      opacity:1;
+    }
+
+
+
+
+
+  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #333;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #333;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #333;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #333;
+  }
+
+
+</style>

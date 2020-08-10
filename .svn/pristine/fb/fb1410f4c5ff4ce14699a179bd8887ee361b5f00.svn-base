@@ -1,0 +1,307 @@
+<template>
+  <div class="SlideCode">
+      <div class="slide-code-inner">
+        <div class="slide-head clearFix">
+          <h2>请完成安全验证</h2>
+          <span class="close-slide" @click="closeBtn()">
+            <img src="@/static/res/img/close-icon.png" width="13" height="13" alt="">
+          </span>
+        </div>
+        <div class="photo" v-show="!loading">
+          <img :src="bigImage" alt="" width="277" height="162">
+          <img :src="smallImage" alt="" style="position: absolute;z-index: 40" ref="smallImg">
+          <img src="@/static/res/img/refresh-icon.png" alt="" width="20" height="20" class="refresh" @click="refreshBtn">
+        </div>
+        <div class="photo loadingClass" v-show="loading">
+          <img src="@/static/res/img/loading-icon.png" width="33" height="32" alt="">
+          <p>加载中</p>
+        </div>
+        <div class="slide">
+          <p style="position: relative;z-index: 40;">{{ currentStateText }}</p>
+          <div class="already-sliding-box" ref="alreadySlidingBox" style="z-index: 30"></div>
+          <div class="slide-box defaultBox" ref="defaultSlideBox" @mousedown="changeSlide" style="z-index: 50;" v-if="this.isSuccess == -1">
+
+          </div>
+          <div class="slide-box failBox" style="z-index: 50;" v-if="this.isSuccess == 0">
+
+          </div>
+          <div class="slide-box successBox" style="z-index: 50;" v-if="this.isSuccess == 1">
+
+          </div>
+        </div>
+      </div>
+  </div>
+</template>
+<script>
+  import { mapState } from 'vuex'
+  export default {
+
+    computed: {
+      ...mapState(['info'])
+    },
+
+    data () {
+      return {
+        title: '注册',
+        bigImage: '',
+        smallImage: '',
+        loading: true, // 加载中
+        currentStateText: '向右拖动滑块填充拼图',
+        isSuccess: -1,
+        xWidth: '', // 滑块滑动的距离
+      }
+    },
+
+    head() {
+      return {
+        title: this.info.title + "-" + this.title,
+
+      }
+    },
+
+    methods: {
+      // 关闭验证框
+      closeBtn () {
+        this.$parent.isSlideCode = false
+      },
+
+      // 刷新图片
+      refreshBtn () {
+        this.loading = true
+        this.currentStateText = '加载中'
+        // 初始化
+        this.isSuccess = -1;
+        let aBox = this.$refs.alreadySlidingBox
+
+        aBox.style.border = '1px solid #A6CEFF'
+        aBox.style.backgroundColor = '#EBF4FF'
+        aBox.style.width = 10 + 'px';
+
+        setTimeout(() => {
+          this.$refs.defaultSlideBox.style.left = 10 + 'px';
+        },0)
+
+        let that = this
+        setTimeout( () => {
+          that.getImage()
+        },400)
+      },
+
+      // 移动滑块
+      changeSlide (e) {
+        let a = e.target; // 获取目标元素
+        let aBox = this.$refs.alreadySlidingBox; // 获取已滑动的区域
+        let smallImg = this.$refs.smallImg; // 获取小图片
+
+        let disX = e.clientX - a.offsetLeft; // 鼠标相对于元素的位置
+
+        let left;
+        document.onmousemove = (e) => {
+          a.style.transition = ''
+          aBox.style.transition = '' // 清除动画
+
+          if (e.clientX - disX >= 10) left = e.clientX - disX; // 元素的位置
+          if (e.clientX - disX > 236) left = 236
+
+          a.style.left = left + 'px'; // 滑块
+          smallImg.style.left = left + 'px'; // 小照片
+          aBox.style.width = left + 'px'; // 已滑动的区域
+        }
+
+        document.onmouseup = () => {  // 鼠标抬起时
+          document.onmousemove = null;
+          document.onmouseup = null
+          this.$httpPost('/mainPath/web/check/image?x=' + left).then(result => {
+            if (result.success) {
+
+              this.currentStateText = '验证成功'
+              aBox.style.border = '1px solid #5DC64C'
+              aBox.style.backgroundColor = '#f3fbf2';
+              this.isSuccess = 1;
+
+              setTimeout(() => {
+                this.$parent.isSlideCode = false
+                this.$parent.querySMS(left)
+              },700)
+            } else {
+
+              this.currentStateText = '验证失败'
+              aBox.style.border = '1px solid #ffd0d0'
+              aBox.style.backgroundColor = '#fff0f0';
+
+              this.isSuccess = 0
+
+              setTimeout(() => {
+                aBox.style.border = '1px solid #A6CEFF'
+                aBox.style.backgroundColor = '#EBF4FF'
+
+                a.style.transition = '.4s left ease-out'
+                a.style.left = 10 + 'px';
+
+                aBox.style.transition = '.4s width ease-out';
+                aBox.style.width = 10 + 'px';
+
+                this.isSuccess = -1
+
+                this.refreshBtn()
+
+              },1000)
+            }
+
+          })
+        }
+      },
+
+      // 获取图片
+      getImage () {
+        this.$httpPost('/mainPath/web/getImage').then((result) => {
+          if(result.success) {
+            this.loading = false
+            this.currentStateText = '向右拖动滑块填充拼图';
+
+            console.log(result.entity, '返回照片')
+
+            this.bigImage = result.entity.bigImage;
+            this.smallImage = result.entity.smallImage;
+
+            let smallImg = this.$refs.smallImg;
+
+            // 定位小图片的位置
+            smallImg.style.top = result.entity.top + 'px';
+            smallImg.style.left = 10 + 'px';
+
+          }
+        })
+      },
+
+
+    },
+    mounted () {
+      this.refreshBtn()
+    },
+
+  }
+</script>
+<style scoped>
+  .SlideCode {
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,.2);
+  }
+  .slide-code-inner {
+    width: 317px;
+    height: 306px;
+    border-radius: 8px;
+    background-color: #fff;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-left: -153px;
+    padding: 20px 20px 25px 20px;
+  }
+  .slide-head {
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 20px;
+  }
+  .slide-head h2 {
+    float: left;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .slide-head span {
+    float: right;
+    vertical-align: center;
+  }
+  .close-slide img {
+    margin-top: 6px;
+    cursor: pointer;
+  }
+  .photo {
+    width: 277px;
+    height: 162px;
+    margin-bottom: 15px;
+    position: relative;
+    background-color: #f4f4f4;
+    overflow: hidden;
+  }
+  .photo .refresh {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+    z-index: 99;
+  }
+
+  .slide {
+    width: 277px;
+    height: 39px;
+    background-color: #e4e4e4;
+    border:1px solid #e7e7e7;
+    font-size: 14px;
+    color: #666;
+    line-height: 39px;
+    text-align: center;
+    position: relative;
+  }
+  .slide-box {
+    width: 39px;
+    height: 39px;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    cursor: pointer;
+
+  }
+  .defaultBox {
+    background: url(~static/res/img/arrow-icon.png) no-repeat;
+  }
+  .failBox {
+    background: url(~static/res/img/arrow-fail.png) no-repeat;
+  }
+  .successBox {
+    background: url(~static/res/img/arrow-success.png) no-repeat;
+  }
+
+  .slide-box img {
+    margin-top: 13px;
+    margin-left: 12px;
+  }
+  .already-sliding-box {
+    width: 12px;
+    height: 39px;
+    border: 1px solid #A6CEFF;
+    background-color: #EBF4FF;
+    position: absolute;
+    top: 0;
+    z-index: 50;
+  }
+  .loadingClass img {
+    margin-top: 60px;
+    margin-left: 122px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+      transition: all 2s;
+    }
+  }
+
+  .loadingClass p {
+    font-size: 11px;
+    color: #999;
+    margin-top: 7px;
+    text-align: center;
+  }
+</style>

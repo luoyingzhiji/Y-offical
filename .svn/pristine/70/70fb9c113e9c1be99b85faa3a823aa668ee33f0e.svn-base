@@ -1,0 +1,22 @@
+<template>
+  <div class="top-wrap">
+    <mobileHeader/>
+
+    <nuxt ref="childPage"/>
+
+    <mobileFooter/>
+  </div>
+</template>
+
+<script>
+  import mobileHeader from '@/components/mobile/mobileHeader';
+  import mobileFooter from '@/components/mobile/mobileFooter';
+  export default {
+    name: 'mobile',
+    middleware: 'mobileMiddle',
+    components: {
+      mobileHeader,
+      mobileFooter,
+    },
+  }
+</script>

@@ -1,0 +1,169 @@
+function subComment(){
+    $("#parentCommentId").val(0);
+    answerAdd('ques');
+}
+
+
+
+/*添加回复jsonp*/
+function answerAdd(optType){
+    var parentId=$("#parentCommentId").val();
+    if(!isLogin()){
+        dialog(0,'','');
+        return;
+    }
+    var content= $("#quesContent").val().trim();
+    if(optType=='answer'){
+        content= $("#answerContent"+parentId).val().trim();
+    }
+    if(content==''){
+        dialog(3,'请输入内容','');
+        return;
+    }
+    $.ajax({
+        url:userPath+'/comment/ajax/add',
+        type:'post',
+        dataType:'jsonp',
+        data:{"type":"section","otherId":$("#sectionId").val(),"parentId":parentId,"content":content}
+    });
+}
+/*添加回复jsonp回调*/
+function answerAddCallBack(result){
+    if(result.success){
+        var parentId=$("#parentCommentId").val();
+        if(parentId==0){//提出问题
+            var ddHtml=initQues(result.entity);
+            if($("#que-list").find("section").length>0){
+                $("#que-list").html(ddHtml);
+            }else{
+                $("#que-list").prepend(ddHtml);
+            }
+
+            $("#content_length").html(500);
+            $("#quesContent").val("");
+            initAnswerBtn();
+        }else{//回复问题
+            var answerHtml=initAnswer(result.entity);
+            if($(".answerInfo"+parentId).find("section").length>0){
+                $(".answerInfo"+parentId).html(answerHtml);
+            }else{
+                $(".answerInfo"+parentId).prepend(answerHtml);
+            }
+            $("#answer_content_length"+parentId).html(500);
+            $("#answerContent"+parentId).val("");
+            $(".answer-num"+parentId).html(parseInt($(".answer-num"+parentId).html())+1);
+        }
+
+        dialog(3,'操作成功','');
+    }else{
+        dialog(3, result.message,'');
+    }
+}
+
+
+//显示单个问题下的答案
+function showAnswer(parentId){
+    var answerInfo = $(".answerInfo"+parentId).html();
+    $("#parentCommentId").val(parentId);
+    if (answerInfo==''){
+        $.ajax({
+            url:userPath+"/comment/section/answer",
+            type:"post",
+            data:{"parentId":parentId},
+            dataType:"jsonp"
+        });
+    }
+}
+function showAnswerCallBack(result){
+    if (result.success){
+        var answerList = result.entity.answerList;
+        if (answerList.length > 0){
+            for (var i = 0 ; i < answerList.length ; i++){
+                var answerHtml=initAnswer(answerList[i]);
+                $(".answerInfo"+$("#parentCommentId").val()).append(answerHtml);
+            }
+        }else{
+            answerHtml='<section class="pt30 mt20 mb30 tac none-data">'+
+                '<img src="'+staticPath+'/static/res/img/no-data-icon.png" class="vam" width="60" height="58" style="display: block;margin: 0 auto;">'+
+                '<span class="c-666 fsize12 ml10 vam">此问题还没有答案，快来回答吧~~~</span>'+
+                '</section>';
+            $(".answerInfo"+$("#parentCommentId").val()).html(answerHtml);
+        }
+    }
+}
+
+//查询课程节点下的问题
+function queryAnswerInfo(currentPage){
+   this.changeCurrent('you');
+    var otherId=$("#sectionId").val();
+    $.ajax({
+        url:userPath+"/comment/section/ajax/page",
+        type:"post",
+        data:{'type':'section','otherId':otherId,'currentPage':currentPage},
+        dataType:"jsonp",
+    });
+}
+function getAnswerInfoCallBack(result){
+    if (result.success){
+        var queList = $("#que-list");
+        var commentList = result.entity.commentList;
+        var ddHtml="";
+        for (var i = 0 ; i < commentList.length; i++){
+
+            ddHtml+=initQues(commentList[i]);
+
+        }
+        if(ddHtml==''){
+            ddHtml='<section class="pt30 mt20 mb30 tac none-data">'+
+                '<img src="'+staticPath+'/static/res/img/no-data-icon.png" class="vam" width="60" height="58" style="display: block;margin: 0 auto;">'+
+                '<span class="c-666 fsize12 ml10 vam">看了这么久，提出你的问题吧~~~</span>'+
+            '</section>';
+        }
+        $(queList).html(ddHtml);
+        initAnswerBtn();
+    }
+}
+
+function initQues(ques){
+    var _time = formatDate(new Date(ques.createTime),'MM/dd hh:mm');
+    var ddHtml='<dd id="dd'+ques.id+'">' +
+        '<div class="que-main">' +
+        '<div class="que-con">'+ques.content+'</div>'+
+        '<div>' +
+        '<span class="datetime">'+_time+'</span>' +
+        '<a href="javascript:;" class="answers" onclick="showAnswer('+ques.id+')">答案(<i class="answer-num'+ques.id+'">'+ques.answerNum+'</i>)</a>' +
+        '<a href="javascript:;" class="ans-sq"><i class="am-icon-angle-double-up"></i>收起</a>' +
+        '</div>' +
+        '</div>' +
+        '<div class="tw-box">' +
+        '<div class="textarea-wrap">' +
+        '<textarea class="que-textarea" id="answerContent'+ques.id+'" onkeyup="value=$(this).val().substring(0,500),setShowLength(this, 500, \'answer_content_length'+ques.id+'\');"></textarea>' +
+        '<div class="count">' +
+        '<i>0</i>/<tt id="answer_content_length'+ques.id+'">500</tt>' +
+        '</div>' +
+        '<div class="clearfix">' +
+        '<span class="tips-error"></span>' +
+        '<div class="fr">' +
+        '<a href="javascript:void(0);" class="btn-study-ok mr10 answer-submit disabled" onclick="answerAdd(\'answer\')">回答</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>'+
+        '<div class="answer-list answerInfo'+ques.id+'">' +
+        '</div>' +
+        '</dd>';
+    return ddHtml;
+}
+
+function initAnswer(answer){
+    var _time=formatDate(new Date(answer.createTime),'MM/dd hh:mm');
+    var answerHtml = '<div class="ans-name">'+answer.username+'</div>' +
+        '<div class="ans-txt">'+answer.content+'</div>' +
+        '<div class="ans-opt clearfix">' +
+        '<a href="javascript:;" onclick="doPraise('+answer.id+','+answer.otherId+',\'sectionComment\')" class="ans-thanks">' +
+        '<span id="num'+answer.id+'"><i class="am-icon-thumbs-up"></i><span>('+answer.praiseNum+')</span></span>'+
+        '</a>' +
+        '<span class="fr">'+_time+'</span>' +
+        '</div>' ;
+    return answerHtml;
+}

@@ -1,0 +1,262 @@
+
+/**
+ * 文本框错误提示
+ * @param id
+ * @param content
+ */
+function errorShow(type,content){
+    $("."+type+"Error").show();
+    $("."+type+"ErrorCont").html(content);
+}
+/**
+ * 文本框隐藏错误
+ * @param id
+ * @param content
+ */
+function errorHide(type){
+    $("."+type+"Error").hide();
+    $("."+type+"ErrorCont").html("");
+}
+
+
+function navigateChoose(){
+	let url = window.document.location.href;
+	let origin = window.document.location.origin;
+	let pathname = window.document.location.pathname;
+    let match=origin;
+    if(pathname!=null&&pathname!=''){
+        match+="/"+pathname.split("/")[1]+"/"+pathname.split("/")[2];
+
+    }
+	if($("#guideInfo>li>a[href$='" + url + "']").length>0){
+		$("#guideInfo>li>a[href$='" + url + "']").parent().addClass("current");
+	}else if($("#guideInfo>li>a[href$='" + origin+pathname + "']").length>0){
+		let origin = window.document.location.origin;
+		let pathname = window.document.location.pathname;
+		$("#guideInfo>li>a[href$='" + origin+pathname + "']").parent().addClass("current");
+	}else if(match!=origin+"/"&&$("#guideInfo>li>a[href^='" + match + "']").length>0){
+        $("#guideInfo>li>a[href^='" + match+ "']").parent().addClass("current");
+    }else if($("#guideInfo>li>a[href$='" + origin + "']").length>0){
+		$("#guideInfo>li>a[href$='" + origin+ "']").parent().addClass("current");
+	}
+
+    //自适应mobile
+    if($("#mobileGuideInfo>li>a[href$='" + url + "']").length>0){
+        $("#mobileGuideInfo>li>a[href$='" + url + "']").parent().addClass("active");
+    }else if($("#mobileGuideInfo>li>a[href$='" + origin+pathname + "']").length>0){
+        let origin = window.document.location.origin;
+        let pathname = window.document.location.pathname;
+        $("#mobileGuideInfo>li>a[href$='" + origin+pathname + "']").parent().addClass("active");
+    }else if(match!=origin+"/"&&$("#mobileGuideInfo>li>a[href^='" + match + "']").length>0){
+        $("#mobileGuideInfo>li>a[href^='" + match+ "']").parent().addClass("active");
+    }else if($("#mobileGuideInfo>li>a[href$='" + origin + "']").length>0){
+        $("#mobileGuideInfo>li>a[href$='" + origin+ "']").parent().addClass("active");
+    }
+}
+
+
+function updateUserInfo(type,content){
+    $.ajax({
+        url:userPath+'/my/info/ajax/update',
+        type:'post',
+        dataType : "jsonp",
+		data:{"type":type,"content":content}
+    });
+}
+
+function updateUserNickname(){
+	let content=$("#newNickname").val();
+	if(content==null||content==''){
+        errorShow('nickname','请输入昵称');
+		return;
+	}
+    updateUserInfo("nickname",content);
+    jQuery(".bMask").remove();
+    jQuery(".dialogWrap").remove();
+    $(".cusName").html(content);
+}
+
+
+/**
+ * 判断Cookies中是否有用户信息
+ * 	仅页面操作用，实际操作中要判断用户是否登录成功
+ * @param baseLocation
+ * @returns {Boolean}
+ */
+
+function isLogin() {
+	if (isNotEmpty(getCookie(userCookie))) {
+		return true;
+	}
+	return false;
+}
+
+
+/**
+ * 查询用户消息数
+ * @returns {boolean}
+ */
+function queryNoticeNum() {
+	if(isLogin()){
+        $.ajax({
+            url:userPath+"/notice/ajax/num",
+            type : "post",
+            dataType : "jsonp",
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            cache : false
+        });
+	}
+
+}
+function userNoticeNumCallBack(result){
+    if(result.success){
+        let numMap=result.entity;
+        if(numMap!=null){
+            let sysNum=numMap.sysNum;
+            let userNum=numMap.userNum;
+            let letterNum=numMap.letterNum;
+            if(sysNum!='0'||userNum!='0'||letterNum!='0'){
+                $(".notice").show();
+                if(sysNum!='0'){
+                    $("#sysNotice").show();
+                }
+                if(userNum!='0'){
+                    $("#userNotice").show();
+                }
+                if(letterNum!='0'){
+                    $("#letterNotice").show();
+                }
+            }
+        }
+    }
+}
+
+
+
+//滚动获取ajax分页方法获取数据
+function ajaxWebRollPage(url,parameters){
+    $.ajax({
+        type : "POST",
+        dataType : "text",
+        url: url,
+        data : parameters,
+        cache : true,
+        success : function(result){
+            $("#pageCaption").append(result);
+        }
+    });
+}
+
+function loginSuccess(){
+
+    setTimeout(function() {
+        let redirectUrl = getCookie("redirectUrl");
+        if (typeof(redirectUrl) != "undefined" && redirectUrl&&redirectUrl != "") {
+            SetCookie("redirectUrl","");
+            window.location.href = redirectUrl.replaceAll('"', '');
+            return;
+        }
+        let url = location.href;
+        if (url.indexOf("_login") > -1||url.indexOf("_bind") > -1||url.indexOf("_login_true")>-1) {
+            window.location.href = mainPath;
+        } else {
+            window.location.href = location.href;
+        }
+    },1000)
+}
+let websocket;
+function limitLogin(){
+    if('WebSocket' in window&&isLogin()) {
+        console.log("此浏览器支持websocket");
+        let path=userPath;
+        let sid =getCookie("sid");
+        if(sid!=null&&sid!=''){
+        	path=path.replace("http","ws");
+            console.log(path);
+            websocket = new WebSocket(path+"/websocket/user/"+sid);
+            websocket.onopen = function(evnt) {
+                console.log("链接服务器成功!")
+            };
+            websocket.onmessage = function(evnt) {
+                DeleteCookie("sid");
+                websocket.close();
+                dialog(4,evnt.data,window.location);
+                console.log(evnt.data);
+            };
+            websocket.onerror = function(evnt) {};
+            websocket.onclose = function(evnt) {
+                console.log("与服务器断开了链接!")
+            }
+            //websocket.send(message);
+        }
+    }
+}
+window.onbeforeunload = function(event) {
+    console.log("关闭WebSocket连接！");
+    if('WebSocket' in window&&websocket){
+        websocket.close();
+    }
+
+}
+function isWeiXin(){
+    //window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
+    let ua = window.navigator.userAgent.toLowerCase();
+    //通过正则表达式匹配ua中是否含有MicroMessenger字符串
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+/*点赞jsonp回调*/
+function doPraiseCallBack(result){
+    if(result.success){
+        $("#num"+result.entity).addClass("current");
+        $("#num"+result.entity).html('<i class="am-icon-thumbs-up"></i><span>('+ (result.message)+')</span>');
+        dialog(3, '点赞成功','');
+    }else{
+        dialog(3, result.message,'');
+    }
+}
+
+
+
+/**
+ * 显示 微信 or 手机 登录
+ */
+function showLoginType(type){
+    if (type=="mobile"){
+        $(".RichScan").hide();
+        $(".RichScanText").hide();
+        $(".wxLogin").show();
+
+        $(".sjLogin").hide();
+        $(".mobileLogin").show();
+    }else {
+        $(".RichScan").show();
+        $(".RichScanText").show();
+        $(".wxLogin").hide();
+
+        $(".sjLogin").show();
+        $(".mobileLogin").hide();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,328 @@
+
+/**
+ * 选择我的优惠券
+ */
+function chooseCoupon(){
+    var orderAmount=$("#orderAmount").val();
+    var userBalance=$("#userBalance").val();
+    var code=$("#queryCoupon").val();
+    if(code==''){
+        $("#couponPrice").html("￥0.00");
+        $("#buyPrice").html("￥"+$("#orderAmount").val());
+        //用户余额是否足够付款
+        couponChange(userBalance,orderAmount);
+        return;
+    }
+
+    $.ajax({
+        type: "post",
+        url: shopPath+"/coupon/code/ajax/check",
+        data: {"code":code,"orderAmount":orderAmount},
+        dataType : "json",
+        success: function(result){
+            if(result.success){
+                var couponAmount=result.entity;
+                var amount=accSub(orderAmount,couponAmount);
+                $("#buyPrice").html(fmtPrice(amount));
+                //用户余额是否足够付款
+                couponChange(userBalance,amount);
+            }else{
+                dialog(3,result.message,'');
+                $("#queryCoupon").val("");
+                $("#buyPrice").html("￥"+$("#goodsPrice").val());
+            }
+        },
+        error : function (error) {
+            dialog(3,"订单异常，请稍后再试",'');
+        }
+    });
+}
+function couponChange(userBalance,amount){
+    if(parseFloat(userBalance)>=parseFloat(amount)){
+        $(".ye-check-box").attr("onclick","choosePayType('ACCOUNT')");
+        $(".charge-box").hide();
+        choosePayType('ACCOUNT');
+    }else{
+        $(".ye-check-box").removeAttr("onclick");
+        $(".charge-box").show();
+        choosePayType('ALIPAY');
+	}
+}
+
+function cleanMsg(obj){
+    $(obj).next().html("");
+}
+
+//格式化价格
+function fmtPrice(price){
+    if(typeof(price) == 'undefined' || price == null || price ==""|| isNaN(price) ||price == Infinity){
+        return "￥0.00";
+    }else{
+        return "￥"+parseFloat(price).toFixed(2);
+    }
+}
+
+$(function(){
+
+	if($("input[name='account']").attr("disabled")){
+		$("input[name='account']").attr("checked",false);
+		$("input[name='alipay']").attr("checked",true);
+	}
+
+});
+function doPayCash(){
+	if(!isLogin()){
+        dialog(0,'','');
+		return;
+	}
+	var payCash=$("#payCash").val();
+	var reg = /^[0-9]+(.[0-9]{1,2})?$/;
+	if(isNaN(payCash) ||!reg.test(payCash)){
+		$(".error-in").html("*请输入正确的充值金额");
+		return;
+	}
+	var payType=$("#payType").val();
+	if(payType==null||payType==''){
+		dialog(3,"请选择支付方式",'');
+		return;
+	}
+	$.ajax({
+		url: "/order/cash",
+		type:"post",
+		data:{"payCash":payCash,"payType":payType},
+		dataType: "json",
+		async : false,
+        success: function(result) {
+            var clientType="pc";
+            if (typeof WeixinJSBridge != "undefined"){
+                clientType="micro";
+            }else if($(window).width()<=640){
+                clientType="h5";
+            }
+
+            if(result.success){
+                var requestId=result.entity.requestId;
+                $("#requestId").val(requestId);
+                if(payType=='ALIPAY'){
+                    $("#clientType").val(clientType);
+                    $("#orderForm").attr("target","_blank");
+                    dialog(5,'',shopPath+'/my/recharge');
+                    document.orderForm.submit();
+                }else if(payType=='WEIXIN'){
+
+                    $.ajax({
+                        url:shopPath+'/order/wx/ajax/bank',
+                        data:{"requestId":requestId,"clientType":clientType},
+                        type:"post",
+                        dataType:"json",
+                        success:function(result){
+                            if(result.success){
+                                if (clientType == "pc"){
+                                    var content='<section class="weixin-pay-bx"><aside class="weixin-pay">'+
+                                        '<span><div id="qrcode" class="QRcode-canver"></div></span>'+
+                                        '</aside></section>';
+                                    $(".payCash").hide();
+                                    $(".zfb-pay").hide();
+                                    $(".wx-pay").hide();
+                                    $(".weChatPay").html(content);
+                                    var link=result.entity.code_url;
+                                    try{
+                                        document.createElement('canvas').getContext('2d');
+                                        $('#qrcode').qrcode({render:"canvas",height:200, width:200,correctLevel:0,text:link});
+                                    } catch (e){
+                                        $('#qrcode').qrcode({render:"table",height:200, width:200,correctLevel:0,text:link});
+                                    }
+                                    setInterval("reviewTrxOrder()",5000);
+                                }else if(clientType=='micro'){
+                                    WeixinJSBridge.invoke(
+                                        'getBrandWCPayRequest', {
+                                            "appId":""+result.appId,     //公众号名称，由商户传入
+                                            "timeStamp":""+result.timeStamp,         //时间戳，自1970年以来的秒数
+                                            "nonceStr":""+result.nonceStr, //随机串
+                                            "package":"prepay_id="+result.prepay_id,
+                                            "signType":"MD5",         //微信签名方式：
+                                            "paySign":""+result.paySign //微信签名
+                                        },
+                                        function(res){
+                                            if(res.err_msg == "get_brand_wcpay_request:ok" ) {}     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                                        }
+                                    );
+
+                                }else if(clientType=='h5'){
+                                    window.location.href=result.entity.mweb_url;
+                                }
+
+                            }else{
+                                dialog(3,"支付异常，请稍后再试",'');
+                            }
+                        },error:function(e){
+                            dialog(3,"支付异常，请稍后再试",'');
+                        }
+                    });
+
+
+                }
+
+            }else{
+                dialog(3,result.message,'');
+            }
+        },
+        error : function(e) {
+            dialog(3,"订单异常，请稍后再试","");
+        }
+
+	});
+
+}
+function doPayMember(){
+    if(!isLogin()){
+        dialog(0,'','');
+        return;
+    }
+    if($(".circle.active").length==0){
+        dialog(0,'请选择开通的会员时长','');
+        return;
+    }
+
+    var memberCardId=$(".circle.active").attr("lang").split("#")[0];
+    var month=$(".circle.active").attr("lang").split("#")[1];
+    $.ajax({
+        url: "/order/ajax/buy",
+        type:"post",
+        data:{"goodsId":memberCardId,"month":month,"type":"member"},
+        dataType: "json",
+        async : false,
+        success: function(result) {
+            if(result.success){
+                window.location.href=shopPath+'/order/pay?requestId='+result.entity.requestId;
+            }else{
+                dialog(3,result.message,'');
+            }
+            buyFlag=true;
+        },
+        error : function(e) {
+            buyFlag=true;
+            dialog(3,"订单异常，请稍后再试","");
+        }
+    });
+
+}
+
+
+/**
+ * 选择支付方式
+ * @param type 用于支付接口传递参数, 此处只用到0
+ */
+function choosePayType(type,emVal){
+	$("#payType").val(type);
+	if(type=='ALIPAY'){
+        $(".wx-pay").removeClass('current');
+        $('.check-box').removeClass('selected');
+        $(".zfb-pay").addClass('current');
+	}else if(type=='WEIXIN'){
+        $(".zfb-pay").removeClass('current');
+        $('.check-box').removeClass('selected');
+        $(".wx-pay").addClass('current');
+	}else if(type=='ACCOUNT'){
+        $(".zfb-pay").removeClass('current');
+        $(".wx-pay").removeClass('current');
+        $('.check-box').addClass('selected');
+	}
+}
+/**
+ * 跳转到银行
+ */
+function goToBank(){
+	if(!isLogin()){
+        dialog(0,'','');
+		return;
+	}
+	var payType=$("#payType").val();
+    var clientType="pc";
+    if (typeof WeixinJSBridge != "undefined"){
+        clientType="micro";
+    }else if($(window).width()<=640){
+        clientType="h5";
+    }
+	if(payType=='ALIPAY'||payType=='ACCOUNT'){
+        $("#clientType").val(clientType);
+		$("#couponCode").val($("#queryCoupon").val());
+        if(payType=='ALIPAY'){
+            $("#orderForm").attr("target","_blank");
+            dialog(5,'',shopPath+'/my/order');
+		}
+        $("#orderForm").submit();
+	}else if(payType=='WEIXIN'){
+		var requestId=$("#requestId").val();
+		if(requestId==null||requestId==''){
+			dialog(3,"订单异常，请稍后再试",'');
+			return;
+		}
+		$.ajax({
+			url:shopPath+'/order/wx/ajax/bank',
+			data:{"requestId":requestId,"couponCode":$("#queryCoupon").val(),"clientType":clientType},
+			type:"post",
+			dataType:"json",
+			success:function(result){
+				if(result.success){
+                    if (clientType == "pc"){
+                        var content='<section class="weixin-pay-bx"><aside class="weixin-pay">'+
+                            '<span><div id="qrcode" class="QRcode-canver"></div></span>'+
+                            '</aside></section>';
+                        $(".u-o-box").html(content);
+                        var link=result.entity.code_url;
+                        try{
+                            document.createElement('canvas').getContext('2d');
+                            $('#qrcode').qrcode({render:"canvas",height:200, width:200,correctLevel:0,text:link});
+                        } catch (e){
+                            $('#qrcode').qrcode({render:"table",height:200, width:200,correctLevel:0,text:link});
+                        }
+                        setInterval("reviewTrxOrder()",5000);
+                    }else if(clientType=='micro'){
+                        WeixinJSBridge.invoke(
+                            'getBrandWCPayRequest', {
+                                "appId":""+result.entity.appId,     //公众号名称，由商户传入
+                                "timeStamp":""+result.entity.timeStamp,         //时间戳，自1970年以来的秒数
+                                "nonceStr":""+result.entity.nonceStr, //随机串
+                                "package":"prepay_id="+result.entity.prepay_id,
+                                "signType":"MD5",         //微信签名方式：
+                                "paySign":""+result.entity.paySign //微信签名
+                            },
+                            function(res){
+                                if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                                    window.location.href=shopPath+'/order/success?requestId='+requestId;
+                                }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                            }
+                        );
+
+                    }else if(clientType=='h5'){
+                        window.location.href=result.entity.mweb_url+"&redirect_url="+encodeURI(shopPath+'/order/success?requestId='+requestId);
+                    }
+   				}else{
+                    dialog(3,"支付异常，请稍后再试",'');
+				}
+			},error:function(e){
+                dialog(3,"支付异常，请稍后再试",'');
+			}
+		});
+	}else{
+		dialog(3,"请选择支付方式",'');
+	}
+}
+
+function reviewTrxOrder(){
+    var requestId=$("#requestId").val();
+    $.ajax({
+        url:shopPath+'/order/ajax/review',
+        data:{"requestId":requestId},
+        type:'post',
+        dataType:'json',
+        success:function(result){
+            if(result.success){
+                window.location.href=shopPath+'/order/success?requestId='+requestId;
+            }
+        }
+    });
+}
+
+

@@ -1,0 +1,8 @@
+export default function ({app,store,route, req, res, redirect,userAgent}) {
+  let path=route.path;
+  let isServer = process.server;
+
+  if(path.indexOf('/mobile') > -1) {
+
+  }
+}

@@ -1,0 +1,99 @@
+
+.z_bannerB-right {
+  float: right;
+  width: 450px;
+  margin-top: 72px;
+  margin-left: 72px;
+
+}
+.z_bannerB-left {
+  margin-top: 150px;
+}
+.z_bannerB {
+  width: 1200px;
+  margin: auto;
+}
+.z_schol-bor{
+  width: 370px;
+  margin: auto;
+}
+.z_friend>.z_fren-cont:nth-child(1){
+  margin-left:0 ;
+}
+.z_friend>.z_fren-cont:last-child{
+  margin-left:0 ;
+}
+.clear-between-margin>div:first-child{
+  margin-left: 0;
+}
+.clear-between-margin>div:last-child{
+  margin-right: 0;
+}
+
+.after::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+._middle-none120 {
+  width: 120px;
+  height: 1px;
+}
+
+.float-between > div:nth-child(1){
+  float: left;
+}
+.float-between > div:last-child{
+  float: right;
+}
+
+.float-between::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.float-left > div {
+  float: left;
+}
+
+.float-right > div {
+  float: right;
+}
+
+.float-left::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.float-right::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.z_fren-cont img {
+  margin: auto;
+  vertical-align: middle;
+}
+.z_but>div{
+  cursor: pointer;
+}
+.z_schol-but>div{
+  cursor: pointer;
+}
+.xz_but{
+  cursor: pointer;
+}
+img{
+  -webkit-user-drag: none;
+}
+
+html,body{
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+.z_Copywriting{
+  cursor: default;
+}

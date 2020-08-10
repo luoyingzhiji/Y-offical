@@ -1,0 +1,345 @@
+<template>
+  <div class="home">
+    <div class="banner">
+      <a href="javascript:;">
+        <div class="banner-desc">
+          <div class="title">
+            提供一站式服务的企业培训系统
+          </div>
+          <div>
+            <button>免费试用</button>
+            <p>或致电400-8866-736</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="main">
+<!--      网校系统-->
+      <div class="wx-system effect">
+        <div class="title">
+          <h3>网校系统</h3>
+          <h4>教师随时随地进行在线授课</h4>
+        </div>
+
+        <img :src="imagePath + '/res/img/mobile/wx-system-img.png'" width="252" height="163" alt="">
+      </div>
+
+<!--      企业培训-->
+      <div class="enterprise-train effect">
+        <div class="title">
+          <h3>企业培训</h3>
+          <h4>多终端一体化、多种场景随意切换</h4>
+        </div>
+
+        <img :src="imagePath + '/res/img/mobile/enterprise-train-img.png'" width="257" height="152" alt="">
+      </div>
+
+<!--      视频云-->
+      <div class="video-cloud effect">
+        <div class="title">
+          <h3>视频云</h3>
+          <h4>专业级加密的视频导入工具</h4>
+        </div>
+
+        <img :src="imagePath + '/res/img/mobile/video-cloud-img.png'" width="253" height="183" alt="">
+      </div>
+
+<!--      试用/注册-->
+      <div class="hiker-btn">
+        <button>立即咨询</button>
+        <button>免费试用</button>
+      </div>
+
+<!--      选择hiker-->
+      <div class="get-benefit">
+        <h3>选择HIKER，你会得到这些</h3>
+        <div class="benefit-list">
+          <div>
+            <div>
+              <img :src="imagePath + '/res/img/mobile/customized-icon.png'" width="32" height="32" alt="">
+              <p>私有定制</p>
+            </div>
+            <div>
+              <img :src="imagePath + '/res/img/mobile/experience-icon.png'" width="32" height="32" alt="">
+              <p>实战经验丰富</p>
+            </div>
+            <div>
+              <img :src="imagePath + '/res/img/mobile/source-code-icon.png'" width="32" height="32" alt="">
+              <p>支持源码</p>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <img :src="imagePath + '/res/img/mobile/performance-icon.png'" width="32" height="32" alt="">
+              <p>性能稳定</p>
+            </div>
+            <div>
+              <img :src="imagePath + '/res/img/mobile/security-icon.png'" width="32" height="32" alt="">
+              <p>安全可靠</p>
+            </div>
+            <div>
+              <img :src="imagePath + '/res/img/mobile/invitation-icon.png'" width="32" height="32" alt="">
+              <p>定制邀请制</p>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <img :src="imagePath + '/res/img/mobile/service-icon.png'" width="32" height="32" alt="">
+              <p>陪伴式服务</p>
+            </div>
+            <div>
+              <img :src="imagePath + '/res/img/mobile/approval-icon.png'" width="32" height="32" alt="">
+              <p>知名机构认可</p>
+            </div>
+            <div>
+              <img :src="imagePath + '/res/img/mobile/diversification-icon.png'" width="32" height="32" alt="">
+              <p>多样化模块</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!--      涉及多个行业使用-->
+      <div class="industry">
+        <h3>涉及多个行业使用</h3>
+        <div class="industry-list">
+          <ul>
+            <li>留学语言</li>
+            <li>金融会计</li>
+            <li>医学教育</li>
+            <li>政府高校</li>
+            <li>职业教育</li>
+            <li>企业培训</li>
+            <li>K12教育</li>
+            <li>更多行业</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="blue-bg"></div>
+
+<!--      问答-->
+      <div class="FAQ">
+        <h3>常见问答</h3>
+        <div class="">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import { mapState } from 'vuex'
+  export default {
+    name: 'home',
+    layout: 'mobile',
+    computed:{
+      ...mapState(['info']),
+      ...mapState('commonStore',['headerIndex','imagePath']),
+    },
+    data () {
+      return {
+
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .home {
+    margin-top: 3px;
+  }
+  .banner {
+    width: 100%;
+    height: 243px;
+  }
+  .banner a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .banner-desc {
+    width: 100%;
+    height: 100%;
+    background: url('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/mobile/banner-home-1.png') no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 45px 0;
+  }
+  .banner-desc .title {
+    width: 177px;
+    height: 66px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 33px;
+  }
+  .banner-desc button {
+    width: 131px;
+    height: 36px;
+    background-color: #1890ff;
+    border-radius: 18px;
+    margin-bottom: 5px;
+  }
+  .banner-desc p {
+    font-size: 12px;
+    text-align: center;
+  }
+
+
+/*  main*/
+  .effect {
+    width: 100%;
+    height: 323px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .effect .title h3,
+  .effect .title h4{
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+  .effect .title h4 {
+    margin-top: 10px;
+  }
+  .wx-system {
+    padding: 35px 0 40px 0;
+  }
+  .enterprise-train {
+    padding: 30px 0 41px 0;
+    background-color: rgba(24,144,255,0.04);
+  }
+  .video-cloud {
+    padding-top: 40px;
+  }
+  .hiker-btn {
+    margin: 46px 0 40px 0;
+    width: 100%;
+    height: 42px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .hiker-btn button {
+    width: 165px;
+    height: 42px;
+    border-radius: 22px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .hiker-btn button:first-child {
+    background:linear-gradient(90deg,rgba(24,144,255,1) 0%,rgba(53,195,255,1) 100%);
+    color: #fff;
+  }
+  .hiker-btn button:last-child {
+    color: #1890ff;
+    border: 1px solid #1890ff;
+  }
+
+  .get-benefit {
+    width: 100%;
+    height: 455px;
+    padding: 60px 28px 69px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:rgba(24,144,255,0.04);
+  }
+  .get-benefit h3 {
+    font-weight: 600;
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+  }
+  .benefit-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 248px;
+  }
+  .benefit-list > div {
+    display: flex;
+    justify-content: space-between;
+  }
+  .benefit-list > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 72px;
+  }
+
+  .industry {
+    padding: 60px 16px 20px;
+  }
+  .industry h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  .industry-list ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .industry-list ul li {
+    width: 164px;
+    height: 109px;
+    text-align: center;
+    line-height: 109px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  .industry-list ul li:first-of-type {
+    background: url('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/mobile/industry-list-1.png');
+    background-size: 100% 100%;
+  }
+  .industry-list ul li:nth-of-type(2) {
+    background: url('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/mobile/industry-list-2.png');
+    background-size: 100% 100%;
+  }
+  .industry-list ul li:nth-of-type(3) {
+    background: url('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/mobile/industry-list-3.png');
+    background-size: 100% 100%;
+  }
+  .industry-list ul li:nth-of-type(4) {
+    background: url('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/mobile/industry-list-4.png');
+    background-size: 100% 100%;
+  }
+  .industry-list ul li:nth-of-type(5) {
+    background: url('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/mobile/industry-list-5.png');
+    background-size: 100% 100%;
+  }
+  .industry-list ul li:nth-of-type(6) {
+    background: url('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/mobile/industry-list-6.png');
+    background-size: 100% 100%;
+  }
+  .industry-list ul li:nth-of-type(7) {
+    background: url('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/mobile/industry-list-7.png');
+    background-size: 100% 100%;
+  }
+  .industry-list ul li:last-of-type {
+    background: url('https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/mobile/industry-list-8.png');
+    background-size: 100% 100%;
+  }
+
+  .blue-bg {
+    width: 100%;
+    height: 35px;
+    background:rgba(24,144,255,0.04);
+  }
+</style>

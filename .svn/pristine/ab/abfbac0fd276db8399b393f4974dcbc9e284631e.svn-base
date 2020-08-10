@@ -1,0 +1,51 @@
+<template>
+    <div class="top-wrap">
+      <remote-script src="https://player.polyv.net/script/player.js"></remote-script>
+
+      <div class="bMask undis"></div>
+
+
+      <nuxt ref="childPage"/>
+
+
+      <transition name="slide-fade">
+        <CustomDialog />
+      </transition>
+
+
+    </div>
+
+</template>
+
+<script>
+
+  import CustomDialog from '@/components/dialog/CustomDialog';
+
+  export default {
+    name: 'play',
+    components:{
+      CustomDialog,
+    },
+    data () {
+      return {
+      }
+    },
+
+    filters: {
+
+    },
+
+    created(){
+
+
+    },
+    mounted(){
+
+
+    },methods:{
+
+    }
+  }
+</script>
+
+

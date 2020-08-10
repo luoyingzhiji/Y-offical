@@ -1,0 +1,106 @@
+#popup_container_small {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	min-width: 300px; /* Dialog will be no smaller than this */
+	background: #ddd;
+	padding: 2px !important;
+	color: #666;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup_title {
+	height: 28px;
+	margin-top:10px;
+	width: 100%;
+}
+
+#popup_content_small {
+	margin: 0em;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-top: 0;
+}
+/*
+#popup_content.alert {
+	background-image: url(../../images/info.gif);
+}
+
+#popup_content.confirm {
+	background-image: url(../../images/important.gif);
+}
+
+#popup_content.prompt {
+	background-image: url(../../images/help.gif);
+}*/
+
+
+#popup_panel_small {
+	text-align: center;
+	margin: 20px 0 10px 0;
+}
+
+#popup_panel_small input { min-width: 100px; text-align: center; }
+
+#popup_prompt_small {
+	margin: 5px 0;
+	padding: 7px 5px;
+	border: 1px solid #ccc;
+	background: #f7f7f7;
+	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;
+	-moz-box-shadow: inset 1px 1px 1px #eee; -webkit-box-shadow: inset 1px 1px 2px #eee; box-shadow: inset 1px 1px 2px #eee;
+	color: #666;
+}
+#popup_prompt_small:focus { background: #fff; }
+
+#popup_overlay_small { background: #000 !important; opacity: 0.5 !important; }
+
+#popup_ok_small, #popup_cancel_small { padding: 5px 15px; font-size: 12px; display: inline-block; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+#popup_ok_small, #popup_cancel_small {
+	-moz-box-shadow: 1px 1px 2px #eee; -webkit-box-shadow: 1px 1px 2px #eee; box-shadow: 1px 1px 2px #eee; cursor: pointer; 
+	font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif; text-transform: uppercase; 
+}
+#popup_ok_small:hover, #popup_ok_small:active, #popup_cancel_small:hover, #popup_cancel_small:active { background-position: 0 -39px; }
+
+#popup_ok_small { border: 1px solid #c2691a; background: #eb862d; font-weight: bold; color: #fff; }
+#popup_ok_small:hover { background: #fb9a45; }
+
+#popup_cancel_small { border: 1px solid #ccc; background: #eee; text-shadow: 1px 1px #f7f7f7; color: #333; }
+#popup_cancel_small:hover { background-color: #ddd; border: 1px solid #bbb; }
+
+#popup_prompt_small { width: 270px !important; }
+
+.addContBox_small  .subcontent { display: none; }
+.addContBox_small .stdform label {width: 160px;}
+.addContBox_small .stdform span.field,.addContBox_small .stdform div.field {margin-left: 160px;}
+.addContBox_small .stdform small.desc {margin-left: 180px;}
+
+
+.amz-toolbar_small {
+	bottom: 10px;
+}
+.amz-toolbar_small {
+	position: absolute;
+	top: 18px;
+	z-index: 999;
+	right:30px;
+	height:40px;
+}
+.amz-toolbar_small .am-icon-faq_small {
+	background-color: #ccc;
+	color: #fff;
+	display: block;
+	font-size: 12px;
+	height: 34px;
+	line-height: 36px;
+	opacity: 1;
+	transition: all 0.3s ease-in 0s;
+	width: 34px;
+}
+.amz-toolbar_small .am-icon-faq_small:hover{
+	transform: rotate(720deg);
+}

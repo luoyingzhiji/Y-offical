@@ -1,0 +1,949 @@
+<template>
+  <div>
+
+    <div class="z_banner-wrap1">
+      <div class="z_ban-bor">
+        <div class="z_bannerB float-left">
+          <div class="z_bannerB-left">
+            <div class="one ">HIKER企业培训系统</div>
+            <div class="two">为企业打造一体化的专业在线培训平台</div>
+            <div class="z_but float-left">
+              <div class="z_but-left">立即咨询</div>
+              <div class="z_but-right" @click="goLogin()">免费试用</div>
+            </div>
+          </div>
+          <div class="z_bannerB-right">
+            <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/scba.png" alt="HIKER企业培训系统">
+            <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/tyx.png" alt=""
+                 style="width: 550px; height: 90px;margin-left: -80px;margin-top: -60px;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="top-main-cont">
+      <div class="top-wrap">
+        <!-- banner -->
+
+        <!--网校功能列表-->
+        <div class="z_banner-wrap">
+          <!-- 12.13注册单 start-->
+          <div class="z_Copywriting" style="margin-bottom: 20px">
+            <div class="one">四大重点功能模块突出产品特色</div>
+          </div>
+          <div class="z_content float-between">
+            <div class="z_content-left">
+              <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/Ebz1.png"
+                   style="height: 428px;width: 551px"
+                   alt="培训计划">
+            </div>
+            <div class="z_content-right">
+              <div style="position: relative" >
+                <div class="xunis" >1</div>
+                <div class="E_text-one">培训计划</div>
+              </div>
+
+
+              <div class="E_text-two">
+                包含新人入职、经验分享、主题培训等，根据需求进行在线培训，帮助员工更好的提升自己。
+              </div>
+
+              <div class="z_schol-but" style="margin-top: 60px">
+                <div class="z_schol-bor float-left">
+                <div class="one">立即咨询</div>
+                <div class="two" @click="goLogin()">免费试用</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="z_content float-between">
+            <div class="z_content-right">
+              <div style="position: relative" >
+                <div class="xunis" >2</div>
+                <div class="E_text-one">人才管理</div>
+              </div>
+              <div class="E_text-two">
+                提供了人才培养、职业测评、调查报告等功能，实时观察员工现状，保证人才自身能力的正常发挥。
+              </div>
+
+              <div class="z_schol-but" style="margin-top: 60px">
+                <div class="z_schol-bor float-left">
+                <div class="one">立即咨询</div>
+                <div class="two" @click="goLogin()">免费试用</div></div>
+              </div>
+            </div>
+            <div class="z_content-left">
+              <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/Ebz2.png"
+                   style="height: 428px;width: 551px"
+                   alt="人才管理">
+            </div>
+          </div>
+          <div class="z_content float-between">
+            <div class="z_content-left">
+              <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/Ebz3.png"
+                   style="height: 428px;width: 551px"
+                   alt="员工激励">
+            </div>
+            <div class="z_content-right">
+              <div style="position: relative" >
+                <div class="xunis" >3</div>
+                <div class="E_text-one">员工激励</div>
+              </div>
+              <div class="E_text-two">
+                通过参与统计、目标设立、竞争管理、物质福利等方式，帮助员工更好的工作完成任务，给企业创造更大的价值
+              </div>
+
+              <div class="z_schol-but" style="margin-top: 60px">
+                <div class="z_schol-bor float-left">
+                <div class="one">立即咨询</div>
+                <div class="two" @click="goLogin()">免费试用</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="z_content float-between">
+            <div class="z_content-right">
+              <div style="position: relative" >
+                <div class="xunis" >4</div>
+                <div class="E_text-one">数据分析</div>
+              </div>
+              <div class="E_text-two">
+                候选人质量分析、渠道质量分析、可视化数据面板等进行多维度统计和分析，了解员工情况助其成长。
+              </div>
+
+              <div class="z_schol-but" style="margin-top: 60px">
+                <div class="z_schol-bor float-left">
+                <div class="one">立即咨询</div>
+                <div class="two" @click="goLogin()">免费试用</div></div>
+              </div>
+            </div>
+            <div class="z_content-left">
+              <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/Ebz4.png"
+                   style="height: 428px;width: 551px"
+                   alt="数据分析">
+            </div>
+          </div>
+        </div>
+
+        <div class="z_banner-wrap" style="margin-top: 50px;width:100%;height:918px;">
+          <div style="width:100%; position: absolute;left: 0;background:rgba(24,144,255,1);height:918px " >
+          <!-- 12.13注册单 start-->
+            <div style="width: 1200px ;margin: auto">
+              <div class="z_Copywriting" style="margin-bottom: 20px">
+                <div class="one" style="padding-top: 50px;font-size:28px;
+                  font-family:PingFangSC-Semibold,PingFang SC;font-weight:600;
+                  color:rgba(255,255,255,1);">传统企业培训系统&HIKER企业培训系统
+                </div>
+              </div>
+              <div class="z_content float-between " style="margin-top: 90px">
+                <div class="E-con-wrap">
+                  <div class="E_con-top">
+                    <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/lj1.png" alt="">
+                  </div>
+                  <div class="E_content-left">
+
+                    <div class="E_con-bottom">
+                      <div class="E-but-bor">
+                        <div class="E-but-one ftar">传统企业培训</div>
+                      </div>
+
+                      <div class="E-E-buil float-between">
+                        <div class="E-buil float-between">
+                          <div class="left">
+                            <div class="top tar">组织架构</div>
+                            <div class="bottom">自动划分组织架构，方便企业统一管理</div>
+                          </div>
+                          <div class="right">
+                            <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/E-e1.png" alt="组织架构">
+                          </div>
+                        </div>
+                        <div class="E-buil float-between">
+                          <div class="left">
+                            <div class="top tar">考试评测</div>
+                            <div class="bottom">通过在线考试测评提供专业化的测评报告，进行多维度统计和分析</div>
+                          </div>
+                          <div class="right">
+                            <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/E-e1.png" alt="考试评测">
+                          </div>
+                        </div>
+                        <div class="E-buil float-between">
+                          <div class="left">
+                            <div class="top tar">员工管理</div>
+                            <div class="bottom" style="" >支撑批量添加、导入员工，支持自定义员工的积分等</div>
+                          </div>
+                          <div class="right">
+                            <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/E-e1.png" alt="员工管理">
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="E_content-middle">
+                  <div class="E_mid-top">
+                    <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/jxbf1.png" alt="">
+                  </div>
+                  <div class="E_mid-mid">VS</div>
+                  <div class="E_mid-bot">
+                    <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/jxbf2.png" alt="">
+                  </div>
+                </div>
+                <div class="E_content-right">
+                  <div class="E-but-one ffo">HIKER企业培训</div>
+                  <div class="E-E-buil float-between">
+                    <div class="E-buil float-between">
+                      <div class="right">
+                        <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/E-e2.png" alt="经验分享">
+                      </div>
+                      <div class="left">
+                        <div class="top">经验分享</div>
+                        <div class="bottom">通过“转发课程”功能轻松转，方便自己企业员工进行参考</div>
+                      </div>
+                    </div>
+                    <div class="E-buil float-between">
+                      <div class="right">
+                        <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/E-e2.png" alt="学习轨迹">
+                      </div>
+                      <div class="left">
+                        <div class="top">学习轨迹</div>
+                        <div class="bottom">精确记录学习轨迹见证自己成长过程</div>
+                      </div>
+                    </div>
+                    <div class="E-buil float-between">
+                      <div class="right">
+                        <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/E-e2.png" alt="学习资源">
+                      </div>
+                      <div class="left">
+                        <div class="top">学习资源</div>
+                        <div class="bottom">丰富的课程体系和企业题库，帮助员工丰富内涵</div>
+                      </div>
+                    </div>
+                    <div class="E-buil float-between">
+                      <div class="right">
+                        <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/E-e2.png" alt="培训计划">
+                      </div>
+                      <div class="left">
+                        <div class="top">培训计划</div>
+                        <div class="bottom">自动分解企业培训目标，建立培训计划</div>
+                      </div>
+                    </div>
+                    <div class="E-buil float-between">
+                      <div class="right">
+                        <img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/E-e2.png" alt="课程分配">
+                      </div>
+                      <div class="left">
+                        <div class="top">课程分配</div>
+                        <div class="bottom">合理分配课程资源，方便员工有计划学习</div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="z_banner-wrap">
+          <!-- 12.13注册单 start-->
+          <div class="z_Copywriting" style="margin-bottom: 75px">
+            <div class="one">企业培训系统六大亮点</div>
+          </div>
+          <div class="z_content" style="flex-direction: column;">
+            <div class="E_content-top float-left clear-between-margin">
+              <div class="PX_bor">
+                <div class="top"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/tb1.png" alt="多方位"></div>
+                <div class="mid">多方位</div>
+                <div class="bot">和绩效系统、考试测评、培训计划无缝对接，方便企业 管理。</div>
+              </div>
+              <div class="PX_bor">
+                <div class="top"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/tb2.png" alt="参与感"></div>
+                <div class="mid">参与感</div>
+                <div class="bot">对每个部门进行引导性培训，培养员工在培训方面的参与性。</div>
+              </div>
+              <div class="PX_bor">
+                <div class="top"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/tb3.png" alt="一站式"></div>
+                <div class="mid">一站式</div>
+                <div class="bot">拥有经验分享、学习轨迹、学习资源、培训计划、课程风向等一站式功能。</div>
+              </div>
+            </div>
+            <div class="E_content-bottom float-left clear-between-margin">
+              <div class="PX_bor ">
+                <div class="top"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/tb4.png" alt="工作域"></div>
+                <div class="mid">工作域</div>
+                <div class="bot">结合岗位职责，以工内容和即能为中心对学习和能力进行评估。</div>
+              </div>
+              <div class="PX_bor">
+                <div class="top"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/tb5.png" alt="数据化" style="height: 22px" ></div>
+                <div class="mid">数据化</div>
+                <div class="bot">对员工的培训和学习情况进行多维度、多层面的数据分析和统计。</div>
+              </div>
+              <div class="PX_bor">
+                <div class="top"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/tb6.png" alt="定制化"></div>
+                <div class="mid">定制化</div>
+                <div class="bot">跟用户沟通了解所需要的各种要求进行平台定制，搭建让用户满意的在线培训系统。</div>
+              </div>
+            </div>
+            <div class="z_schol-but" style="margin-top: 70px">
+              <div class="z_schol-bor float-left">
+              <div class="one">立即咨询</div>
+              <div class="two" @click="goLogin()">免费试用</div></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="z_banner-wrap">
+          <!-- 12.13注册单 start-->
+          <div class="z_Copywriting">
+            <div class="oee" >适用于以下或更多教育培训行业</div>
+          </div>
+          <div class="z_content4">
+            <div class="z_content-bor">
+              <div class="z_cont-one float-left " style="padding:0 140px" >
+                <div class="z_backImgs">
+                  <div style="position: absolute;" class="z_backImgss">医学教育</div>
+                  <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/z_b5.png" style="margin-left: 0px;" alt="医学教育"/>
+                </div>
+               <div class="z_backImgs">
+                 <div style="position: absolute; width: 330px" class="z_backImgss">  政府高校</div>
+                 <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/f_b1.png" alt="政府高校"/>
+               </div>
+                <div class="z_backImgs">
+                  <div style="position: absolute;width: 330px" class="z_backImgss">K12教育</div>
+                  <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/f_b2.png" alt="K12教育"/>
+                </div>
+
+
+
+              </div>
+              <div class="z_cont-two float-left clear-between-margin" style="padding:0 140px;margin-top: 40px" >
+                <div class="z_backImgs">
+                  <div style="position: absolute;" class="z_backImgss">出国留学</div>
+                  <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/z_b1.png" style="margin-left: 0px;" alt="出国留学"/>
+                </div>
+                <div class="z_backImgs">
+                  <div style="position: absolute; width: 330px" class="z_backImgss">  职业教育</div>
+                  <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/z_b2.png" alt="职业教育"/>
+                </div>
+                <div class="z_backImgs">
+                  <div style="position: absolute;width: 330px" class="z_backImgss">语言教育</div>
+                  <img src=" https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/f_b3.png" alt="语言教育"/>
+                </div>
+                <!--<div class="z_backImg z_b1">出国留学</div>-->
+                <!--<div class="z_backImg z_b2">职业教育</div>-->
+                <!--<div class="z_backImg f_b3">语言教育</div>-->
+
+              </div>
+            </div>
+          </div>
+          <!-- 12.13注册单 end-->
+        </div>
+
+        <div class="z_banner-wrap">
+
+          <div class="z_Copywriting">
+            <div class="one">他们选择了HIKER网校</div>
+
+          </div>
+          <div class="z_content2" style="margin-top: 60px;flex-direction: column;justify-content: center;" >
+            <div class="z_friend float-left clear-between-margin">
+
+              <div class="z_fren-cont"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Weitu/w2.png" alt="中科数据"></div>
+              <div class="z_fren-cont"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Weitu/w1.png" alt="爱菠萝"></div>
+              <div class="z_fren-cont"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Weitu/w11.png" alt="周翰教育"></div>
+              <div class="z_fren-cont"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Weitu/w13.png" alt="青矩online"></div>
+              <div class="z_fren-cont"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Weitu/w8.png" alt="瑞达注会"></div>
+            </div>
+            <div class="z_friend float-left clear-between-margin">
+              <div class="z_fren-cont"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Weitu/w5.png" alt="研大医学考研"></div>
+              <div class="z_fren-cont"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Weitu/w9.png" alt="众学"></div>
+              <div class="z_fren-cont"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Weitu/w12.png" alt="大立教育"></div>
+              <div class="z_fren-cont"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Weitu/w10.png" alt="海绵学堂"></div>
+
+              <div class="z_fren-cont"><img src="https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Weitu/w6.png" alt="1元ABC"></div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="z_banner-wrap after" style="height: 320px; margin-top: 150px; position: relative ">
+          <div class="f2 " style="position: absolute;left: 0;">
+            <div class="z_Copywriting">
+              <div class="xz_one">现在注册，立享新人专享优惠礼包</div>
+              <div class="xz_but" @click="goLogin()">立即注册</div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+</template>
+<script>
+  import { mapState } from 'vuex'
+  export  default {
+    computed: {
+      ...mapState(['info'])
+    },
+    data() {
+      return {
+        title: '企业培训系统',
+      }
+    },
+    head() {
+      return {
+        title: '企业培训系统_企业培训体系搭建|平台开发|在线培训|内训系统|软件平台',
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: '企业培训系统,企业培训体系搭建,企业培训平台开发,企业在线培训,企业内训系统,企业培训软件平台'
+          },
+          {
+            hid: 'author',
+            name: 'author',
+            content: 'HIKER教育'
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content: '企业培训系统主要为企业提供培训计划、人才管理、员工激励、数据分析等功能'
+          }
+        ]
+      }
+    },
+    methods:{
+      goLogin() {
+        this.$router.push({ path: '/trial' })
+      },
+    }
+  }
+</script>
+
+<style scoped >
+  @import "../assets/css/common.css";
+  @import "../assets/css/NewBanner.css";
+  .z_content-right{
+    position: relative;
+  }
+
+
+  .xunis{
+    position: absolute;
+    bottom: 0;
+    font-size:72px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(216,236,255,1);
+    line-height: 44px;
+    float:left;
+  }
+  .E_content-right .ffo{
+    background:linear-gradient(90deg,rgba(53,195,255,1) 0%,rgba(24,144,255,1) 100%);
+    border-radius:31px;
+    font-size:24px;
+    font-family:PingFangSC-Semibold,PingFang SC;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+
+  }
+  .E_content-right{
+    height: 605px;
+  }
+  .oee{
+    font-size:28px;
+    font-family:PingFangSC-Semibold,PingFang SC;
+    font-weight:600;
+    color:rgba(60,60,60,1);
+    line-height:40px;
+  }
+  .xz_but{
+    width:165px;
+    height:44px;
+    background:rgba(255,255,255,1);
+    border-radius:22px;
+    font-size:14px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(24,144,255,1);
+    line-height:14px;
+    margin: auto;
+    margin-top: 30px;
+    line-height: 44px;
+
+  }
+
+  .xz_one{
+    padding-top: 100px;
+    font-size:28px;
+    font-family:PingFangSC-Semibold,PingFang SC;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:40px;
+  }
+  .f2{
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/School/qypxy.png");
+    height: 320px;
+    width: 100%;
+  }
+  .z_fren-cont{
+    width: 184px;
+    height: 93px;
+    margin: 20px 35px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 0px 12px 3px rgba(191,224,255,0.26);
+    border-radius:4px;
+    filter:blur(0px);
+    text-align: center;
+    line-height: 93px;
+  }
+  .z_fren-cont img{
+    margin: auto;
+  }
+  .z_friend{
+
+    justify-content: center;
+
+    flex-direction: row;
+  }
+  .z_cont-one{
+
+  }
+  .z_cont-two{
+
+  }
+  .z_backImg{
+
+    margin: 20px 28px;
+    background-size: contain;
+  }
+  .z_backImg{
+    background-size: cover;
+    text-align: center;
+    line-height: 168px;
+    height: 168px;
+    width: 256px;
+    font-size:18px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+  }
+  .z_backImgss{
+    background-size: cover;
+    text-align: center;
+    line-height: 157px;
+    height: 168px;
+    width: 256px;
+    font-size:18px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+  }
+  .z_backImgs img{
+    height: 168px;
+    width: 256px;
+    margin-right: 28px;
+    margin-left: 28px;
+  }
+  .z_backImgs{
+    position: relative;
+  }
+  .z_b1{
+    background-image: url(" ../static/res/img/Enterprise/z_b1.png");
+  }
+  .z_b2{
+    background-image: url(" ../static/res/img/Enterprise/z_b2.png");
+  }
+  /*.f_b1{*/
+    /*background-image: url(" ../static/res/img/Enterprise/f_b1.png");*/
+  /*}*/
+  /*.f_b2{*/
+    /*background-image: url(" ../static/res/img/Enterprise/f_b2.png");*/
+  /*}*/
+
+  .f_b3{
+    background-image: url(" ../static/res/img/Enterprise/f_b3.png");
+  }
+
+  /*.z_b5{*/
+    /*background-image: url(" ../static/res/img/Enterprise/z_b5.png");*/
+  /*}*/
+  .z_b6{
+    background-image: url(" ../static/res/img/Luoying/z_b6.png");
+  }
+  .z_b7{
+    background-image: url(" ../static/res/img/Luoying/z_b7.png");
+  }
+  .z_b8{
+    background-image: url(" ../static/res/img/Luoying/z_b8.png");
+    height: 168px;
+    width: 256px;
+  }
+  .z_content4{
+    margin-top: 66px;
+
+    justify-content: center;
+  }
+  .E_content-top{
+
+    justify-content: center;
+  }
+  .E_content-bottom{
+
+    justify-content: center;
+  }
+  .PX_bor{
+    margin: 30px 42px;
+
+    flex-direction: column;
+  }
+  .PX_bor div{
+
+    justify-content: center;
+  }
+  .PX_bor .mid{
+    font-size:22px;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    line-height:30px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  .PX_bor .bot{
+    width:337px;
+    height:40px;
+    font-size:14px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:20px;
+  }
+  .PX_bor .top img{
+    width: 32px;
+    height: 32px;
+    margin: auto;
+    vertical-align: middle;
+  }
+  .PX_bor .top{
+    width:70px;
+    height:70px;
+    background:linear-gradient(137deg,rgba(56,198,255,1) 0%,rgba(26,148,255,1) 100%);
+    border-radius: 35px;
+    margin: auto;
+    line-height: 70px;
+    text-align: center;
+  }
+  .E_content-left .bottom{
+    width: 346px;
+    text-align: right;
+  }
+  .E_content-right .bottom{
+      width: 377px;
+  }
+  .E_con-top{
+    height: 170px;
+    margin-top: -33px;
+  }
+  .E_con-top img{
+    width: 180px;
+    height: 170px;
+    float: right;
+  }
+  .E_content-middle{
+    float: left;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .E_content-middle div{
+    justify-content: center;
+    text-align: center;
+  }
+  .E_content-middle img{
+    width: 6px;
+    height: 150px;
+  }
+  .E_mid-mid{
+    font-size:40px;
+    font-family:PingFangSC-Semibold,PingFang SC;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:40px;
+    margin: 20px 65px;
+  }
+  .E_content-right{
+    width: 500px;
+    padding: 60px 15px 57px 55px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 6px 40px 0px rgba(24,121,217,1);
+    border-radius:16px;
+  }
+  .ftar{
+    float: right;
+  }
+  .E-but-one::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .E-but-bor::after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .E-but-one {
+    width: 210px;
+    height: 62px;
+    background: rgba(236, 236, 236, 1);
+    border-radius: 31px;
+    font-size: 24px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(142, 142, 142, 1);
+    margin-bottom: 50px;
+    line-height: 62px;
+    text-align: center;
+  }
+
+  .E_content-left {
+    height: 467px;
+    width: 503px;
+    padding: 60px 55px 55px 47px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 6px 40px 0px rgba(24, 121, 217, 1);
+    border-radius: 16px;
+    line-height: 85px;
+  }
+  .E_content-left .E-buil .right{
+    margin-top: 0;
+  }
+  .E-buil .left .top {
+    font-size: 18px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 18px;
+  }
+
+  .E_content-left .E-buil .left {
+    margin: 15px 25px;
+    margin-left: 0;
+  }
+  .E_content-right .E-buil .left {
+    margin: 15px 23px;
+    margin-right: 0;
+  }
+
+  .E-buil .right {
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .E-buil .left .bottom {
+    font-size: 15px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 21px;
+    margin-top: 10px;
+  }
+
+  .tar {
+    text-align: right;
+  }
+
+  .E-buil {
+
+  }
+
+  .E-buil .right img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .z_content-left {
+    padding: 80px 0px;
+  }
+
+  .z_content-right {
+
+    justify-content: center;
+    flex-direction: column;
+    padding: 80px 0px;
+  }
+
+  .E_text-one {
+    font-size: 22px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 30px;
+    margin-top: 135px;
+    position: relative;
+
+  }
+
+  .E_text-two {
+    width: 477px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 20px;
+    margin-top: 15px;
+  }
+
+  .z_schol-but {
+
+    text-align: center;
+    justify-content: center;
+    margin-top: 75px;
+  }
+
+  .z_schol-but .one {
+    width: 165px;
+    height: 44px;
+    background: linear-gradient(90deg, rgba(24, 144, 255, 1) 0%, rgba(53, 195, 255, 1) 100%);
+    border-radius: 22px;
+    font-size: 14px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 44px;
+  }
+
+  .z_schol-but .two {
+    width: 165px;
+    height: 44px;
+    border-radius: 22px;
+    border: 1px solid rgba(24, 144, 255, 1);
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(24, 144, 255, 1);
+    line-height: 44px;
+    margin-left: 38px;
+  }
+
+  .z_content {
+
+
+    justify-content: center;
+  }
+
+  .z_Copywriting {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  .z_Copywriting .one {
+    font-size: 28px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(51, 51, 51, 1);
+    line-height: 28px;
+  }
+
+  .z_banner-wrap {
+    margin-top: 100px;
+  }
+  .z_ban-bor{
+    background-image: url("https://offical--img.oss-cn-beijing.aliyuncs.com/res/img/Enterprise/scbak.png");
+  }
+  .z_bannerB {
+
+    height: 500px;
+    margin: auto;
+  }
+
+
+
+  .z_bannerB-right {
+    margin-left: 72px;
+    flex-direction: column;
+  }
+
+  .z_but {
+
+    margin-top: 50px;
+  }
+
+  .z_but-left {
+    width: 144px;
+    height: 48px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 28px;
+    font-size: 16px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color:rgba(114,137,255,1);
+    line-height: 16px;
+    text-align: center;
+    line-height: 48px;
+    margin-right: 20px;
+  }
+
+  .z_but-right {
+    width: 144px;
+    height: 48px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    font-size: 16px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 16px;
+    text-align: center;
+    line-height: 48px;
+  }
+
+  .z_S-left img {
+    height: 32px;
+    width: 32px;
+    margin: auto;
+  }
+
+  .z_S-right .one {
+    font-size: 18px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 25px;
+  }
+
+  .z_S-right .two {
+    margin-top: 5px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 21px;
+  }
+
+  .z_bannerB-left .one {
+    font-size: 56px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    line-height: 60px;
+    text-shadow: 0px 2px 4px rgba(67, 96, 255, 1);
+  }
+
+  .z_bannerB-left .two {
+    font-size: 24px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 33px;
+  }
+
+  .z_bannerB-right img {
+    width: 572px;
+    height: 367px;
+  }
+</style>

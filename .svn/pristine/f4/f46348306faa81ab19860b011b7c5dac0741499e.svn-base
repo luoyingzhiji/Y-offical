@@ -1,0 +1,280 @@
+
+function dialogNote(questionId){
+    if(!isLogin()){
+        $('.exam-dClose').click();
+        dialog(0,'','');
+        return;
+    }
+    var obj=$(".noteDialog");
+    $(obj).css({"top" :($(window).height()-350)/2});
+
+
+    $("#noteContent").html("");
+    $("#noteQuestionId").val(questionId);
+
+    $(".exam-dClose").bind("click", function() {
+        $(".bMask").remove();
+        $(obj).hide();
+    });
+    $(obj).before('<div class="bMask"></div>');
+    $(obj).show();
+    /*查询用户的笔记*/
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        data:{"questionId":questionId},
+        url:examPath+"/question/note/ajax/info",
+        success:function(result){
+            if(result.success){
+                $("#noteContent").html(result.entity);
+            }else {
+                dialog(3,result.message,'');
+            }
+        }
+    });
+}
+
+function updateNote(){
+    var content=$("#noteContent").val();
+    $('.exam-dClose').click();
+    var noteQuestionId= $("#noteQuestionId").val()
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        data:{"questionId":noteQuestionId,"content":content},
+        url:examPath+"/question/note/ajax/add",
+        success:function(result){
+            if(result.success){
+                if(content==''){
+                    $("#questionNote"+noteQuestionId).removeClass("current");
+                }else{
+                    $("#questionNote"+noteQuestionId).addClass("current");
+                }
+                dialog(3,result.message,'');
+            }
+        },error:function(e){
+            dialog(3,'操作失败','');
+        }
+    });
+}
+
+function dialogError(questionId){
+    var obj=$(".errorDialog");
+    $("#errorQuestionId").val(questionId);
+    $(obj).css({"top" :($(window).height()-420)/2});
+
+
+
+
+    $(".exam-dClose").bind("click", function() {
+        $(".bMask").remove();
+        $(obj).hide();
+    });
+    $(obj).before('<div class="bMask"></div>');
+    $(obj).show();
+}
+
+
+function commitError(){
+    if(!isLogin()){
+        $('.exam-dClose').click();
+        dialog(0,'','');
+        return;
+    }
+    var questionInfoError=$("#questionInfoError").val();
+    var questionAnalyzeError=$("#questionAnalyzeError").val();
+    /*if(questionAnalyzeError==''&&questionInfoError==''){
+        $('.exam-dClose').click();
+        return;
+    }*/
+    /*if (questionInfoError==""){
+        document.getElementById('erro').innerHTML='请输入题干选项及答案错误！';
+        $("#erro").show();
+        /!*dialog(3,'请输入1','');*!/
+        return;
+    }*/
+    if (questionAnalyzeError=="" && questionInfoError==""){
+        document.getElementById('erro').innerHTML='请输入题干选项或者解析错误！';
+        $("#erro").show();
+        return;
+    }
+    $('.exam-dClose').click();
+    $.ajax({
+        url:examPath+"/question/feedback/ajax/add",
+        type:"POST",
+        dataType:"json",
+        data:{"questionId": $("#errorQuestionId").val(),"contentError":questionInfoError,"analyzeError":questionAnalyzeError},
+        success:function(result){
+            if(result.success){
+                dialog(3,result.message,'');
+            }
+        },error:function(e){
+            dialog(3,'操作失败','');
+        }
+    });
+}
+
+
+function toQues(number,type) {//跳题
+    var quesObj=$("#ques"+number);
+    if($(quesObj).length==0){
+        return;
+    }
+    playMusic();
+    if(type!='more'){//单题模式
+        $(".question-wrap").hide();
+    }
+    var _link="#ques"+number;
+    if($(quesObj).attr("lang")!=undefined){
+        $("#"+$(quesObj).attr("lang")).show();
+        _link="#"+$(quesObj).attr("lang");
+    }
+    $(quesObj).show();
+    $(".currentBarNum").html(number);
+    setTimeout(function(){
+        window.location.href=_link;
+    },200);
+    if($(window).width()<=768){
+        $('.left-content').show();
+        $('.right-content').hide();
+    }
+
+}
+//切换试题 音频暂停
+function playMusic(){
+    if ($(".audioplayer-playing .audioplayer-playpause")!=undefined){
+        $(".audioplayer-playing .audioplayer-playpause").click();
+    }
+}
+
+function chooseOption(obj){
+
+    var questionInfo=$(obj).parent().attr("lang");
+    var questionId=questionInfo.split("#")[0];
+    var questionType=questionInfo.split("#")[1];
+    if($(".intro"+questionId).length>0&&!$(".intro"+questionId).hasClass("undis")){
+        return;
+    }
+    if($(obj).hasClass("current")&&parseInt(questionType)!=1&&parseInt(questionType)!=3){//非单选题已选中
+        $(obj).removeClass("current");
+        var flag=false;
+        $(obj).siblings().each(function(){
+            if($(this).hasClass("current")){
+                flag=true;
+            }
+        });
+        if(!flag){//多选题一项未选，去除做题样式
+            $(".bar-num-btn"+questionId).removeClass("type-blue");
+        }
+    }else if(!$(obj).hasClass("current")&&parseInt(questionType)!=1&&parseInt(questionType)!=3){//非单选题未选中
+        $(obj).addClass("current");
+        $(".bar-num-btn"+questionId).addClass("type-blue");
+    }else if(!$(obj).hasClass("current")&&(parseInt(questionType)==1||parseInt(questionType)==3)){//单选题未选中
+        $(obj).siblings().removeClass("current");
+        $(obj).addClass("current");
+        $(".bar-num-btn"+questionId).addClass("type-blue");
+    }
+}
+function doFavorite(questionId) {
+    var classAttr= $("#favoriteTag"+questionId).attr("class");
+    var url =examPath+"/question/favorite/add";
+    if (classAttr.indexOf("current")!=-1){
+        url =examPath+"/question/favorite/del";
+    }
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        data:{"questionId":questionId},
+        url:url,
+        success:function(result){
+            if(result.success){
+                if (classAttr.indexOf("current")!=-1){
+                    dialog(3,'取消收藏','');
+                    $("#favoriteTag"+questionId).removeClass("current");
+                }else {
+                    dialog(3,'收藏成功','');
+                    $("#favoriteTag"+questionId).addClass("current");
+                }
+            }else {
+                dialog(3,result.message,'');
+            }
+
+        },
+        error:function(error){
+            dialog(3,'操作失败','');
+        }
+    });
+}
+$(function(){
+    var $answerSheet = $('.answer-sheet');
+    var $leftContent = $('.left-content');
+    var $rightContent = $('.right-content');
+    var $rightTime = $('.right-time');
+
+    $(window).on('scroll load resize',function () {
+        var _width=1150;
+        if($(window).width()<=1024){
+            _width=1024;
+        }
+        if ($(this).scrollTop() >= 0 && $(window).width() >= 1024) {
+            if($rightTime.length == 0&&$(this).scrollTop() <80){
+                $rightContent.css({'position': 'static'})
+            }else{
+                $rightContent.css({'position': 'fixed','top':'80','right':($(this).width()-_width) /2});
+            }
+            if($rightTime.length > 0){
+                $rightTime.css({'position': 'fixed', 'top': '0', 'right': ($(this).width() - _width) / 2});
+            }
+        }
+    })
+
+    $(window).on('scroll load resize',function () {
+        if ($(this).scrollTop() >= 0 &&$(this).scrollTop() <80&& $(window).width() >= 1150 ) {
+            if($rightTime.length>0) {
+                $rightTime.css({'position': 'fixed', 'top': '0', 'right': ($(this).width() - 1150) / 2});
+                $rightContent.css({'position': 'fixed','top':'80','right':($(this).width()-1150) /2});
+            }else{
+                $rightContent.css({'position': 'static'})
+            }
+        }else if ($(this).scrollTop() >= 80 && $(window).width() >= 1150 ) {
+            if ($rightTime.length == 0) {
+                $rightContent.css({'position': 'fixed', 'top': '0', 'right': ($(this).width() - 1150) / 2});
+            }
+        }
+    })
+
+
+    var $answerSheetMobile = $('.answer-sheet-mobile');
+    $answerSheetMobile.on('click', function () {
+        if ($rightContent.is(":hidden")) {
+
+            $rightContent.show();
+            $leftContent.hide();
+        }else {
+            $rightContent.hide();
+            $leftContent.show();
+        }
+    })
+
+    $(window).on('resize', function () {
+        if ($(window).width() >= 768) {
+            $rightContent.show();
+            $leftContent.show();
+        }else {
+            $leftContent.show();
+            $rightContent.hide();
+
+            $answerSheet.on('click', function () {
+                if ($rightContent.is(":hidden")) {
+                    $rightContent.show();
+                    $leftContent.hide();
+
+                }else {
+                    $rightContent.hide();
+                    $leftContent.show();
+                }
+            })
+        }
+
+    })
+})

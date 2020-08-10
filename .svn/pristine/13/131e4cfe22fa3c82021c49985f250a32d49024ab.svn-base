@@ -1,0 +1,310 @@
+<template>
+  <div class="articleInfo">
+    <div class="articleInfo-content">
+      <p class="Total-title"><a href="/">首页</a>/<a href="/article">新闻资讯</a>/<span>{{articleInfo.articleTypeName}}</span></p>
+     <div class="clearFix">
+       <div class="article-left" style="float: left">
+         <div class="article-top">
+           <p class="article-title">
+             {{articleInfo.title}}
+           </p>
+           <no-ssr><p class="time">{{articleInfo.createTime | dataFormat('yyyy-MM-dd')}}</p></no-ssr>
+           <p class="line"></p>
+         </div>
+
+         <div class="article-content" v-html="articleContent">
+         </div>
+         <div class="article-link">
+           <p  v-if="articleList.articleUpper!=undefined&&articleList.articleUpper.status==0" >上一篇：<nuxt-link tag="a" :to="{path: articleList.articleUpper.link.replace('/a', '/article')}" >{{articleList.articleUpper.title}}</nuxt-link></p>
+           <p v-if=" articleList.articleNext!=undefined&&articleList.articleNext.status==0" >下一篇：<nuxt-link tag="a" :to="{path: articleList.articleNext.link.replace('/a', '/article')}">{{articleList.articleNext.title}}</nuxt-link></p>
+
+         </div>
+       </div>
+     <div class="article-right" style="float: right">
+     <ArticleRight :businessType="articleInfo.businessType" :seoKeywords="articleInfo.seoKeywords" :id="articleInfo.id"></ArticleRight>
+     </div>
+     </div>
+    </div>
+
+
+  </div>
+</template>
+
+<script>
+
+  import Share from '../../components/common/Share';
+  import ArticleRight from '../../components/articleRight';
+  import { mapState } from 'vuex'
+  export default {
+    name: "ArticleInfo",
+    components: {
+      Share,
+      ArticleRight
+    },
+    computed:{
+      ...mapState('articleInfoStore',['title','keywords','description','articleInfo','articleContent','articleList']),
+      ...mapState('commonStore',['headerIndex','imagePath']),
+    },
+
+
+    async fetch ({ params, store }) {
+
+
+
+      let link = '/a/' + params.link+'&typeId'+params.typeId;
+
+
+      return store.dispatch('articleInfoStore/queryArticleInfo',link);
+
+    },
+    head () {
+      return {
+        title: this.title + "-HIKER教育",
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content:this.keywords,
+          },
+          {
+            hid: 'author',
+            name: 'author',
+            content: "HIKER教育",
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.description
+          }
+        ]
+      }
+    },
+    data() {
+      return {
+        typeId:'',
+      }
+    },
+    methods: {
+
+    },
+    created: function () {
+
+
+    },
+    mounted: function () {
+      console.log(this.articleInfo,'123123')
+      console.log(this.articleList,'ad还是卡返回路径喀什分行开了房')
+
+    },
+    watch: {
+
+    }
+  }
+</script>
+
+<style scoped>
+
+  .article-link>p>a{
+    display: inline-block;
+    width:306px;
+    height: 28px;
+    vertical-align: bottom;
+    line-height: 35px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .article-content{ padding-top: 20px}
+
+  >>> .article-content p {
+
+    font-size: 14px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    line-height: 32px;
+    color:#666;
+    letter-spacing: 2px;
+    opacity: 1;
+    text-align: left;
+
+  }
+ >>> .article-nav-content{
+   margin:64px 49px;
+   position: absolute;
+ }
+ >>> .article-nav-title{
+   font-size: 24px;
+   font-weight: 600;
+   text-align: center;
+   margin-bottom: 7px;
+   color: #fff;
+ }
+ >>> .article-nav-subTitle{
+   color: #fff;
+   font-size: 14px;
+ }
+ >>> .article-nav-button{
+   margin:41px 0 0 60px;
+   width: 132px;
+   height: 44px;
+   background: #fff;
+   border-radius: 26px;
+   color: #999;
+   font-size: 16px;
+ }
+  >>> .article-content img {
+
+    max-width: 100%;
+
+  }
+  >>> .article-left{
+    width: 820px;
+    margin-right: 27px;
+    background: #fff;
+    padding-bottom: 42px;
+  }
+  >>> .article-top p{
+    text-align: center;
+  }
+  /*>>> .article-left p{*/
+ /**/
+  /*}*/
+  >>> .article-right{
+    width: 350px
+  }
+  .article-link{
+    margin-left: 33px;
+  }
+  .article-link p{
+
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+  .article-link a{
+    color: #1890FF;
+  }
+  >>> .article-read{
+    width: 350px;
+
+    background: #fff;
+    /*position: absolute;*/
+    /*margin-top:30px;*/
+    padding-bottom: 1px;
+  }
+  >>> .article-read p{
+    width: 85px;
+    height: 28px;
+    color: #333;
+    font-size: 21px;
+    line-height: 28px;
+    /*margin: 15px 0 15px 20px;*/
+  }
+  >>> .article-read ul{
+    margin-left: 20px;
+  }
+  >>> .article-read ul li{
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  >>> .num{
+   margin-right: 9px;
+  }
+  >>>   .article-nav{
+    background: url("../../assets/img/experience.png") no-repeat;
+    background-size: 350px 259px;
+    height: 260px;
+  }
+  >>> .article-right img{
+    width: 350px;
+    height: 175px;
+  }
+  .articleInfo {
+
+    background: #f5f5f5;
+    padding-bottom: 10rem;
+  }
+
+  .articleInfo-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 38px;
+  }
+
+  .articleInfo-content .Total-title {
+
+    font-size: 14px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #666666;
+    opacity: 1;
+    padding-bottom: 20px;
+  }
+  .articleInfo
+  .articleInfo-content .Total-title a {
+
+    font-size: 14px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #666666;
+
+  }
+
+  .articleInfo-content .Total-title a:hover {
+
+
+    color: rgba(24, 144, 255, 1);
+
+  }
+
+  .article-title {
+
+    font-size: 2.4rem;
+    font-family: PingFang SC;
+    font-weight: 500;
+    margin:35px 0 8px 0;
+    color: rgba(34, 34, 34, 1);
+    letter-spacing: 0.3rem;
+    opacity: 1;
+  }
+
+  .time {
+
+    font-size: 1.4rem;
+    font-family: PingFang SC;
+    font-weight: 400;
+
+    color: rgba(153, 153, 153, 1);
+    opacity: 1;
+    margin: 0 0 18px 0;
+  }
+  .line{
+    width: 772px;
+    height: 2px;
+    border:1px solid #EBEBEB ;
+    margin: 0 24px;
+  }
+  .article-content {
+
+    width: 755px;
+    margin: 0 33px;
+    overflow: hidden;
+    font-size: 14px;
+    text-align: left;
+  }
+  .article-content p{
+    text-align: left;
+  }
+
+  @media only screen and (max-width: 1024px) and (min-width: 0px) {
+    .articleInfo {
+      padding: 64px 4% 30px;
+    }
+
+    .time {
+
+      margin: 1.2rem 0 1.4rem;
+    }
+  }
+
+</style>

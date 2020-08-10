@@ -1,0 +1,73 @@
+<template>
+  <div class="error clearFix">
+    <div class="error-info">
+      <h3>抱歉，页面去考试了…</h3>
+      <p><span ref="spanMinutes">{{ minutes }}</span> 秒之后页面自动跳转，您还可以：</p>
+      <a href="/">1.返回首页 ></a><br>
+      <a href="/school">2.网校系统 ></a>
+    </div>
+    <img src="@/static/res/img/error-img.png" width="649" height="382" alt="" style="float: right">
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'errorPage',
+    layout: 'white',
+    data () {
+      return {
+        minutes: 10
+      }
+    },
+    methods: {
+      countDown () {
+        setTimeout(() => {
+          this.minutes--
+          if(this.minutes > 0) {
+            this.countDown()
+          } else {
+            window.location.href = '/'
+          }
+        }, 1000)
+      }
+    },
+    mounted() {
+      this.countDown();
+      $("span[id^='cnzz_stat_icon_']").hide();
+    }
+  }
+</script>
+<style scoped>
+  .error-info {
+    float: left;
+    width: 360px;
+  }
+  .error {
+    margin: 10% auto 0;
+    width: 1125px;
+    height: 382px;
+  }
+  h3 {
+    font-size: 36px;
+    font-weight: 500;
+    color: #333;
+    line-height: 50px;
+    margin-top: 99px;
+    margin-bottom: 45px;
+
+  }
+  p {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 19px;
+  }
+  span {
+    color: #FF6262;
+  }
+  a {
+    color: #19C0FF;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+</style>

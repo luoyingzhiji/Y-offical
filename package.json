@@ -1,0 +1,28 @@
+{
+  "name": "offical",
+  "version": "1.0.0",
+  "description": "offical",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development API_W_MAIN=https://m.eduhiker.com API_MAIN=https://testmain.eduhiker.com nuxt",
+    "build": "cross-env NODE_ENV=production API_W_MAIN=https://m.eduhiker.com API_MAIN=https://bbq.eduhiker.com nuxt build",
+    "start": "cross-env NODE_ENV=production API_W_MAIN=https://m.eduhiker.com API_MAIN=https://bbq.eduhiker.com nuxt start"
+  },
+  "dependencies": {
+    "browserslist": "^4.6.3",
+    "nuxt": "^2.0.0",
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-baidu-map": "^0.21.20"
+  },
+  "devDependencies": {
+    "@nuxtjs/axios": "^5.5.4",
+    "@nuxtjs/proxy": "^1.3.3",
+    "cross-env": "^5.2.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "nodemon": "^1.18.9",
+    "prettier": "^1.16.4",
+    "vue-particles": "^1.0.9"
+  }
+}

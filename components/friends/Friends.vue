@@ -1,0 +1,458 @@
+<template>
+    <!-- 合作伙伴 -->
+  <div class="friends" id="success-bar">
+    <div class="friends-content">
+      <p class="friends-title">我们合作的企业</p>
+      <div class="friends-list-pc" v-if="!isMobile">
+        <div class="friends-list">
+          <ul class="am-avg-sm-2 am-avg-md-5 am-avg-lg-5 am-thumbnails clearFix">
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/yanglao.png'" alt="养老云课堂"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/haimian.png'" alt="海绵学堂"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/liuye.png'" alt="六治"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/zhongke.png'" alt="中科数据"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/zhaorufei.png'" alt="赵汝飞练字"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/jinyingjie.png'" alt="金英杰医学"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/qingzhidian.png'" alt="青之巅"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/qingjv.png'" alt="青桔"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/wangpai.png'" alt="王派医考"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/ruida.png'" alt="瑞达注会"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/zhouhan.png'" alt="周翰教育"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/shengyage.png'" alt="圣雅阁西语"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/chengxue.png'" alt="承学网"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/qiyuan.png'" alt="启元教育"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/xinguoyi.png'" alt="新国医"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/dazhong.png'" alt="大立教育"/>
+              </div>
+            </li>
+
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/jinersen.png'" alt="金尔森"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/yishijie.png'" alt="医世界"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/lecheng.png'" alt="乐橙财经"/>
+              </div>
+            </li>
+            <li>
+              <div class="friendImg">
+                <img :src="imagePath + '/res/home/zhongxue.png'" alt="众学"/>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="friends-list" v-else>
+        <ul class="am-avg-sm-2 am-avg-md-5 am-avg-lg-5 am-thumbnails clearFix" style="margin-bottom: 0">
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/yanglao.png'" alt="养老云课堂"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/haimian.png'" alt="海绵学堂"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/liuye.png'" alt="六治"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/zhongke.png'" alt="中科数据"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/zhaorufei.png'" alt="赵汝飞练字"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/jinyingjie.png'" alt="金英杰医学"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/qingzhidian.png'" alt="青之巅"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/qingjv.png'" alt="青桔"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/wangpai.png'" alt="王派医考"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/ruida.png'" alt="瑞达注会"/>
+            </div>
+          </li>
+        </ul>
+        <div v-if="portion" class="look-more" @click="lookMore()">
+          <p>查看更多</p>
+        </div>
+        <ul v-else class="am-avg-sm-2 am-avg-md-5 am-avg-lg-6 am-thumbnails clearFix" style="margin-top: 0">
+
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/zhouhan.png'" alt="周翰教育"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/shengyage.png'" alt="圣雅阁西语"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/chengxue.png'" alt="承学网"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/qiyuan.png'" alt="启元教育"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/xinguoyi.png'" alt="新国医"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/dazhong.png'" alt="大立教育"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/jinersen.png'" alt="金尔森"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/yishijie.png'" alt="医世界"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/lecheng.png'" alt="乐橙财经"/>
+            </div>
+          </li>
+          <li>
+            <div class="friendImg">
+              <img :src="imagePath + '/res/home/zhongxue.png'" alt="众学"/>
+            </div>
+          </li>
+        </ul>
+      </div>
+<!--      <p class="seeMoreFrame"><article class="seeMore" href="https://tb.53kf.com/code/client/31f7ef7c2630d410b245a63ffa7794189/1" target="_blank">查看更多</article></p>-->
+
+
+    </div>
+  </div>
+
+</template>
+
+<script>
+  import { mapState } from 'vuex';
+    export default {
+      name: "Friends",
+      computed: {
+        ...mapState(['info']),
+        ...mapState('commonStore',['headerIndex','imagePath']),
+      },
+      data() {
+        return {
+          isMobile:false,
+          portion:true,
+        }
+      },
+      methods:{
+        _isMobile() {
+          let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+          return flag;
+        },
+        lookMore(){
+          this.portion = false
+        }
+      },
+      mounted() {
+        if (this._isMobile()) {
+          this.isMobile = true;
+        }
+      }
+    }
+</script>
+
+<style scoped>
+  .friends-list-item{
+    /*width: 179px;*/
+    /*height:179px;*/
+
+  }
+  .friends-list li{
+    /*margin-bottom: 12px;*/
+    padding: 12px;
+  }
+  .friends-list li .friends-list-item a p{
+    color:#6A7C92;
+    font-size: 1.4rem;
+  }
+  .seeMoreFrame{
+    text-align: center;
+    margin-top: 6rem;
+  }
+  .friends {
+    width: 100%;
+    background: rgba(255, 255, 255, 1);
+    opacity: 1;
+  }
+  .seeMore {
+    width:200px;
+    height:46px;
+    border:1px solid rgba(31,133,254,1);
+    opacity:1;
+    border-radius:5px;
+
+    font-size:1.6rem;
+    font-family:PingFang SC;
+    font-weight:400;
+    line-height:46px;
+    color:rgba(24,144,255,1);
+    opacity:1;
+    padding: 12px 68px;
+
+  }
+  .seeMore:hover {
+
+    background: rgba(31,133,254,1);
+    opacity:1;
+    border-radius:5px;
+
+    font-size:1.6rem;
+    font-family:PingFang SC;
+    font-weight:400;
+    line-height:46px;
+    color:white;
+    opacity:1;
+    padding: 12px 68px;
+
+  }
+
+  .friends-content {
+  }
+
+  .friends-title {
+    font-size: 3.6rem;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 1);
+    opacity: 1;
+    margin: 100px auto 80px;
+    text-align: center;
+  }
+
+  .friends-list {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .friendImg{
+    width: 82%;
+    margin:  0 auto;
+    overflow: hidden;
+    text-align: center;
+    padding: 0;
+  }
+
+  .friends-list li a p {
+    text-align: center;
+
+    font-size:1.4rem;
+    font-family:PingFang SC;
+    font-weight:400;
+
+    color:rgba(0,0,0,1);
+    opacity:1;
+    margin: -6px 0 30px;
+
+  }
+
+  .friends-list li img {
+    width: 100%;
+    overflow: hidden;
+    /*border: 1px dashed gray;*/
+  }
+  .friends-list-pc{
+    background-image: url("~static/res/img/index-related-company.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: left,bottom;
+    padding-bottom: 100px;
+  }
+  @media only screen and (max-width:1300px) and (min-width: 1024px){
+    .friends-list  {padding: 0 6%;}
+
+
+  }
+  @media only screen and (max-width:1024px) and (min-width: 640px){
+    .friends-list  {padding: 0 6%;}
+    .friends ul {padding: 0px;margin: 70px 0px;}
+
+    .friends ul li:nth-child(even){
+      background: #fff;
+    }
+    .friends ul li:nth-child(odd){
+      background: #fff;
+    }
+    .friends-title {
+
+      margin: 0rem 0 -2rem;
+
+    }
+
+
+    .friends-content {
+
+      margin: 0 auto 6rem;
+    }
+    .friends-list li a p {
+      margin: -17px 0 0 0;
+    }
+
+  }
+  @media only screen and (max-width:640px) and (min-width: 0px){
+
+
+    .friends ul {padding: 0px 11px;margin: 70px 0px 30px;}
+    .friends-content {
+
+      margin: 0 auto 60px;
+    }
+    .seeMoreFrame {
+
+      margin-top: 0rem;
+    }
+    .seeMore{
+
+      padding: 12px 36px;
+    }
+    /*.friends ul li {*/
+    /*  padding: 5%;*/
+    /*  width: 40%;*/
+    /*  margin-left: 7%;*/
+    /*  background: #fff;*/
+    /*}*/
+    .friends ul li:nth-child(even){
+      background: #fff;
+    }
+    .friends ul li:nth-child(odd){
+      background: #fff;
+    }
+    .friends-title {
+
+      margin: 3rem 0 -5rem;
+
+    }
+
+    .friends-list li a p {
+      margin: -10px 0 14px 0;
+    }
+
+    .friendImg{
+      padding: 0;
+    }
+    .friends ul li{
+      padding:0 ;
+    }
+    .look-more{
+      width:120px;margin:32px auto 0;height:36px;border:1px solid rgba(31,133,254,1);border-radius:5px;display: flex;
+      justify-content: center;align-items: center;
+    }
+    .look-more p{
+      color: #1890FF;font-size: 1.4rem
+    }
+    .friends-list {
+      margin-bottom: 40px;
+    }
+  }
+
+
+</style>

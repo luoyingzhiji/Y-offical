@@ -1,0 +1,233 @@
+>>>.swiper-container{
+  width: 100%;
+
+}
+>>>.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
+  width:50px;
+  height:6px;
+  background:rgba(255,255,255,0.5);
+  border-radius:3px;
+
+}
+>>>.askAndAnswer-content>.swiper-container-horizontal>.zhengshu-pagination>.swiper-pagination-bullet{
+  width:14px;
+  height:14px;
+  background:rgba(24,144,255,0.25);
+  border-radius: 7px;
+}
+>>>.askAndAnswer-content>.swiper-container-horizontal>.zhengshu-pagination>.swiper-pagination-bullet-active{
+  width:14px;
+  height:14px;
+  background:rgba(24,144,255,1);
+  border-radius: 7px;
+}
+
+
+>>>.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet-active{
+
+  width:50px;
+  height:6px;
+  background:rgba(255,255,255,1);
+  border-radius:3px;
+}
+
+
+
+
+/*控制图片轮播的左右的按钮*/
+.turnDirectionBtn{
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 690px);
+
+  height: 60px;
+  width: 1380px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.turnDirectionBtn a{
+
+  width:70px;
+  height:69px;
+  background:rgba(0,0,0,0.4);
+  border-radius:4px;
+
+
+  position: relative;
+
+}
+.turnDirectionBtn a svg{
+  margin: 12px;
+  color: #fff;
+}
+
+a, a:focus,a:hover {
+  text-decoration: none;
+}
+.i-slide {
+  position: relative;
+}
+.menu-wrap {
+  width: 240px;
+  height: 360px;
+  position: absolute;
+  top:0px;
+  left: 50%;
+  margin-left: -575px;
+  z-index: 9999;
+}
+.menu-list {
+  float: left;
+  width: 240px;
+  height: 360px;
+  padding: 15px 0px 10px;
+  background: #4b5461;
+}
+.menu-list li {margin-left: 15px; position: relative;height:55px;  }
+
+.menu-list li a {padding-left: 20px;font-size: 1.4rem;font-weight: 600;line-height: 60px;  color: #ccc;}
+.menu-list li:hover a {
+  display: block;
+  height: 60px;
+  width: 100%;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  color: red;
+  color: #fff;
+  background-color: #6c7176;
+}
+.menu-list i {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  font-size: 20px;
+  color: #ccc;
+  z-index: 99999;
+
+}
+/* 菜单内容 - 开始 */
+.menu-content {
+  float: left;
+  width: 910px;
+  height: 360px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: #fff;
+  display: none;
+}
+.menu-content li {
+  display: none;
+}
+.menu-content li .menu-course-page {
+  float: left;
+  width: 690px;
+  height: 360px;
+}
+/* 全部课程 */
+.menu-content li .menu-course-page .all-course {
+  height: 180px;
+  padding-top: 20px;
+}
+.menu-content li .menu-course-page .all-course dl {
+  margin:0px 10px 8px 30px;
+}
+.menu-content li .menu-course-page .all-course dl dt {
+  display: inline-block;
+  margin: 5px 0px;
+}
+.menu-content li .menu-course-page .all-course dl dt a {
+  color: #5595df;
+  margin-right: 15px;
+}
+.menu-content li .menu-course-page .all-course dl dt a:hover {
+  text-decoration: underline;
+  color: #5595df;
+  font-size: 1.4rem;
+}
+.menu-content li .menu-course-page .all-course dl dd {
+  display: inline-block;
+  width: 500px;
+  vertical-align: top;
+  margin-top: 0px;
+}
+.menu-content li .menu-course-page .all-course dl dd a{
+  display: block;
+  float: left;
+  line-height: 1.4rem;
+  border-left: 1px solid #eee;
+  padding: 0px 10px;
+  color: #444;
+  margin: 8px 0px;
+  font-size: 1.4rem;
+}
+.menu-content li .menu-course-page .all-course dl dd a:hover{
+  text-decoration: underline;
+  color: #5595df;
+}
+.menu-content li .menu-course-page .recommend-course h4.title,
+.menu-content li .menu-course-page .all-course h4.title {
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  margin: 20px 0px 0px 30px;
+  text-align: center;
+  font-size: 1rem;
+  border: 1px solid #5595df;
+  border-radius: 15px;
+  color: #5595df;
+}
+/* 推荐课程 */
+.menu-content li .menu-course-page .recommend-course {
+  height: 180px;
+  background-color: #f8fafc;
+
+}
+.menu-content li .menu-course-page .recommend-course .course-box .item {
+  float: left;
+  width: 50%;
+  padding: 20px 30px;
+}
+.menu-content li .menu-course-page .recommend-course .course-box .item .left-pic {
+  width: 130px;
+  height: 80px;
+  padding-right: 10px;
+}
+.menu-content li .menu-course-page .recommend-course .course-box .item .left-pic img {
+  border-radius: 4px;width:80px;
+}
+.menu-content li .menu-course-page .recommend-course .course-box .item .right-con {
+  color: #686868;
+
+}
+.menu-content li .menu-course-page .recommend-course .course-box .item .right-con .course-name{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.menu-content li .menu-course-page .recommend-course .course-box .item .right-con:hover {
+  color: #5595df;
+}
+
+
+/* 广告 */
+.menu-content li .menu-intro-banner {
+  float: left;
+  width: 220px;
+  height: 360px;
+  padding-left: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #f7f7f7;
+}
+.menu-content li .menu-intro-banner h5.title {
+  line-height: 70px;
+}
+.menu-content li .menu-intro-banner .img-box img{
+  width: 175px;
+  height: 280px;
+}
+>>>.swiper-slide {
+  background: center center no-repeat;
+}
+

@@ -1,0 +1,13 @@
+import { deviceType } from "~/components/utils/deviceType";
+export default function ({app,store,route, req, res, redirect,userAgent}) {
+
+  let path=route.path;
+  let isServer = process.server;
+  userAgent = process.server
+    ? req.headers["user-agent"]
+    : navigator.userAgent;
+  let facilityType = deviceType(userAgent).type;
+  // 如果设备是PC 并且在path路径中找到了mobile字段跳转PC首页
+  console.log(path,'-----',isServer,'-----',userAgent,'------',facilityType)
+
+}

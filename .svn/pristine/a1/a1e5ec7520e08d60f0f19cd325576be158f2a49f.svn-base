@@ -1,0 +1,728 @@
+<template>
+  <div>
+
+    <div class="z_banner-wrap1">
+      <div class="z_ban-bor">
+        <img :src="imagePath + '/static/res/img/Vidio/tc2.png'" alt="" width="1920" height="500"
+             style="position: absolute;left: 50%;margin-left: -960px;">
+        <div class="z_bannerB float-left" style="z-index: 1;position: relative" >
+          <div class="z_bannerB-left">
+            <div class="one ">HIKER视频云</div>
+            <div class="two" style="font-family: NSimSun">为用户提供快速稳定的视频上传/转码/加密/存储/播放等服务
+            </div>
+            <div class="z_but float-left">
+              <div class="z_but-left" style="color:rgba(99,169,255,1);" @click="goConsultingService()">立即咨询</div>
+              <div class="z_but-right" @click="goLogin()">免费试用</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="top-main-cont">
+      <div class="top-wrap">
+        <div class="z_banner-wrap " style="    padding-left: 70px;
+    padding-right: 40px;" >
+          <!-- 12.13注册单 start-->
+          <div class="z_content float-between">
+            <div class="z_content-left">
+              <img src="../static/res/img/Vidio/Ct1.png"
+                   style="height: 356px;width: 387px"
+                   alt="点播系统">
+            </div>
+            <div class="z_content-right" style="padding: 24px 0 ">
+              <div class="E_text-one">点播系统-如此与众不同的点播技术服务
+                <img src="" alt="">
+              </div>
+              <div class="E_text-two">
+                <div>支持视频点播加密、跑马灯等防盗功能</div>
+                <div>极速加载无广告视频，播放流畅</div>
+                <div>可随意将视频进行音/频无缝隙切换</div>
+                <div>安全级别非常高的防下载功能</div>
+              </div>
+
+              <div class="z_schol-but" style="margin-top: 60px">
+                <div class="z_schol-bor float-left" style="    margin: 0;">
+                  <div class="one" @click="goConsultingService()">立即咨询</div>
+                  <div class="two" @click="goLogin()">免费试用</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="z_content float-between" style="margin-top: 150px" >
+            <div class="z_content-right" style="padding: 11px 0" >
+              <div class="E_text-one">直播系统-无缝连接、画面清晰的视频功能
+                <img src="" alt="">
+              </div>
+              <div class="E_text-two">
+
+                <div>师生可实时互动进行答疑、授课</div>
+                <div>智能降噪语音、高清画面的视频连麦功能</div>
+                <div>支持1对1或1对多的在线聊天和问答功能</div>
+                <div>支持白板画笔功能及多种格式的文档</div>
+              </div>
+              <div class="z_schol-but " style="margin-top: 60px">
+                <div class="z_schol-bor float-left" style="    margin: 0;">
+                  <div class="one" @click="goConsultingService()">立即咨询</div>
+                  <div class="two" @click="goLogin()">免费试用</div>
+                </div>
+              </div>
+            </div>
+            <div class="z_content-left">
+              <img src="../static/res/img/Vidio/Ct2.png"
+                   style="height: 309px;width: 395px"
+                   alt="直播系统">
+            </div>
+          </div>
+
+        </div>
+        <div class="z_banner-wrap " style='height: 676px;'>
+          <div class="f1" style="background-size: cover;" >
+            <div style="width: 1200px;margin: auto" >
+          <!-- 12.13注册单 start-->
+              <div class="z_Copywriting " style="    padding-top: 70px;">
+                <div class="one" style="color:rgba(255,255,255,1);">我们的功能列表</div>
+                <!--        <div class="two" style="color:rgba(221,221,221,1);">可用于mooc、语言培训、IT培训、职业技能培训、资格认证培训、企业内训、文体艺术培训、学历文凭培训</div>-->
+              </div>
+              <div class="z_content2 float-left" style="width: 1200px" >
+                <div class="pc_bor">
+                  <div class="o">
+                    <div>
+                      <img src="../static/res/img/Vidio/zx1.png" alt="快速上传" style="height:28px;width: 28px">
+                    </div>
+                  </div>
+                  <div class="t">快速上传</div>
+                  <div class="s">可进行断点续传，大文件、批量/多格式视频等均可快速上传，节约时间成本。。</div>
+                </div>
+                <div class="pc_bor">
+                  <div class="o">
+                    <div><img src="../static/res/img/Vidio/zx2.png" alt="权限观看" style="height: 28px;width: 28px"></div>
+                  </div>
+                  <div class="t">权限观看</div>
+                  <div class="s">支持限制人群数量、用标签进行人群区分等功能，方便用户限制观看人群。</div>
+                </div>
+                <div class="pc_bor">
+                  <div class="o">
+                    <div><img src="../static/res/img/Vidio/zx3.png" alt="视频加密" style="height: 28px;width: 28px"></div>
+                  </div>
+                  <div class="t">视频加密</div>
+                  <div class="s">提供视频内容加密、聊天审核、监督直播等功能，方便监督内容和聊天质量。</div>
+                </div>
+                <div class="pc_bor">
+                  <div class="o">
+                    <div><img src="../static/res/img/Vidio/zx4.png" alt="视频转码" style="height: 32px;width: 27px"></div>
+                  </div>
+                  <div class="t">视频转码</div>
+                  <div class="s">播放器自带转码系统，方便用户播放多种格式的视频，避免转码时间的浪费。</div>
+                </div>
+                <div class="pc_bor">
+                  <div class="o">
+                    <div><img src="../static/res/img/Vidio/zx5.png" alt="数据统计" style="height: 24px;width: 29px"></div>
+                  </div>
+                  <div class="t">数据统计</div>
+                  <div class="s">方便用户对时间、空间、地域来源、使用终端、观看曲线、观众等信息进行多维度统计。</div>
+                </div>
+              </div>
+              <!--      万能咨询试用？-->
+              <div class="z_schol-but " style="margin-top: 105px">
+                <div class="z_schol-bor float-left">
+                  <div class="one" @click="goConsultingService()">立即咨询</div>
+                  <div class="two" @click="goLogin()">免费试用</div>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="z_banner-wrap">
+          <!-- 12.13注册单 start-->
+          <div class="z_Copywriting" style="margin-bottom: 20px">
+            <div class="one">三大重点功能模块突出产品特色</div>
+          </div>
+          <div class="z_content">
+            <div class="C_content float-left">
+              <div class="C_content-bor">
+                <div class="C_bor-top"><img src="../static/res/img/Vidio/C_xz1.png" alt="安全性能高" style="height: 60px;width: 60px">
+                </div>
+                <div class="C_bor-mid">安全性能高</div>
+                <div class="C_bor-bot">该系统的安全等级之高，使得用户无须担心视频被下载/录屏/播放，可以高枕无忧。</div>
+              </div>
+              <div class="C_content-bor">
+                <div class="C_bor-top"><img src="../static/res/img/Vidio/C_xz2.png" alt="大空间存储" style="height: 57px;width: 60px">
+                </div>
+                <div class="C_bor-mid">大空间存储</div>
+                <div class="C_bor-bot">拥有超大的视频存储空间，完全不用担心视频上传太多不够用。</div>
+              </div>
+              <div class="C_content-bor">
+                <div class="C_bor-top"><img src="../static/res/img/Vidio/C_xz3.png" alt="多终端播放" style="height: 54px;width: 67px">
+                </div>
+                <div class="C_bor-mid">多终端播放</div>
+                <div class="C_bor-bot">支持PC、APP、IPAD、小程序等多终端，不受地域/设备的限制。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="z_banner-wrap">
+          <!-- 12.13注册单 start-->
+          <div class="z_Copywriting">
+            <div class="oee">适用于以下或更多教育培训行业
+            </div>
+          </div>
+          <div class="z_content2 float-left" style="margin-top: 70px">
+            <div class="z_yy-con">
+              <div style="position: relative" >
+                <img :src="imagePath + '/res/img/School/yy6.png'" alt="语言教育" style="height: 472px;width: 390px">
+                <div class="cxdW">语言教育</div>
+              </div>
+            </div>
+            <div class="z_yy-con">
+              <div style="position: relative" >
+                <img :src="imagePath + '/res/img/School/yy2.png'" alt="艺术教育" style="height: 172px;width: 393px">
+                <div class="cxdW">艺术教育</div>
+              </div>
+              <div style="position: relative" >
+                <img :src="imagePath + '/res/img/School/yy3.png'" alt="金融会计" style="height: 288px;width: 393px">
+                <div class="cxdW">金融会计</div>
+              </div>
+            </div>
+            <div class="z_yy-con">
+              <div style="position: relative" >
+                <img :src="imagePath + '/res/img/School/yy4.png'" alt="职业教育" style="height: 288px;width: 393px">
+                <div class="cxdW">职业教育</div>
+              </div>
+              <div style="position: relative" >
+                <img :src="imagePath + '/res/img/School/yy5.png'" alt="K12教育" style="height: 172px;width: 393px">
+                <div class="cxdW">K12教育</div>
+              </div>
+            </div>
+          </div>
+          <!-- 12.13注册单 end-->
+        </div>
+
+        <div class="z_banner-wrap" style="margin-bottom: 30px">
+
+          <div class="z_Copywriting">
+            <div class="one">我们合作的企业</div>
+
+          </div>
+          <Friends/>
+        </div>
+
+        <div class="z_banner-wrap after" style="height: 320px; margin-top: 150px">
+          <div class="f2 " style="position: absolute;left: 0;">
+            <div class="z_Copywriting">
+              <div class="xz_one">现在注册，立享新人专享优惠礼包</div>
+              <div class="xz_but" @click="goLogin()">立即注册</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</template>
+<script>
+  import Friends from '../components/friends/z_Friends'
+  import { mapState } from 'vuex'
+
+  export default {
+    components: { Friends },
+    comments:{
+      Friends
+    },
+    computed:{
+
+      ...mapState(['info']),
+      ...mapState('commonStore',['headerIndex','imagePath']),
+    },
+    head() {
+      return {
+        title: '视频云_视频云系统软件|平台搭建|平台开发|建设-hiker教育|',
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: '视频云,视频云系统软件,视频云平台搭建,视频云平台开发,视频云平台建设'
+          },
+          {
+            hid: 'author',
+            name: 'author',
+            content: 'HIKER教育'
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content: '视频云为用户提供快速稳定的视频上传/转码/加密/存储/播放等服务'
+          }
+        ]
+      }
+    },
+    methods:{
+      goConsultingService () {
+        window.open('https://ww16.53kf.com/webCompany.php?arg=10235314&kf_sign=jU5ODMTU5NIxODExNDU5NTQxNTk1MDA4NzIyMzUzMTQ%253D&style=1')
+      },
+
+      goLogin() {
+        this.$router.push({ path: '/trial' })
+      },
+    }
+  }
+</script>
+
+<style scoped>
+  @import "../assets/css/common.css";
+  @import "../assets/css/NewBanner.css";
+  .z_yy-con div {
+    margin: 9px;
+    margin-left: 0;
+  }
+  .z_content2 > .z_yy-con:nth-child(3) >div {
+    margin-right: 0;
+  }
+  .cxdW {
+    font-size: 20px;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-weight: 500;
+    color: rgba(255,255,255,1);
+    line-height: 18px;
+    position: absolute;
+    z-index: 99;
+    left: 20px;
+    bottom: 20px;
+  }
+  .C_bor-top{
+    width:60px;
+    height: 60px;
+    margin: auto;
+  }
+  .float-left>.pc_bor:nth-child(1){
+    margin-left: 0;
+
+  }
+  .float-left>.pc_bor:last-child{
+    margin-right: 0;
+
+  }
+  .xz_but {
+    width: 165px;
+    height: 44px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 22px;
+    font-size: 14px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(24, 144, 255, 1);
+    line-height: 14px;
+    margin: auto;
+    margin-top: 30px;
+    line-height: 44px;
+
+  }
+
+  .xz_one {
+    padding-top: 100px;
+    font-size: 28px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    line-height: 40px;
+  }
+
+  .f2 {
+    background-image: url("../static/res/img/School/spy.png");
+    height: 320px;
+    width: 100%;
+
+  }
+
+  .z_b1 {
+    background-image: url(" ../static/res/img/Vidio/z_b1.png");
+  }
+
+  .z_b2 {
+    background-image: url(" ../static/res/img/Vidio/z_b2.png");
+  }
+
+  .z_b3 {
+    background-image: url(" ../static/res/img/Vidio/z_b3.png");
+  }
+
+  .z_b4 {
+    background-image: url(" ../static/res/img/Vidio/z_b4.png");
+  }
+
+
+
+  .oee {
+    font-size: 28px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(60, 60, 60, 1);
+    line-height: 40px;
+  }
+
+  .z_content4 {
+    margin-top: 66px;
+
+    justify-content: center;
+  }
+
+  .z_cont-one img{
+  width: 257px;
+    margin-right: 40px;
+  }
+
+  .z_cont-two {
+
+  }
+
+  .z_backImg {
+
+    margin: 20px 28px;
+    background-size: contain;
+  }
+
+  .z_backImg {
+    background-size: cover;
+    text-align: center;
+    line-height: 168px;
+    height: 168px;
+    width: 256px;
+    font-size: 18px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .z_fren-cont {
+    width: 184px;
+    height: 93px;
+    margin: 20px 35px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 12px 3px rgba(191, 224, 255, 0.26);
+    border-radius: 4px;
+    filter: blur(0px);
+    text-align: center;
+
+    line-height: 93px;
+  }
+
+
+
+  .z_friend {
+
+  }
+
+  .z_backImg {
+    margin: 20px 13px;
+  }
+
+  .C_content-bor {
+    margin: 92px 100px 0px;
+  }
+
+  .C_content-bor div {
+
+    justify-content: center;
+  }
+
+  .C_content>.C_content-bor:first-child{
+    margin-left: 0;
+  }
+  .C_content>.C_content-bor:last-child{
+    margin-right: 0;
+  }
+
+  .C_bor-mid {
+    margin-top: 30px;
+    font-size: 22px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 30px;
+    text-align: center;
+  }
+
+  .C_bor-bot {
+    margin-top: 15px;
+    width: 248px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 20px;
+  }
+
+  /*=============================*/
+  .z_content2 {
+
+    justify-content: center;
+    margin-top: 80px;
+  }
+
+  .f1 {
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 676px;
+    background-image: url("../static/res/img/School/bz4.png");
+  }
+
+  .pc_bor .t {
+    font-size: 16px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 22px;
+    margin-top: 30px;
+  }
+
+  .pc_bor .s {
+    font-size: 12px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(110, 112, 125, 1);
+    line-height: 17px;
+    margin-top: 15px;
+  }
+
+  .pc_bor .o div {
+    width: 60px;
+    height: 60px;
+    background: rgba(24, 144, 255, 1);
+    border-radius: 30px;
+    margin: auto;
+    line-height: 60px;
+  }
+
+  .pc_bor .o div img {
+    width: 60px;
+    height: 60px;
+    background: rgba(24, 144, 255, 1);
+    border-radius: 30px;
+    vertical-align: middle;
+    margin: auto;
+  }
+
+  .pc_bor {
+    padding: 25px 20px;
+    text-align: center;
+    margin: 0 23.5px;
+    width: 201px;
+    height: 218px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 14px;
+    position: relative;
+  }
+
+  .pc_bor .o {
+
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: -40px;
+
+    justify-content: center;
+  }
+
+  /*======================*/
+  .z_content-left {
+
+  }
+
+  .z_content-right {
+
+    justify-content: center;
+    flex-direction: column;
+    padding: 80px 0px;
+  }
+
+  .E_text-one {
+    font-size: 22px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 30px;
+  }
+
+  .E_text-two {
+    width: 477px;
+    margin-top: 40px;
+    font-size:16px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    line-height:22px;
+  }
+  .E_text-two>div{
+
+    height:22px;
+    font-size:16px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    line-height:22px;
+    margin-bottom: 18px;
+  }
+  .E_text-two>div:last-child{
+    margin-bottom: 0px;
+  }
+  .z_schol-but {
+
+    text-align: center;
+    justify-content: center;
+    margin-top: 75px;
+  }
+
+  .z_schol-but .one {
+    width: 165px;
+    height: 44px;
+    background: linear-gradient(90deg, rgba(24, 144, 255, 1) 0%, rgba(53, 195, 255, 1) 100%);
+    border-radius: 22px;
+    font-size: 14px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 44px;
+  }
+
+  .z_schol-but .two {
+    width: 165px;
+    height: 44px;
+    border-radius: 22px;
+    border: 1px solid rgba(24, 144, 255, 1);
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(24, 144, 255, 1);
+    line-height: 44px;
+    margin-left: 38px;
+  }
+
+  .z_content {
+
+
+    justify-content: center;
+  }
+
+  .z_Copywriting {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  .z_Copywriting .one {
+    font-size: 28px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(51, 51, 51, 1);
+    line-height: 28px;
+  }
+
+  .z_banner-wrap {
+    margin-top: 100px;
+
+  }
+
+  .z_ban-bor{
+    width: 100%;
+    height: 500px;
+    position: relative;
+  }
+  .z_bannerB {
+
+    justify-content: center;
+
+    height: 500px;
+    margin: auto;
+  }
+
+
+
+  .z_bannerB-right {
+    margin-left: 72px;
+    flex-direction: column;
+  }
+
+  .z_but {
+
+    margin-top: 50px;
+  }
+
+  .z_but-left {
+    width: 144px;
+    height: 48px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 28px;
+    font-size: 16px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 169, 79, 1);
+    line-height: 16px;
+    text-align: center;
+    line-height: 48px;
+    margin-right: 20px;
+  }
+
+  .z_but-right {
+    width: 144px;
+    height: 48px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    font-size: 16px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 16px;
+    text-align: center;
+    line-height: 48px;
+  }
+
+  .z_S-left img {
+    height: 32px;
+    width: 32px;
+    margin: auto;
+  }
+
+  .z_S-right .one {
+    font-size: 18px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 25px;
+  }
+
+  .z_S-right .two {
+    margin-top: 5px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 21px;
+  }
+
+  .z_bannerB-left .one {
+    font-size: 56px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    line-height: 60px;
+    text-shadow: 0px 2px 4px rgba(67, 96, 255, 1);
+  }
+
+  .z_bannerB-left .two {
+    font-size: 24px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 33px;
+  }
+
+  .z_bannerB-right img {
+    width: 572px;
+    height: 367px;
+  }
+</style>
